@@ -16,6 +16,7 @@
     <meta property="og:image" content="images/screenshot.jpg" /> <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="https://www.CasinoCode.net" /> <!-- where do you want your post to link to -->
     <meta property="og:type" content="article" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Website Title -->
     <title>CasinoCode by TrioXx - we discover software bugs and tricks in online casinos</title>
@@ -103,9 +104,9 @@
                 <div class="col-md-6 registerform">
 
                     <!-- Get Quote Form -->
-                    <form id="RegisterForm" data-toggle="validator">
+                    <form id="RegisterForm" data-toggle="validator" >
                         <div class="form-group">
-                            <select class="form-control-select" id="salutation" required>
+                            <select class="form-control-select" id="title" required>
                                 <option class="select-option" value="" disabled selected>Title</option>
                                 <option class="select-option" value="Mr">Mr</option>
                                 <option class="select-option" value="Mrs">Ms</option>
@@ -113,11 +114,11 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="firstname" placeholder="First name" required>
+                            <input type="text" class="form-control-input" id="first_name" placeholder="First name" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="lastname" placeholder="Surname" required>
+                            <input type="text" class="form-control-input" id="last_name" placeholder="Surname" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -422,6 +423,14 @@
 <script src="js/scripts.js"></script> <!-- Custom scripts -->
 
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    const url='{{url('')}}'
+    console.log(url)
     $("#RegisterForm").validator().on("submit", function(event) {
         if (event.isDefaultPrevented()) {
             // handle the invalid form...
@@ -435,11 +444,15 @@
     });
 
     function submitForm() {
-        // initiate variables with form content
-        var salutation = $("#salutation").val();
-        var firstname = $("#firstname").val();
-        var lastname = $("#lastname").val();
-        var email = $("#email").val();
+
+        var data  = {
+            first_name: $("#first_name").val(),
+            last_name: $("#last_name").val(),
+            email: $("#email").val(),
+            title: $("#title").val(),
+        };
+
+        console.log(data);
 
         var refid 	= "100";
         var source 	= "";
@@ -456,28 +469,25 @@
         var org 		= "Armentel CJSC . Armenia Telephone Company";
         var isp 		= "VEON Armenia CJSC";
 
-        var country_check = "1";
+        var country_check = "0";
 
-        if(country_check === "1"){
+        if(country_check === "0"){
             $.ajax({
                 type: "POST",
-                url: "php/register.php",
+                url: "/register",
                 dataType: "json",
                 cache: false,
                 async: false,
-                data: "salutation=" + salutation + "&firstname=" + firstname + "&lastname=" + lastname + "&email=" + email + "&refid=" + refid + "&source=" + source + "&itag=" + itag + "&itag1=" + itag1 + "&itag2=" + itag2 + "&rdns=" + rdns + "&os_system=" + os_system + "&browser=" + browser + "&mobil=" + mobil + "&country=" + country + "&city=" + city + "&org=" + org + "&isp=" + isp + "&lang=en",
+                data: data,
                 success: function(response) {
-                    if (response.status == "success") {
-                        formSuccess(response.token);
-                    } else {
-                        formError();
-                        submitMSG(false, response.text);
-                    }
+                    formSuccess(response.token);
                 }
-            });
+            })
         } else {
             countryError();
         }
+
+        window.location.href='{{route('home')}}'
     }
 
     function countryError(){
@@ -499,7 +509,7 @@
             $(".registerform").html('<div class="registercheck"><div class="text-center"><i class="fa fa-thumbs-up fa-4x gold tada animated"></i></div><div class="text-center" style="margin-top:10px;"><h2>Your registration was successful !</h2><br>We have sent your access data to your email address. With this, you can log in to our community. You are now be automatically logged in <i class="fa fa-spinner fa-spin animated"></i></div></div>');
 
             setTimeout(function(){
-                window.location.href = 'community/auto_login.php?token=' + '2019012110' + '_' + token;
+                window.location.href = url+'/home';
             }, 1000);
         }, 1000);
 
@@ -523,15 +533,15 @@
     }
 
 
-    $("#salutation").change(function(){
+    $("#title").change(function(){
         $("#msgSubmit").empty();
     });
 
-    $("#firstname").change(function(){
+    $("#first_name").change(function(){
         $("#msgSubmit").empty();
     });
 
-    $("#lastname").change(function(){
+    $("#last_name").change(function(){
         $("#msgSubmit").empty();
     });
 

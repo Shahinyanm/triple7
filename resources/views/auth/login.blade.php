@@ -5,7 +5,8 @@
     <div class="login-box-body">
         <p class="login-box-msg">Please enter your login information:</p>
 
-        <form action="/community/login.php" method="post" class="form-element">
+        <form action="{{route('login')}}" method="post" class="form-element">
+            @csrf
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" name="login_email" placeholder="E-mail">
                 <span class="ion ion-email form-control-feedback"></span>
