@@ -8,11 +8,11 @@
         <form action="{{route('login')}}" method="post" class="form-element">
             @csrf
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" name="login_email" placeholder="E-mail">
+                <input type="email" class="form-control" name="email" placeholder="E-mail">
                 <span class="ion ion-email form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" name="login_password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
                 <span class="ion ion-locked form-control-feedback"></span>
             </div>
             <div class="row">

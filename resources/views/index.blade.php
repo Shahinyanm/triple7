@@ -102,6 +102,8 @@
                 </div>
 
                 <div class="col-md-6 registerform">
+                    @guest
+
 
                     <!-- Get Quote Form -->
                     <form id="RegisterForm" data-toggle="validator" >
@@ -134,8 +136,7 @@
                             <div id="msgSubmit" class="h3 text-center hidden"></div>
                         </div>
                     </form>
-                    <!-- end of get quote form -->
-
+                        @endguest
                 </div>
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -452,7 +453,7 @@
             title: $("#title").val(),
         };
 
-        console.log(data);
+        // console.log(data);
 
         var refid 	= "100";
         var source 	= "";
@@ -477,9 +478,10 @@
                 url: "/register",
                 dataType: "json",
                 cache: false,
-                async: false,
+                async: true,
                 data: data,
                 success: function(response) {
+                    console.log(response);
                     formSuccess(response.token);
                 }
             })
@@ -487,7 +489,7 @@
             countryError();
         }
 
-        window.location.href='{{route('home')}}'
+        {{--window.location.href='{{route('home')}}'--}}
     }
 
     function countryError(){

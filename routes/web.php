@@ -15,10 +15,15 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'UserController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::group(['prefix'=> 'admin','middleware'=>'auth'], function() {
 
-
+Route::group(['prefix'=> 'user','as'=>'user.','middleware'=>'auth'], function() {
+    Route::get('tricks','UserController@tricks')->name('tricks');
+    Route::get('winnings','UserController@winnings')->name('winnings');
+    Route::get('forum','UserController@forum')->name('forum');
+    Route::get('settings','UserController@settings')->name('settings');
+    Route::get('logout','UserController@logout')->name('logout');
 
 });

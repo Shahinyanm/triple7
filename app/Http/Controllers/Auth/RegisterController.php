@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\RegisterMail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Jobs\SendRegisterMail;
 
 class RegisterController extends Controller
 {
@@ -38,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+//        $this->middleware('guest');
     }
 
     /**
@@ -65,18 +68,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        dd($data);
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'title' => $data['title'],
-            'email' => $data['email'],
+        $password = str_random(8);
 
-        ]);
+        $user = User::create([
+                'first_name'        => $data['first_name'],
+                'last_name'         => $data['last_name'],
+                'title'             => $data['title'],
+                'email'             => $data['email'],
+                'password'          => Hash::make($password),
+            ]);
+
+          $data['password'] = $password;
+
+        SendRegisterMail::dispatch($data);
+//        Mail::to($user)->queue(new RegisterMail($user));
+
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)
     {
-//        \Auth::loginUsingId($user->id);
+        \Auth::loginUsingId($user->id);
+        return response()->json(['data'=>'aaa']);
     }
 }

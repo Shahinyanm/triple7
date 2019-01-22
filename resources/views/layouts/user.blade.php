@@ -91,7 +91,7 @@
     $(".snow-canvas").snow();
 
     function go_to_tricks() {
-        document.location.href = 'tricks.php?tour=1';
+        document.location.href = 'tricks.blade.php?tour=1';
     }
 
 
@@ -179,7 +179,7 @@
             {
                 element: "#help_tricks",
                 title: 'Tricks',
-                content: function(){document.location.href = 'tricks.php?tour=1';},
+                content: function(){document.location.href = 'tricks.blade.php?tour=1';},
             },
         ],
         container: "body",

@@ -13,7 +13,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xl-4 col-md-12 col" id="help_found_tricks">
-                <a class="info-box-link" href="tricks.php">
+                <a class="info-box-link" href="tricks.blade.php">
                     <div class="info-box">
                         <span class="info-box-icon bg-info"><i class="fa fa-search"></i></span>
 
@@ -29,7 +29,7 @@
             </div>
             <!-- /.col -->
             <div class="col-xl-4 col-md-12 col" id="help_active_tricks">
-                <a class="info-box-link" href="tricks.php">
+                <a class="info-box-link" href="tricks.blade.php">
                     <div class="info-box">
                         <span class="info-box-icon bg-info"><i class="fa fa-check"></i></span>
 
@@ -49,7 +49,7 @@
             <div class="clearfix visible-sm-block"></div>
 
             <div class="col-xl-4 col-md-12 col" id="help_used_tricks">
-                <a class="info-box-link" href="tricks.php">
+                <a class="info-box-link" href="tricks.blade.php">
                     <div class="info-box">
                         <span class="info-box-icon bg-info"><i class="fa fa-gamepad"></i></span>
 
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="carousel-link text-center">
-                        <a href="tricks.php"><span><i class="fa fa-gamepad"></i> Show all tricks</span></a>
+                        <a href="tricks.blade.php"><span><i class="fa fa-gamepad"></i> Show all tricks</span></a>
                     </div>
                 </div>
             </div>

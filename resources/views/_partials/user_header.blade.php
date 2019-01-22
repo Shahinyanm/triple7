@@ -52,7 +52,7 @@
         <!-- sidebar menu -->
         <ul class="sidebar-menu" data-widget="tree" id="help_navigation">
             <li class="active" id="help_dashboard">
-                <a href="index.php">
+                <a href="{{route('home')}}">
                     <i class="fa fa-dashboard"></i> <span>Overview</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
@@ -61,7 +61,7 @@
             </li>
 
             <li  id="help_tricks">
-                <a href="tricks.php">
+                <a href="{{route('user.tricks')}}">
                     <i class="fa fa-gamepad"></i> <span>Tricks</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
@@ -70,7 +70,7 @@
             </li>
 
             <li  id="help_wins">
-                <a href="wins.php">
+                <a href="{{route('user.winnings')}}">
                     <i class="fa fa-trophy"></i> <span>Winnings</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
@@ -79,7 +79,7 @@
             </li>
 
             <li  id="help_forum">
-                <a href="forum.php">
+                <a href="{{route('user.forum')}}">
                     <i class="fa fa-comments"></i> <span>FAQ - Forum</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
@@ -88,7 +88,7 @@
             </li>
 
             <li  id="help_settings">
-                <a href="settings.php">
+                <a href="{{route('user.settings')}}">
                     <i class="fa fa-cog"></i> <span>Settings</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
@@ -96,13 +96,23 @@
                 </a>
             </li>
 
+
+
+
+
             <li id="help_logout">
-                <a href="logout.php">
-                    <i class="fa fa-sign-out"></i> <span>Logout</span>
+                <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
+                    <i class="fa fa-sign-out"></i> <span>{{ __('Logout') }}</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
 
         </ul>    </section>
