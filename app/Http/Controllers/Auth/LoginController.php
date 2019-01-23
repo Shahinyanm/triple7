@@ -44,10 +44,12 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if ($user->isAdmin === 1){
+        if ($user->isAdmin == 1){
             $this->redirectTo = route('admin');
         }else{
+
             $this->redirectTo = route('home');
         }
+
     }
 }

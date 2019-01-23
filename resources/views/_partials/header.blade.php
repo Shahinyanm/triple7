@@ -437,9 +437,18 @@
             <li class="sep"></li>
 
             <li>
-                <a href="extra-login.html">
-                    Log Out <i class="entypo-logout right"></i>
+                <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
+                    <i class="fa fa-sign-out"></i> <span>{{ __('Logout') }}</span>
+                    <span class="pull-right-container">
+	  <i class="fa fa-angle-right pull-right"></i>
+	</span>
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         </ul>
 
