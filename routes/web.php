@@ -24,6 +24,8 @@ Route::group(['prefix'=> 'user','as'=>'user.','middleware'=>'auth'], function() 
     Route::get('winnings','UserController@winnings')->name('winnings');
     Route::get('forum','UserController@forum')->name('forum');
     Route::get('settings','UserController@settings')->name('settings');
-    Route::get('logout','UserController@logout')->name('logout');
+
+
+    Route::post('update_user','UserController@update_user')->name('update_user');
 
 });

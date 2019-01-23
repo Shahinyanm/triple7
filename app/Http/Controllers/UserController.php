@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Http\Requests\UserRequest;
+
 
 class UserController extends Controller
 {
@@ -14,6 +19,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -43,11 +49,21 @@ class UserController extends Controller
 
     public function settings()
     {
-        return view('user.settings');
+        $user = User::find(Auth::user()->id);
+        return view('user.settings', compact('user'));
     }
 
-    public function logout()
+    public function update_user(UserRequest $request)
     {
-        return view('home');
+//        dd($request->all());
+        $user = User::find(Auth::user()->id);
+        $user -> first_name     = $request->first_name;
+        $user -> last_name      = $request->last_name;
+        $user -> email          = $request->email;
+        $user -> title          = $request->title;
+        $user -> password       = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('home');
     }
 }

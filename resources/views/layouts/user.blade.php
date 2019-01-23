@@ -43,11 +43,9 @@
 <body class="hold-transition skin-gold sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
+
     @include('_partials.user_header')
-
-
         @yield('content')
-
     <!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
