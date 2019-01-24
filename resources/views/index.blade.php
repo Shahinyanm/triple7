@@ -75,7 +75,7 @@
                 <a class="nav-link page-scroll" href="#manual">Instructions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#warranty">Warranty</a>
+                <a class="nav-link page-scroll" href="#warranty">@lang('text.warranty')</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">Login</a>

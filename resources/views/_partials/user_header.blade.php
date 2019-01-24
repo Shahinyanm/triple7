@@ -51,7 +51,7 @@
 
         <!-- sidebar menu -->
         <ul class="sidebar-menu" data-widget="tree" id="help_navigation">
-            <li class="active" id="help_dashboard">
+            <li class="{{ (Request::route()->getName() == 'home') ? 'active' : '' }}" id="help_dashboard">
                 <a href="{{route('home')}}">
                     <i class="fa fa-dashboard"></i> <span>Overview</span>
                     <span class="pull-right-container">
@@ -60,7 +60,7 @@
                 </a>
             </li>
 
-            <li  id="help_tricks">
+            <li class="{{ (Request::route()->getName() == 'user.tricks') ? 'active' : '' }}" id="help_tricks">
                 <a href="{{route('user.tricks')}}">
                     <i class="fa fa-gamepad"></i> <span>Tricks</span>
                     <span class="pull-right-container">
@@ -69,7 +69,7 @@
                 </a>
             </li>
 
-            <li  id="help_wins">
+            <li  class="{{ (Request::route()->getName() == 'user.winnings') ? 'active' : '' }}" id="help_wins">
                 <a href="{{route('user.winnings')}}">
                     <i class="fa fa-trophy"></i> <span>Winnings</span>
                     <span class="pull-right-container">
@@ -78,7 +78,7 @@
                 </a>
             </li>
 
-            <li  id="help_forum">
+            <li class="{{ (Request::route()->getName() == 'user.forum') ? 'active' : '' }}" id="help_forum">
                 <a href="{{route('user.forum')}}">
                     <i class="fa fa-comments"></i> <span>FAQ - Forum</span>
                     <span class="pull-right-container">
@@ -87,7 +87,7 @@
                 </a>
             </li>
 
-            <li  id="help_settings">
+            <li  class="{{ (Request::route()->getName() == 'user.settings') ? 'active' : '' }}" id="help_settings">
                 <a href="{{route('user.settings')}}">
                     <i class="fa fa-cog"></i> <span>Settings</span>
                     <span class="pull-right-container">

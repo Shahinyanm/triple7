@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +22,8 @@
 
     <!-- Bootstrap Tour -->
     <link rel="stylesheet" href="{{asset('css/user/bootstrap-tour.css')}}">
+
+    @stack('styles')
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/user/master_style.css?v=1')}}">
@@ -46,7 +48,7 @@
 
     @include('_partials.user_header')
         @yield('content')
-    <!-- =============================================== -->
+        <!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
     <!-- /.content-wrapper -->
@@ -75,7 +77,7 @@
 <script src="{{asset('js/user/fastclick.js')}}"></script>
 
 <!-- MinimalLite Admin App -->
-
+@stack('scripts')
 <!-- Sweet-Alert  -->
 <script src="{{asset('js/user/sweetalert2.min.js')}}"></script>
 
@@ -84,6 +86,8 @@
 
 <!-- Snow Plugin -->
 <script src="{{asset('js/user/snow-plugin.js')}}"></script>
+
+@stack('js')
 
 <script>
     $(".snow-canvas").snow();
