@@ -59,7 +59,28 @@
             <ul>
 
                 <li>
+                    <a href="{{route('admin.winnings.index')}}"> Winnings</a>
 
+
+                </li>
+
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="">
+                <i class="entypo-layout"></i>
+                <span class="title">Forums</span>
+            </a>
+            <ul>
+
+                <li>
+                    <a href="{{route('admin.forums.index')}}"> Forum</a>
+                </li>
+                <li>
+                    <a href="{{route('admin.topics.index')}}"> Topics</a>
+                </li>
+                <li>
+                    <a href="{{route('admin.posts.index')}}"> Posts</a>
                 </li>
 
             </ul>

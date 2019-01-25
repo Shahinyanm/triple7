@@ -481,7 +481,6 @@
                 async: true,
                 data: data,
                 success: function(response) {
-                    console.log(response);
                     formSuccess(response.token);
                 }
             })

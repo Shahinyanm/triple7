@@ -11,26 +11,36 @@
 |
 */
 Route::get('admin', [
-    'uses' 	=> 'AdminController@index',
-    'as'	=> 	'admin'
+    'uses' => 'AdminController@index',
+    'as' => 'admin'
 ])->middleware('admin');
-Auth::routes();
-Route::get('/', function(){
-    return redirect()->route('index', 'en');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+    Route::resource('winnings', 'WinningController');
+    Route::resource('forums', 'ForumController');
+    Route::resource('topics', 'TopicController');
+    Route::resource('posts', 'PostController');
 });
-Route::prefix('{lang}')->group(function() {
+
+
+    Auth::routes();
+
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/home', 'UserController@index')->name('home');
 
-    Route::group(['prefix'=> 'user','as'=>'user.','middleware'=>'auth'], function() {
-    Route::get('tricks','UserController@tricks')->name('tricks');
-    Route::get('winnings','UserController@winnings')->name('winnings');
-    Route::get('forum','UserController@forum')->name('forum');
-    Route::get('settings','UserController@settings')->name('settings');
+    Route::get('/barev', function(){
+       dump(1);
+    })->name('barev');
+
+    Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth'], function () {
+        Route::get('tricks', 'UserController@tricks')->name('tricks');
+        Route::get('winnings', 'UserController@winnings')->name('winnings');
+        Route::get('forum', 'UserController@forum')->name('forum');
+        Route::get('settings', 'UserController@settings')->name('settings');
 
 
-    Route::post('update_user','UserController@update_user')->name('update_user');
+        Route::post('update_user', 'UserController@update_user')->name('update_user');
 
-});
+
 
 });
