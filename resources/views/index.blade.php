@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -569,9 +569,9 @@
         scrollableHeight: "350px",
         onSelect: function(value, element) {
             if(value === "EU"){
-                window.open("/en/index.php","_self");
+                window.location = ("/en");
             } else {
-                window.open("/"+value.toLowerCase()+"/index.php","_self");
+                window.location = ("/"+value.toLowerCase());
             }
 
         }

@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'eu',
 
     /*
     |--------------------------------------------------------------------------
@@ -92,8 +92,8 @@ return [
     | the language folders that are provided through your application.
     |
     */
-    'fallback_locale' => 'en',
-    'languages' => ['en','de','fr','se','da','fi','it','nl','no'],
+    'fallback_locale' => 'eu',
+    'languages' => ['eu','de','fr','se','dk','fi','it','nl','no'],
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
