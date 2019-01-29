@@ -46,7 +46,7 @@
             </a>
             <ul>
                <li>
-
+                   <a href="{{route('admin.tricks.index')}}"> Tricks</a>
                 </li>
 
             </ul>

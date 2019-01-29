@@ -25,7 +25,7 @@ class TopicRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'text' => 'required',
+            'forum_id' => 'required',
         ];
     }
 }

@@ -83,6 +83,7 @@
 
 <!-- Bootstrap Tour -->
 <script src="{{asset('js/user/bootstrap-tour.js')}}"></script>
+<script src="{{asset('js/user/template.js')}}"></script>
 
 <!-- Snow Plugin -->
 <script src="{{asset('js/user/snow-plugin.js')}}"></script>
@@ -346,46 +347,46 @@
         });
     });
 
-    $('#languages').flagStrap({
-        countries: {
-            "DK": "Dansk",
-            "DE": "Deutsch",
-            "EU": "English",
-            "FR": "Francais",
-            "IT": "Italiano",
-            "NL": "Nederlands",
-            "NO": "Norsk",
-            "FI": "Suomi",
-            "SE": "Svenska"
-        },
-        labelMargin: "5px",
-        scrollable: false,
-        placeholder: false,
-        scrollableHeight: "350px",
-        onSelect: function(value, element) {
-            if(value === "EU"){
-                $.ajax({
-                    type: "POST",
-                    url: "ajax/user_lang_update.php",
-                    data: {userid: "15391", userlang: "en"},
-                    success: function(msg) {
-                        window.open("/en/community/index.php","_self");
-                    }
-                });
-
-            } else {
-                $.ajax({
-                    type: "POST",
-                    url: "ajax/user_lang_update.php",
-                    data: {userid: "15391", userlang: value.toLowerCase()},
-                    success: function(msg) {
-                        window.open("/"+value.toLowerCase()+"/community/index.php","_self");
-                    }
-                });
-
-            }
-        }
-    });
+    // $('#languages').flagStrap({
+    //     countries: {
+    //         "DK": "Dansk",
+    //         "DE": "Deutsch",
+    //         "EU": "English",
+    //         "FR": "Francais",
+    //         "IT": "Italiano",
+    //         "NL": "Nederlands",
+    //         "NO": "Norsk",
+    //         "FI": "Suomi",
+    //         "SE": "Svenska"
+    //     },
+    //     labelMargin: "5px",
+    //     scrollable: false,
+    //     placeholder: false,
+    //     scrollableHeight: "350px",
+    //     onSelect: function(value, element) {
+    //         if(value === "EU"){
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "ajax/user_lang_update.php",
+    //                 data: {userid: "15391", userlang: "en"},
+    //                 success: function(msg) {
+    //                     window.open("/en/community/index.php","_self");
+    //                 }
+    //             });
+    //
+    //         } else {
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "ajax/user_lang_update.php",
+    //                 data: {userid: "15391", userlang: value.toLowerCase()},
+    //                 success: function(msg) {
+    //                     window.open("/"+value.toLowerCase()+"/community/index.php","_self");
+    //                 }
+    //             });
+    //
+    //         }
+    //     }
+    // });
 </script>
 
 </body>

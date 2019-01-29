@@ -210,7 +210,7 @@ function recongnizeType($real)
 		case "JPG":
 		case "JPEG":
 		case "TIF":
-			return "Image";
+			return "TrickImage";
 			
 		
 		case "TXT":

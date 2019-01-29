@@ -394,7 +394,7 @@ select::-ms-expand {
 }
 /* end of fade-move animation for product details lightbox */
 
-/* Fade Animation For Image Swiper Gallery */
+/* Fade Animation For TrickImage Swiper Gallery */
 @-webkit-keyframes fadeIn {
 	from {
 		opacity: 0;

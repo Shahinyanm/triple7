@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use App\Http\Requests\PostRequest;
+use App\Post;
+use App\Topic;
+use App\Forum;
 
 class PostController extends Controller
 {
@@ -13,7 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('topic')->get()->map(function($post){
+            $post->topic_name = $post->topic->title;
+            $post->forum_name = Forum::find($post->topic->id)->title;
+            return $post;
+        });
+
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -79,6 +89,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrfail($id);
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }

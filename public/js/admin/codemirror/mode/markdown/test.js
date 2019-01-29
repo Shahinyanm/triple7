@@ -509,15 +509,15 @@
   MT("linkEmStrong",
      "[link [[][link&strong **][link&em&strong *foo**][link&em *][link ]]][string (http://example.com/)] bar");
 
-  // Image with title
+  // TrickImage with title
   MT("imageTitle",
      "[tag ![[foo]]][string (http://example.com/ \"bar\")] hello");
 
-  // Image without title
+  // TrickImage without title
   MT("imageNoTitle",
      "[tag ![[foo]]][string (http://example.com/)] bar");
 
-  // Image with asterisks
+  // TrickImage with asterisks
   MT("imageAsterisks",
      "[tag ![[*foo*]]][string (http://example.com/)] bar");
 

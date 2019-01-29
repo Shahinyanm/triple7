@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/admin/neon-forms.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/custom.css')}}">
     <link rel="stylesheet" href="{{asset('js/admin/daterangepicker/daterangepicker-bs3.css')}}">
-
+    @stack('link')
 
     <script src="{{asset('js/admin/jquery-1.11.3.min.js')}}"></script>
 
@@ -79,7 +79,7 @@
 <script src="{{asset('js/admin/zurb-responsive-tables/responsive-tables.js')}}"></script>
 {{--<script src="{{asset('js/admin/datatables/datatables.js')}}"></script>--}}
 
-@stack('scripts')
+
 
 
 
@@ -89,6 +89,6 @@
 
 <!-- Demo Settings -->
 <script src="{{asset('js/admin/neon-demo.js')}}"></script>
-
+@stack('scripts')
 </body>
 </html>

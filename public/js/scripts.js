@@ -63,7 +63,7 @@
 	});
 
 
-	/* Image Slider */
+	/* TrickImage Slider */
 	var imageSlider = new Swiper('.imageSlider', {
 		loop: false,
 		autoplayDisableOnInteraction: false,
@@ -73,7 +73,7 @@
 	});
 
 
-	/* Image Slider Magnific Popup */
+	/* TrickImage Slider Magnific Popup */
 	$('.popup-link').magnificPopup({
 		removalDelay: 300,
 		type: 'image',

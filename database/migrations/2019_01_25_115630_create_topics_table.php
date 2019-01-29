@@ -19,7 +19,7 @@ class CreateTopicsTable extends Migration
             $table->integer('forum_id')->unsigned()->index()->nullable();
 
             $table->string('title');
-            $table->string('text');
+//            $table->string('text');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade')->onUpdate('cascade');

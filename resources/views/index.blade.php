@@ -19,7 +19,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Website Title -->
-    <title>CasinoCode by TrioXx - we discover software bugs and tricks in online casinos</title>
+    <title>@lang('text.main_title')</title>
     <link rel="alternate" href="https://www.casinocode.net/dk/index.php" hreflang="dk" /><link rel="alternate" href="https://www.casinocode.net/de/index.php" hreflang="de" /><link rel="alternate" href="https://www.casinocode.net/en/index.php" hreflang="en" /><link rel="alternate" href="https://www.casinocode.net/fi/index.php" hreflang="fi" /><link rel="alternate" href="https://www.casinocode.net/fr/index.php" hreflang="fr" /><link rel="alternate" href="https://www.casinocode.net/nl/index.php" hreflang="nl" /><link rel="alternate" href="https://www.casinocode.net/it/index.php" hreflang="it" /><link rel="alternate" href="https://www.casinocode.net/no/index.php" hreflang="no" /><link rel="alternate" href="https://www.casinocode.net/se/index.php" hreflang="se" />
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -52,7 +52,7 @@
     <!-- Text Logo - Use this if you don't have a graphic logo -->
     <!-- <a class="navbar-brand text-logo page-scroll" href="index.html">Cedo</a> -->
 
-    <!-- Image Logo -->
+    <!-- TrickImage Logo -->
     <a class="navbar-brand image-logo page-scroll" href="index.php"><img src="images/logo.svg" alt="logo"></a>
 
     <!-- Mobile Menu Toggle Button -->
@@ -63,16 +63,16 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#header">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link page-scroll" href="#header">@lang('text.home') <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#video">Video</a>
+                <a class="nav-link page-scroll" href="#video">@lang('text.video')</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#wins">Winnings</a>
+                <a class="nav-link page-scroll" href="#wins">@lang('text.winnings')</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#manual">Instructions</a>
+                <a class="nav-link page-scroll" href="#manual">@lang('text.instructions')</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#warranty">@lang('text.warranty')</a>
@@ -96,8 +96,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="text-container">
-                        <h1 class="header-h1">We find software bugs and tricks in online casinos</h1>
-                        <p class="under-heading">Become a part of our community for free and nonbinding and join us now. CasinoCode and the people behind it, led by TrioXx, collectively look for software bugs and tricks in online casinos. The aim is to significantly increase the chances of winning in the casino through open gaps and legal use! In that way, you can improve your gaming experience and achieve more and higher winnings!</p>
+                        <h1 class="header-h1">@lang('text.general_title')</h1>
+                        <p class="under-heading">@lang('text.general_text')</p>
                     </div>
                 </div>
 
@@ -109,27 +109,27 @@
                     <form id="RegisterForm" data-toggle="validator" >
                         <div class="form-group">
                             <select class="form-control-select" id="title" required>
-                                <option class="select-option" value="" disabled selected>Title</option>
-                                <option class="select-option" value="Mr">Mr</option>
-                                <option class="select-option" value="Mrs">Ms</option>
+                                <option class="select-option" value="" disabled selected>@lang('text.user_title')</option>
+                                <option class="select-option" value="Mr">@lang('text.mr')</option>
+                                <option class="select-option" value="Mrs">@lang('text.ms')</option>
                             </select>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="first_name" placeholder="First name" required>
+                            <input type="text" class="form-control-input" id="first_name" placeholder="@lang('text.first_name')" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="last_name" placeholder="Surname" required>
+                            <input type="text" class="form-control-input" id="last_name" placeholder="@lang('text.last_name')" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control-input" id="email" placeholder="E-mail" required>
+                            <input type="email" class="form-control-input" id="email" placeholder="@lang('text.email')" required>
                             <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">Join now for free</button>
+                            <button type="submit" class="form-control-submit-button">@lang('text.join')</button>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-message">
@@ -149,8 +149,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-3">Video</h2>
-                <p class="under-heading text-center mb-5">The official video: "online casino"</p>
+                <h2 class="mb-3">@lang('text.video_title')</h2>
+                <p class="under-heading text-center mb-5">@lang('text.second_title')</p>
                 <p class="under-heading text-center mb-5"></p>
                 <div class="embed-responsive embed-responsive-16by9 mx-auto">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/A3ivsGD-Olo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -167,7 +167,7 @@
         <div class="row">
             <div class="col-lg-6">
 
-                <!-- Image Slider -->
+                <!-- TrickImage Slider -->
                 <div class="swiper-container imageSlider">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" ><a class="popup-link" href="images/win1.jpg" data-effect="fadeIn"><img class="img-fluid" src="images/win1.jpg" alt="description"></a></div>
@@ -185,12 +185,12 @@
 
             <div class="col-lg-6">
                 <div class="text-container">
-                    <h3>Success cannot be denied or concealed!</h3>
+                    <h3>@lang('text.second_title')</h3>
                     <table>
-                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>Our members post new photos and videos every day.</td></tr>
-                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>Real winnings from real members of our community. </td></tr>
-                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>All software bugs have been tested and confirmed. </td></tr>
-                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>The largest winnings with the best casino tricks!</td></tr>
+                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>@lang('text.second_text1')</td></tr>
+                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>@lang('text.second_text2') </td></tr>
+                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>@lang('text.second_text3')</td></tr>
+                        <tr><td class="icon-cell"><i class="fa fa-check fa-lg"></i></td><td>@lang('text.second_text4')</td></tr>
                     </table>
                 </div> <!-- end of text-container -->
             </div>
@@ -204,40 +204,40 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center mb-3">How to join!</h2>
-                <p class="under-heading text-center mb-5">It is free to join and everyone can generate winnings through our tricks.</p>
+                <h2 class="text-center mb-3">@lang('text.instructions_title')</h2>
+                <p class="under-heading text-center mb-5">@lang('text.instructions_text')</p>
 
                 <!-- Accordion -->
                 <div id="detailsAccordion" data-children=".item">
                     <div class="item">
                         <a data-toggle="collapse" data-parent="#detailsAccordion" href="#detailsAccordion1" aria-expanded="true">
-                            <span class="circle-numbering">1</span><span class="accordion-title mb-1">Join our community for free</span>
+                            <span class="circle-numbering">1</span><span class="accordion-title mb-1">@lang('text.instructions_step1_title')</span>
                         </a>
                         <div id="detailsAccordion1" class="collapse show" role="tabpanel">
                             <p class="mb-0 accordion-body">
-                                In the community area, we regularly provide new tricks and software bugs. You can try them out and really win money. All tricks have been checked by us beforehand. Only tricks that work will be published. The barometer shows you in real time how many people the trick has already worked for.                                </p>
+                                @lang('text.instructions_step1_text') </p>
                         </div>
                     </div>
                     <div class="item">
                         <a data-toggle="collapse" data-parent="#detailsAccordion" href="#detailsAccordion2" aria-expanded="false">
-                            <span class="circle-numbering">2</span><span class="accordion-title mb-1">Chose your casino trick and win</span>
+                            <span class="circle-numbering">2</span><span class="accordion-title mb-1">@lang('text.instructions_step2_title')</span>
                         </a>
                         <div id="detailsAccordion2" class="collapse" role="tabpanel">
                             <p class="mb-0 accordion-body">
-                                As a community, we want everyone to benefit from it. So then rate the trick to see if it worked for you and post a screenshot or video of your biggest win!                                </p>
+                                @lang('text.instructions_step2_text') </p>
                         </div>
                     </div>
                     <div class="item">
                         <a data-toggle="collapse" data-parent="#detailsAccordion" href="#detailsAccordion3" aria-expanded="false">
-                            <span class="circle-numbering">3</span><span class="accordion-title mb-1">Rate your trick and share your results</span>
+                            <span class="circle-numbering">3</span><span class="accordion-title mb-1">@lang('text.instructions_step3_title')</span>
                         </a>
                         <div id="detailsAccordion3" class="collapse" role="tabpanel">
                             <p class="mb-0 accordion-body">
-                                As a community, we want everyone to benefit from it. So then rate the trick to see if it worked for you and post a screenshot.                                </p>
+                                @lang('text.instructions_step3_text')                                </p>
                         </div>
                     </div>
                     <div class="item text-center">
-                        <a class="btn btn-dark page-scroll" href="#header">Join now</a>
+                        <a class="btn btn-dark page-scroll" href="#header">@lang('text.join_now')</a>
                     </div>
                 </div> <!-- end of detailsAccordion -->
                 <!-- end of accordion -->
@@ -252,8 +252,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center mb-3">Warranty</h2>
-                <p class="under-heading text-justify">We check and test all software bugs and tricks extensively before publishing them in our community. We, of course, already earn a lot of money during this phase with the realisation of these. So if a trick doesn&#39;t work anymore, don&#39;t worry about it! Just report the trick as not working, and we will give you a € 25 Paysafecard refund (if you really observed all points one-to-one)! In this way, you&#39;ll be on the safe side and can&#39;t really lose anything. So join the community, use the casino trick and win!</p>
+                <h2 class="text-center mb-3">@lang('text.warranty_title')</h2>
+                <p class="under-heading text-justify">@lang('text.warranty_text')</p>
             </div>
         </div> <!-- end of row -->
     </div> <!-- end of container -->
@@ -269,8 +269,8 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <p class="under-heading text-justify">Hi, my name is TrioXx - I am a former software developer, script decoder and many probably know me already from the anonymous scene. I launched the "Online Casino" operation with some close friends because we want to reduce greed and unfair odds of the gambling industry. We want to optimise the gaming experience and the success factor for players.</p>
-                <p class="under-heading text-justify">Kind regards,<br><img src="images/sign.svg" alt=""/></p>
+                <p class="under-heading text-justify">@lang('text.greetings')</p>
+                <p class="under-heading text-justify">@lang('text.king_regards')<br><img src="images/sign.svg" alt=""/></p>
             </div>
         </div> <!-- enf of row -->
     </div> <!-- end of about -->

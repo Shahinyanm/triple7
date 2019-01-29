@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TrickRequest;
+use App\Trick;
+use App\TrickRating;
+use App\TrickImage;
 
 class TrickController extends Controller
 {
@@ -11,9 +15,19 @@ class TrickController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+//    yes *100/yndhanur
     public function index()
     {
-        //
+        $tricks = Trick::with('rating','images')->get()->map(function($trick){
+            if($trick->rating->count()) {
+                $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
+            }else{
+                $trick->procent = 0;
+            }
+
+            return $trick;
+        });
+        return view('admin.trick.index', compact('tricks'));
     }
 
     /**
@@ -23,7 +37,7 @@ class TrickController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.trick.create');
     }
 
     /**
@@ -32,9 +46,38 @@ class TrickController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrickRequest $request)
     {
-        //
+//        dd($request->all());
+        if($request->activated){
+            $activated = 1;
+        }else {
+            $activated = 0;
+        }
+
+        $trick = Trick::create([
+            'description1' => $request->description1,
+            'description2' => $request->description2,
+            'description3' => $request->description3,
+            'description4' => $request->description4,
+            'amount'       => floatval($request->amount),
+            'link'         => $request->link,
+            'activated'    => $activated,
+        ]);
+
+        if ($request->images) {
+            foreach($request->images as $image){
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images/tricks'), $imageName);
+
+                TrickImage::create([
+                    'src' => $imageName,
+                    'trick_id'=> $trick->id,
+                ]);
+            }
+        }
+        return redirect()->route('admin.tricks.index');
+
     }
 
     /**
@@ -56,7 +99,9 @@ class TrickController extends Controller
      */
     public function edit($id)
     {
-        //
+        $trick = Trick::findOrfail($id);
+
+        return view('admin.trick.edit', compact('trick'));
     }
 
     /**
@@ -66,9 +111,38 @@ class TrickController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TrickRequest $request, $id)
     {
-        //
+        if($request->activated){
+            $activated = 1;
+        }else {
+            $activated = 0;
+        }
+
+        $trick = Trick::findOrfail($id);
+        $trick->description1 = $request->description1;
+        $trick->description2 = $request->description2;
+        $trick->description3 = $request->description3;
+        $trick->description4 = $request->description4;
+        $trick->amount       = $request->amount;
+        $trick->link         = $request->link;
+        $trick->activated    = $activated;
+
+        $trick->save();
+
+        if ($request->images) {
+            foreach($request->images as $image){
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images/tricks'), $imageName);
+
+                TrickImage::create([
+                    'src' => $imageName,
+                    'trick_id'=> $trick->id,
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.tricks.index');
     }
 
     /**
@@ -79,6 +153,8 @@ class TrickController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trick = Trick::findOrFail($id);
+        $trick->delete();
+        return back();
     }
 }

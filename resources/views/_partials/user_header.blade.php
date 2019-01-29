@@ -25,6 +25,8 @@
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                {{--<li><div id="languages" class="languages flagstrap" data-selected-country="EU"><select id="flagstrap-oQGEW27e" ><option value="DK">Dansk</option><option value="DE">Deutsch</option><option value="EU" selected="selected">English</option><option value="FR">Francais</option><option value="IT">Italiano</option><option value="NL">Nederlands</option><option value="NO">Norsk</option><option value="FI">Suomi</option><option value="SE">Svenska</option></select></li>--}}
+                {{--<li><i class="helper fa fa-question-circle fa-2x"></i></li>--}}
 
             </ul>
         </div>
@@ -36,7 +38,18 @@
         <!-- Sidebar toggle button-->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <li><div id="languages" class="languages" data-selected-country="EU"></div></li>
+                <button type="button" data-toggle="dropdown"  class="btn btn-default btn-md dropdown-toggle" aria-expanded="false">
+                    <span class="flagstrap-selected-oQGEW27e"><i class="flagstrap-icon flagstrap-eu" style="margin-right: 5px;"></i>English</span>
+                    <span class="caret" style="margin-left: 5px;"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode=>$properties)
+                        <li><a rel="alternative" data-val="{{$localeCode}}" hrefLang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode,null, [], true)}}"><i class="flagstrap-icon flagstrap-{{$localeCode}}" style="margin-right: 5px;"></i>{{$properties['native']}}</a></li>
+                    @endforeach
+                </ul>
+
+
+
                 <li><i class="helper fa fa-question-circle fa-2x"></i></li>
             </ul>
         </div>
@@ -78,8 +91,8 @@
                 </a>
             </li>
 
-            <li class="{{ (Request::route()->getName() == 'user.forum') ? 'active' : '' }}" id="help_forum">
-                <a href="{{route('user.forum')}}">
+            <li class="{{ (Request::route()->getName() == 'user.forums') ? 'active' : '' }}" id="help_forum">
+                <a href="{{route('user.forums.index')}}">
                     <i class="fa fa-comments"></i> <span>FAQ - Forum</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>

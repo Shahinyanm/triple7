@@ -20,22 +20,29 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::resource('forums', 'ForumController');
     Route::resource('topics', 'TopicController');
     Route::resource('posts', 'PostController');
+    Route::resource('tricks', 'TrickController');
+    Route::get('images/{id}', 'TrickImageController@show')->name('images');
+    Route::Delete('destroy/{id}', 'TrickImageController@destroy')->name('destroy');
 });
 
 
-    Auth::routes();
 
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::get('/home', 'UserController@index')->name('home');
 
-    Route::get('/barev', function(){
-       dump(1);
-    })->name('barev');
+
+    Route::group(['prefix'=> LaravelLocalization::setLocale()], function(){
+        Auth::routes();
+
+        Route::get('/', 'IndexController@index')->name('index');
+        Route::get('/home', 'UserController@index')->name('home');
 
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth'], function () {
+
+        Route::resource('forums', 'User\ForumController');
+        Route::resource('topics', 'User\TopicController');
+
+
         Route::get('tricks', 'UserController@tricks')->name('tricks');
         Route::get('winnings', 'UserController@winnings')->name('winnings');
-        Route::get('forum', 'UserController@forum')->name('forum');
         Route::get('settings', 'UserController@settings')->name('settings');
 
 
@@ -43,4 +50,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
 
 
-});
+    });
+   });

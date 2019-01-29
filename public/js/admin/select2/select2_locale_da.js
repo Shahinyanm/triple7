@@ -1,7 +1,7 @@
 /**
  * Select2 Danish translation.
  *
- * Author: Anders Jenbo <anders@jenbo.dk>
+ * Author: Anders Jenbo <anders@jenbo.da>
  */
 (function ($) {
     "use strict";

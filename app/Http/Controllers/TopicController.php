@@ -49,7 +49,6 @@ class TopicController extends Controller
 
         Topic::create([
             'title'         => $request->title,
-            'text'          => $request->text,
             'user_id'       => Auth::id(),
             'forum_id'      => $request->forum_id,
         ]);
@@ -67,7 +66,9 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $topic = Topic::with('posts')->findOrFail($id);
+
+        return view('admin.topic.show',compact('topic'));
     }
 
     /**
@@ -78,7 +79,9 @@ class TopicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $topic = Topic::with('posts')->find($id);
+
+        return view('admin.topic.edit', compact('topic'));
     }
 
     /**
@@ -88,9 +91,15 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TopicRequest $request, $id)
     {
-        //
+        $topic = Topic::find($id);
+
+        $topic->title = $request->title;
+
+        $topic->save();
+
+        return redirect()->route('admin.topics.index');
     }
 
     /**
@@ -101,6 +110,9 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $topic = Topic::find($id);
+        $topic->delete();
+
+        return redirect()->route('admin.topics.index');
     }
 }

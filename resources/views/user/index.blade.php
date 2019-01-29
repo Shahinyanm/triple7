@@ -5,14 +5,14 @@
 
         <section class="content-header">
             <h1>
-                CasinoCode News
+                @lang('text.casinocode_news')
             </h1>
         </section>
-        <section class="content aktionen" id="aktionen" style="background: url("{{asset('images/winter.jpg')}}") no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
+        <section class="content aktionen" id="aktionen" style="background: url('{{asset('images/winter.jpg')}}') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
             <div class="row">
                 <canvas class="snow-canvas" speed="1" interaction="false" size="2" count="80" opacity="0.00001" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" wind-power="0" image="false" width="1680" height="364"></canvas>
                 <canvas class="snow-canvas" speed="2" interaction="true" size="6" count="30" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" opacity="0.00001" wind-power="2" image="false" width="1680" height="364"></canvas>
-                <canvas class="snow-canvas" speed="3" interaction="true" size="25" count="20" wind-power="-4" image="assets/vendor_components/snow-plugin/snow.png" width="1680" height="364"></canvas>
+                <canvas class="snow-canvas" speed="3" interaction="true" size="25" count="20" wind-power="-4" image="{{asset('assets/vendor_components/snow-plugin/snow.png')}}" width="1680" height="364"></canvas>
                 <div class="col-xl-5 col-12">
                     <h3>Wir möchten den <span class="gold font-weight-bold">CasinoCode</span> verbessern - Hilf uns doch dabei!</h3>
                     <p class="text-justify">Der CasinoCode hat eingeschlagen wie eine Bombe. Trotz einiger Schwierigkeiten zum Beginn, blicken wir voller stolz auf eine Community mit mehr als 15.000 Mitgliedern. Gemeinsam könnt ihr euch täglich an Tricks erfreuen und in Casinos gewinnen. Teste unsere aktuellen Casino Tricks. Wie gewohnt kannst du jeden Trick einmalig kostenlos im Wert von 25€ nutzen, denn diesen Betrag erstatten wir dir zurück. Um den CasinoCode noch besser zu machen brauchen wir dich. Hast du Ideen für Veränderungen am Design, Aufbau der Seite, dem gesamten Ablauf oder andere Vorschläge – dann her damit! Es lohnt sich.</p>
@@ -35,21 +35,21 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Overview      </h1>
+                @lang('text.overview')      </h1>
         </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-xl-4 col-md-12 col" id="help_found_tricks">
-                    <a class="info-box-link" href="tricks.php">
+                    <a class="info-box-link" href="{{route('user.tricks')}}">
                         <div class="info-box">
                             <span class="info-box-icon bg-info"><i class="fa fa-search"></i></span>
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
 				  50				  </span>
-                                <span class="info-box-text">Unveiled tricks</span>
+                                <span class="info-box-text">@lang('text.unveiled_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -58,14 +58,14 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xl-4 col-md-12 col" id="help_active_tricks">
-                    <a class="info-box-link" href="tricks.php">
+                    <a class="info-box-link" href="{{route('user.tricks')}}">
                         <div class="info-box">
                             <span class="info-box-icon bg-info"><i class="fa fa-check"></i></span>
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
 				  0				  </span>
-                                <span class="info-box-text">Active tricks</span>
+                                <span class="info-box-text">@lang('text.active_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -78,14 +78,14 @@
                 <div class="clearfix visible-sm-block"></div>
 
                 <div class="col-xl-4 col-md-12 col" id="help_used_tricks">
-                    <a class="info-box-link" href="tricks.php">
+                    <a class="info-box-link" href="{{route('user.tricks')}}">
                         <div class="info-box">
                             <span class="info-box-icon bg-info"><i class="fa fa-gamepad"></i></span>
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
 				  0				  </span>
-                                <span class="info-box-text">Tricks taken part in</span>
+                                <span class="info-box-text">@lang('text.tricks_taken_part_in')</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -102,7 +102,7 @@
                         <div class="box-header no-border">
                             <span class="fa fa-trophy font-size-30"></span>
                             <div class="box-tools pull-right">
-                                <h5 class="box-title box-title-bold">Latest winners</h5>
+                                <h5 class="box-title box-title-bold">@lang('text.latest_winners')</h5>
                             </div>
                         </div>
 
@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="carousel-link text-center">
-                            <a href="tricks.php"><span><i class="fa fa-gamepad"></i> Show all tricks</span></a>
+                            <a href="{{route('user.tricks')}}"><span><i class="fa fa-gamepad"></i> @lang('text.show_all_tricks')</span></a>
                         </div>
                     </div>
                 </div>
@@ -122,14 +122,14 @@
                         <div class="box-header no-border">
                             <span class="fa fa-comments font-size-30"></span>
                             <div class="box-tools pull-right">
-                                <h5 class="box-title box-title-bold">FAQ - Forum</h5>
+                                <h5 class="box-title box-title-bold">@lang('text.faq_forum')</h5>
                             </div>
                         </div>
 
                         <blockquote class="blockquote blockquote-inverse no-border m-0 py-15">
-                            <p class="text-justify">If you have any questions, this is your first contact point. Contact the community. Here you will find many answered questions, and you can also ask questions yourself. These will then be answered either by us as a team or by other users.</p>
+                            <p class="text-justify">@lang('text.forum_text_example')</p>
                             <div class="text-center">
-                                <a href="forum.php"><span><i class="fa fa-comments"></i> FAQ - Forum</span></a>
+                                <a href="{{route('user.forums.index')}}"><span><i class="fa fa-comments"></i> @lang('text.faq_forum')</span></a>
                             </div>
                         </blockquote>
                     </div>
@@ -140,12 +140,12 @@
                         <div class="box-header no-border">
                             <span class="fa fa-whatsapp font-size-30"></span>
                             <div class="box-tools pull-right">
-                                <h5 class="box-title box-title-bold">Whatsapp support</h5>
+                                <h5 class="box-title box-title-bold">@lang('text.whatsapp_support')</h5>
                             </div>
                         </div>
 
                         <blockquote class="blockquote blockquote-inverse no-border m-0 py-15">
-                            <p class="text-justify">If you have very specific questions, you can also contact our team directly via WhatsApp. We are glad to help you individually and will be of assistance with any queries you may have. Don't be afraid or shy! We look forward to your enquiry!</p>
+                            <p class="text-justify">@lang('text.whatsapp_support_text')</p>
                             <div class="text-center">
                                 <a href="https://wa.me/447501980397" target="_blank"><span><i class="fa fa-phone-square"></i> +44 7501 98 03 97</span></a>
                             </div>

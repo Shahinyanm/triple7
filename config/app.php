@@ -93,7 +93,7 @@ return [
     |
     */
     'fallback_locale' => 'en',
-    'languages' => ['en','de','fr','se','dk','fi','it','nl','no'],
+    'languages' => ['en','de','fr','se','da','fi','it','nl','no'],
     /*
     |--------------------------------------------------------------------------
     | Faker Locale

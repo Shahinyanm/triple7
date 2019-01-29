@@ -554,7 +554,7 @@ testVim('dj_end_of_document', function(cm, vim, helpers) {
   is(!register.linewise);
   helpers.assertCursorAt(0, 3);
 }, { value: ' word1 ' });
-testVim('dk', function(cm, vim, helpers) {
+testVim('da', function(cm, vim, helpers) {
   var curStart = makeCursor(1, 3);
   cm.setCursor(curStart);
   helpers.doKeys('d', 'k');
