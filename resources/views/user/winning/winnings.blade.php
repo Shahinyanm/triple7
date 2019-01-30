@@ -35,7 +35,7 @@
                 </li>
                     @endisset
             </ul>
-            <div class="text-center"><button type="button" class="loadmore btn btn-info btn-lg" dataid="1" data-date="{{ \Carbon\Carbon::parse($winnings['0']->created_at)->format('d.m.Y')}}">Load previous pictures</button></div>
+            <div class="text-center"><button type="button" class="loadmore btn btn-info btn-lg" dataid="1" data-date="@if($winnings){{ \Carbon\Carbon::parse($winnings['0']->created_at)->format('d.m.Y')}} @endif">Load previous pictures</button></div>
         </section>        <!-- /.content -->
     </div>
     @endsection
