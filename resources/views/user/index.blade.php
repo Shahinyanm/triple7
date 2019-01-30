@@ -48,7 +48,10 @@
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
-				  {{$tricks->count()}}				  </span>
+                      @isset($tricks)
+				        {{$tricks->count()}}
+                        @endisset
+                  </span>
                                 <span class="info-box-text">@lang('text.unveiled_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->
@@ -64,7 +67,11 @@
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
-				  {{$activeTricks->count()}}			  </span>
+                      @isset($activeTricks)
+
+                          {{$activeTricks->count()}}
+                      @endisset
+                  </span>
                                 <span class="info-box-text">@lang('text.active_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->

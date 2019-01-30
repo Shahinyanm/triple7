@@ -27,14 +27,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 });
 
 
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+    Auth::routes();
 
-
-
-    Route::group(['prefix'=> LaravelLocalization::setLocale()], function(){
-        Auth::routes();
-
-        Route::get('/', 'IndexController@index')->name('index');
-        Route::get('/home', 'UserController@index')->name('home');
+    Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/home', 'UserController@index')->name('home');
 
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth'], function () {
 
@@ -53,6 +50,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
         Route::post('user/load_more', 'UserController@loadMore');
 
 
-
     });
-   });
+});
