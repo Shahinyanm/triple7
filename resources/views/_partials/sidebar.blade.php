@@ -86,33 +86,6 @@
             </ul>
         </li>
 
-        <li class="has-sub">
-            <a href="">
-                <i class="entypo-layout"></i>
-                <span class="title">Videos</span>
-            </a>
-            <ul>
-
-                <li>
-                    <a href="">
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <li class="has-sub">
-            <a href="">
-                <i class="entypo-layout"></i>
-                <span class="title">Instructions</span>
-            </a>
-
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="entypo-monitor"></i>
-                <span class="title">Warranty</span>
-            </a>
-        </li>
         <li>
             <a href="" target="_blank">
                 <i class="entypo-monitor"></i>
@@ -120,7 +93,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="">
+                    <a href="{{route('admin.users.index')}}">
                         <span class="title">Users</span>
                     </a>
                 </li>

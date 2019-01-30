@@ -11,18 +11,19 @@
 |
 */
 Route::get('admin', [
-    'uses' => 'AdminController@index',
+    'uses' => 'Admin\AdminController@index',
     'as' => 'admin'
 ])->middleware('admin');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
-    Route::resource('winnings', 'WinningController');
-    Route::resource('forums', 'ForumController');
-    Route::resource('topics', 'TopicController');
-    Route::resource('posts', 'PostController');
-    Route::resource('tricks', 'TrickController');
-    Route::get('images/{id}', 'TrickImageController@show')->name('images');
-    Route::Delete('destroy/{id}', 'TrickImageController@destroy')->name('destroy');
+    Route::resource('winnings', 'Admin\WinningController');
+    Route::resource('forums', 'Admin\ForumController');
+    Route::resource('topics', 'Admin\TopicController');
+    Route::resource('posts', 'Admin\PostController');
+    Route::resource('tricks', 'Admin\TrickController');
+    Route::resource('users', 'Admin\UserController');
+    Route::get('images/{id}', 'Admin\TrickImageController@show')->name('images');
+    Route::Delete('destroy/{id}', 'Admin\TrickImageController@destroy')->name('destroy');
 });
 
 
@@ -47,6 +48,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
 
         Route::post('update_user', 'UserController@update_user')->name('update_user');
+        Route::post('send_message', 'User\PostController@send')->name('send_message');
+        Route::post('user/update_apply', 'UserController@update_apply');
+        Route::post('user/load_more', 'UserController@loadMore');
 
 
 

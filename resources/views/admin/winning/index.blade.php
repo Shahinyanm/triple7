@@ -16,7 +16,7 @@
             </th>
             {{--<th class=" text-center">Name </th>--}}
             <th class=" text-center col-md-5">Photo </th>
-            <th class=" text-center col-md-2">User </th>
+            <th class=" text-center col-md-2">user </th>
             <th class=" text-center col-md-2">Date </th>
             {{--<th class=" text-center">tags </th>--}}
 
@@ -36,7 +36,8 @@
 
                     <td class="text-center"><img src="{{asset('images/winnings/')}}/{{$winning->image}}" style="width: 100px; height: 70px;"></td>
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
-                    <td class="text-center">{{$winning->user->first_name}}  {{$winning->user->last_name}}</td>
+
+                    <td class="text-center"> @if($winning->user) {{$winning->user->first_name}}  {{$winning->user->last_name}} @endif</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($winning->create_at)->format('d/m/Y h:i:s')}}</td>
 
                     <td>

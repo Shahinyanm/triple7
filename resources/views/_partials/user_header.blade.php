@@ -90,8 +90,7 @@
 	</span>
                 </a>
             </li>
-
-            <li class="{{ (Request::route()->getName() == 'user.forums') ? 'active' : '' }}" id="help_forum">
+            <li class="{{ (Request::route()->getName() == 'user.forums.index' || Request::route()->getName() == 'user.forums.show' || Request::route()->getName()== 'user.topics.show') ? 'active' : '' }} " id="help_forum">
                 <a href="{{route('user.forums.index')}}">
                     <i class="fa fa-comments"></i> <span>FAQ - Forum</span>
                     <span class="pull-right-container">

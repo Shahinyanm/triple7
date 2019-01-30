@@ -431,7 +431,14 @@
     });
 
     const url='{{url('')}}'
-    console.log(url)
+    var pathArray = window.location.pathname.split( '/' );
+    if(pathArray[1] =='en' || pathArray[1]=='' ){
+        $('#languages').data('selected-country', 'EU')
+
+    }else{
+
+        $('#languages').data('selected-country', pathArray[1].toUpperCase())
+    }
     $("#RegisterForm").validator().on("submit", function(event) {
         if (event.isDefaultPrevented()) {
             // handle the invalid form...
@@ -569,10 +576,12 @@
         scrollableHeight: "350px",
         onSelect: function(value, element) {
             if(value === "EU"){
-                window.location = ("/en");
+                window.open("/en","_self")
             } else {
-                window.location = ("/"+value.toLowerCase());
+                window.open("/"+value.toLowerCase() ,"_self");
             }
+
+
 
         }
     });

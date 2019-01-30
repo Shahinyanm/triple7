@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-Use App\Http\Requests\PostRequest;
-use App\Post;
-use App\Topic;
-use App\Forum;
+use App\Http\Controllers\Controller;
+use App\User;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('topic')->get()->map(function($post){
-            $post->topic_name = $post->topic->title;
-            $post->forum_name = Forum::find($post->topic->id)->title;
-            return $post;
-        });
+        $users = User::all();
 
-        return view('admin.post.index', compact('posts'));
+        return view('admin.user.index',compact('users'));
     }
 
     /**
@@ -89,8 +83,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrfail($id);
-        $post->delete();
-        return redirect()->route('admin.posts.index');
+        //
     }
 }

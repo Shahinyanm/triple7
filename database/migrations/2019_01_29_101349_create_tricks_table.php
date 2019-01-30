@@ -22,7 +22,7 @@ class CreateTricksTable extends Migration
             $table->string('link');
             $table->boolean('activated');
             $table->float('amount');
-
+            $table->integer('apply')->nullable();
             $table->timestamps();
         });
     }

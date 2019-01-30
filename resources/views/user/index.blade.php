@@ -48,7 +48,7 @@
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
-				  50				  </span>
+				  {{$tricks->count()}}				  </span>
                                 <span class="info-box-text">@lang('text.unveiled_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->
@@ -64,7 +64,7 @@
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
-				  0				  </span>
+				  {{$activeTricks->count()}}			  </span>
                                 <span class="info-box-text">@lang('text.active_tricks')</span>
                             </div>
                             <!-- /.info-box-content -->

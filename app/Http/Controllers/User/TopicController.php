@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Topic;
+use App\Post;
 
 
 class TopicController extends Controller
@@ -20,7 +21,10 @@ class TopicController extends Controller
 
     public function show($id)
     {
-        $topic = Topic::with('posts','user')->findOrFail($id);
+
+        $topic = Topic::with(['user','posts' => function($query){
+            return $query->with('user');
+        }])->findOrFail($id);
         return view('user.forum.topic.topic-posts',compact('topic'));
     }
 
