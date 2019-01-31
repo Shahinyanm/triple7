@@ -38,7 +38,7 @@
         <!-- Sidebar toggle button-->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <button type="button" data-toggle="dropdown"  class="btn btn-default btn-md dropdown-toggle" aria-expanded="false">
+                <button type="button" data-toggle="dropdown"  class="btn btn-default btn-md dropdown-toggle" aria-expanded="false" style="background-color:transparent; color:white">
                     <span class="flagstrap-selected-oQGEW27e"><i class="flagstrap-icon flagstrap-eu" style="margin-right: 5px;"></i>English</span>
                     <span class="caret" style="margin-left: 5px;"></span>
                 </button>

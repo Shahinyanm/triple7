@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 Use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Topic;
 use App\Forum;
@@ -18,11 +19,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('topic')->get()->map(function($post){
-            $post->topic_name = $post->topic->title;
-            $post->forum_name = Forum::find($post->topic->id)->title;
+        $posts = Post::with('topic','user')->get()->map(function($post){
+//            dd($post);
+            $post->forum_name = Forum::find($post->topic->forum_id)->title;
+
             return $post;
         });
+
 
         return view('admin.post.index', compact('posts'));
     }
@@ -34,7 +37,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $forums = Forum::all();
+        $topics = Topic::all();
+
+        return view('admin.post.create', compact('forums','topics'));
     }
 
     /**
@@ -43,9 +49,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        Post::create([
+            'text' => $request->text,
+            'topic_id' => $request->topic_id,
+            'user_id' => Auth::id(),
+        ]);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -56,7 +67,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $posts = Post::with('user','topic')->where('topic_id', $id)->get()
+            ->map(function($post){
+                $post->topic_name = $post->topic->title;
+                $post->forum_name = Forum::find($post->topic->forum_id)->title;
+                return $post;
+            });;
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -92,6 +109,6 @@ class PostController extends Controller
     {
         $post = Post::findOrfail($id);
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->back();
     }
 }

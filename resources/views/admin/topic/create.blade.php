@@ -32,7 +32,7 @@
                             <label class="col-sm-3 control-label">Select Forum</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="forum_id">
-                                    <option selected>Chose Forum</option>
+                                    <option selected disabled>Chose Forum</option>
                                     @if($forums)
                                         @foreach($forums as $forum)
                                             <option value ="{{$forum->id}}"> {{$forum->title}}</option>
@@ -53,16 +53,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Topic  Description</label>
-
-                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <textarea name="text" id="" cols="82" rows="5"></textarea>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Add New Forum</label>

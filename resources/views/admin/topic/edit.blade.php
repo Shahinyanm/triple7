@@ -23,36 +23,43 @@
                     @endforeach
                 @endif
                 <div class="panel-body">
-
-                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.forums.update', $forum->id)}}" enctype="multipart/form-data">
+                    @isset($topic)
+                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.topics.update', $topic->id)}}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
 
-
-                        @if($forum)
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Forum  Name</label>
-
-                                <div class="col-sm-5">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control" placeholder="Forum Name" name ='title' value="{{$forum->title}}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Forum  Description</label>
-
-                                <div class="col-sm-5">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <textarea name="text" id="" cols="82" rows="5">{{$forum->text}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Add New Winning Image</label>
+                            <label class="col-sm-3 control-label">Select Forum</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="forum_id">
+                                    <option selected disabled>Chose Forum</option>
+                                    @if($topic->forums)
+                                        @foreach($topic->forums as $forum)
+                                            @if($forum->id == $topic->forum->id)
+                                            <option value ="{{$forum->id}}" selected> {{$forum->title}}</option>
+                                            @else
+                                                <option value ="{{$forum->id}}" > {{$forum->title}}</option>
+                                            @endif
+                                        @endforeach
+                                    @endif
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Topic  Name</label>
+
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input type="text" class="form-control" placeholder="Topic Name" name ='title' value="{{$topic->title}}">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Add New Forum</label>
 
                             <div class="col-sm-5">
                                 <div class="input-group">
@@ -60,8 +67,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     </form>
+                    @endisset
 
                 </div>
 

@@ -38,12 +38,12 @@
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
                     <td class="text-center">{{$forum->title}}</td>
                     <td class="text-center">{{$forum->text}}</td>
-                    <td class="text-center">{{$forum->topics_count}}</td>
+                    <td class="text-center"><a href="{{route('admin.topics.show', $forum->id)}}">{{$forum->topics_count}} </a></td>
                     <td class="text-center">{{$forum->posts_count}}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($forum->updated_at)->format('d/m/Y h:i:s')}}</td>
 
                     <td>
-                        <a href="{{route('admin.forums.show',$forum->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
+                        <a href="{{route('admin.topics.show', $forum->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
                         <i class="entypo-info"></i>
                         Show
                         </a>

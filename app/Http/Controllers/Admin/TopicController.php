@@ -67,9 +67,8 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $topic = Topic::with('posts')->findOrFail($id);
-
-        return view('admin.topic.show',compact('topic'));
+        $topics = Topic::with('posts')->where('forum_id',$id)->get();
+        return view('admin.topic.index',compact('topics'));
     }
 
     /**
@@ -80,7 +79,8 @@ class TopicController extends Controller
      */
     public function edit($id)
     {
-        $topic = Topic::with('posts')->find($id);
+        $topic = Topic::with('posts','forum')->find($id);
+        $topic->forums = Forum::all();
 
         return view('admin.topic.edit', compact('topic'));
     }
@@ -97,6 +97,7 @@ class TopicController extends Controller
         $topic = Topic::find($id);
 
         $topic->title = $request->title;
+        $topic->forum_id = $request->forum_id;
 
         $topic->save();
 

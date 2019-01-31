@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UserController extends Controller
@@ -27,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -36,9 +38,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name  = $request->last_name;
+        $user->title      = $request->title;
+        $user->email      = $request->email;
+        $user->password   = Hash::make($request->first_name);
+
+//        $user = User::firtstOrCreate([
+//            'first_name'        => $request->first_name,
+//            'last_name'         => $request->last_name,
+//            'title'             => $request->title,
+//            'email'             => $request->email,
+//            'password'          => Hash::make($request->password),
+//        ]);
+        $user->save();
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -60,7 +78,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -70,9 +90,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        if($request->isAdmin){
+            $user->isAdmin = 1;
+        }else{
+            $user->isAdmin = 0;
+        }
+        $user->first_name = $request->first_name;
+        $user->last_name  = $request->last_name;
+        $user->title      = $request->title;
+        $user->email      = $request->email;
+        $user->password   = Hash::make($request->first_name);
+
+        $user->save();
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -83,6 +117,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrfail($id);
+        $user->delete();
+
+        return back();
     }
 }

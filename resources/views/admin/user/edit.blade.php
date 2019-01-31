@@ -23,12 +23,20 @@
                     @endforeach
                 @endif
                 <div class="panel-body">
-
-                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.users.store')}}" enctype="multipart/form-data">
-                        {{--@method('PUT')--}}
+                    @isset($user)
+                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.users.update', $user->id)}}" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Admin</label>
 
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input type="checkbox" name="isAdmin" @if($user->isAdmin) checked @endif>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">User Title</label>
@@ -36,10 +44,9 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <select class="form-control" name="title" style="border:none">
-                                       <option disabled selected>Chose Title</option>
-                                       <option value="mr">Mr</option>
-                                       <option value="ms">Ms</option>
-                                   </select>
+                                        <option value="mr" @if($user->title=='mr') selected @endif  >Mr</option>
+                                        <option value="ms" @if($user->title=='ms') selected @endif>Ms</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +56,7 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="First name" name ='first_name'>
+                                    <input type="text" class="form-control" placeholder="First name" name ='first_name' value ="{{$user->first_name}}">
                                 </div>
                             </div>
                         </div>
@@ -60,7 +67,7 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Last Name" name ='last_name'>
+                                    <input type="text" class="form-control" placeholder="Last Name" name ='last_name' value ="{{$user->last_name}}">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +78,7 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Email" name ='email'>
+                                    <input type="text" class="form-control" placeholder="Email" name ='email' value ="{{$user->email}}">
                                 </div>
                             </div>
                         </div>
@@ -102,12 +109,8 @@
 
 
 
-
-
-
-
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Add New Forum</label>
+                            <label class="col-sm-3 control-label">Add New User</label>
 
                             <div class="col-sm-5">
                                 <div class="input-group">
@@ -117,7 +120,7 @@
                         </div>
 
                     </form>
-
+            @endisset
                 </div>
 
             </div>

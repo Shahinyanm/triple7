@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use App\Http\Requests\UserRequest;
 use App\User;
 use App\Trick;
 use App\Winning;
+use App\TrickRating;
 use DB;
 
 class UserController extends Controller
@@ -49,6 +51,7 @@ class UserController extends Controller
 
             return $trick;
         });
+
         return view('user.tricks', compact('tricks'));
     }
 
@@ -97,10 +100,23 @@ class UserController extends Controller
         }
     }
 
-    public function forum()
-    {
-        return view('user.forum');
-    }
+   public function rating(Request $request){
+        $check = TrickRating::where('trick_id',$request->trick_id)->where('user_id', Auth::id())->first();
+        if($check !== null){
+            $data = array('message'=>'denied');
+        }else{
+            $rating = new TrickRating;
+            $rating->rating = 1;
+            $rating->trick_id = $request->trick_id;
+            $rating->user_id = Auth::id();
+            $rating->save();
+            $data =array('message'=>'successful');
+        }
+
+
+
+        return Response()->json(array($data));
+   }
 
     public function settings()
     {

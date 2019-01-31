@@ -2,6 +2,23 @@
 
 @section('content')
     <div class="content-wrapper" style="min-height: 800px;">
+
+    <section class="content-header">
+        <h1>
+            Und was ist, wenn ein Trick mal nicht funktioniert?
+        </h1>
+    </section>
+    <section class="content aktionen" id="aktionen" style="background: url('{{asset('images/las_vegas.jpg')}}') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
+        <div class="row">
+            <div class="col-xl-10 col-12">
+                <h3>Kein Problem - mit der Rückerstattung bist du auf der sicheren Seite!</h3>
+                <p class="text-justify">Sollte ein Trick mal nicht klappen, kannst du einmalig pro Trick eine Rückerstattung von 25€ beantragen. Damit du diese Rückerstattung pro Trick  beantragen kannst, solltest du dich genau an die Trickbeschreibung halten und diese allgemeinen Hinweise beachten. Du musst beim Casino einen neuen Account anlegen. Bei bestehenden Konten funktionieren die Tricks meistens nicht, da neue Konten mit einer besseren Gewinnquote von den Casinos ausgestattet werden. Nutze nur das Casino, welches bei dem Trick hinterlegt ist und mit dem wir es getestet haben. Du darfst keinen Bonus nutzen, außer es steht audrücklich beim Trick dabei. Du musst mindestens 25€ auf dein Casino-Konto einzahlen. Diesen Betrag musst du in einem Durchlauf einsetzen, ohne dich zwischendurch auszuloggen. Wechsele die Einsätze pro Runde nicht ständig hin- und her. Verwende nur das Gerät und den Browser für die Registrierung und den Trick beim Casino, welches du auch für den CasinoCode nutzt. Alles andere kann deine Rückerstattung gefährden. Die Freigabe erfolgt nur, wenn wir diese eindeutig nachprüfen und zuordnen können. Screenshots von Casinos oder Einzahlungen können wir auf Grund von Missbrauch leider nicht mehr akzeptieren.</p>
+            </div>
+            <div class="col-xl-2 col-xs-12 col-12 text-center">
+                <img src="{{asset('images/psc_white.png')}}" style="max-height: 262px;margin-top: 5px;" alt="">
+            </div>
+        </div>
+    </section>
         <!-- Content Header (Page header) -->
         <section class="content-header" id="help_trick_site">
             <h1>
@@ -49,7 +66,8 @@
                             <p><strong>Average winnings amount:</strong></p>
                             <p class="avgwin" id="help_avgwin">{{$trick->amount}}€</p>
                             <hr>
-                            <p><strong>Use trick now:</strong></p><button type="button" class="casino-link1 btn btn-info btn-lg " id="help_link_button" uid="15959" tick="53" url="{{$trick->link}}" data-id="{{$trick->id}}"><i class="fa fa-angle-double-right"></i> Trick <span id="apply_count">{{$trick->apply}}</span> apply</button><button type="button" class="trick-review btn btn-info btn-lg pull-right " id="help_review_button" uid="15959" tick="53"><i class="fa fa-thumbs-up"></i> Rate trick</button></div>
+                            <p><strong>Use trick now:</strong></p><button type="button" class="casino-link1 btn btn-info btn-lg " id="help_link_button" uid="15959" tick="53" url="{{$trick->link}}" data-id="{{$trick->id}}"><i class="fa fa-angle-double-right"></i> Trick <span id="apply_count">{{$trick->apply}}</span> apply</button><button type="button" class="trick-review btn btn-info btn-lg pull-right " id="help_review_button" uid="15959" tick="53" data-trick="{{$trick->id}}"   ><i class="fa fa-thumbs-up"></i> Rate trick</button></div>
+                            <div><span id="message"></span> </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
@@ -63,8 +81,8 @@
 @endsection
 
 @push('styles')
-    <link href="{{asset('css/user/animated-masonry-gallery.css')}}">
-    <link href="{{asset('css/user/ekko-lightbox.css')}}">
+    <link href="{{asset('css/user/animated-masonry-gallery.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/user/ekko-lightbox.css')}}" rel="stylesheet" type="text/css" >
 @endpush
 @push('scripts')
     <script src="{{asset('js/user/jquery.isotope.min.js')}}"></script>
@@ -113,22 +131,6 @@
             var trickInterval = setInterval(create_matrix, speed);
         };
 
-        function load_tricks(){
-            var $tricks = $(".tricks");
-            // $.ajax({
-            //     type: "POST",
-            //     cache: false,
-            //     url: "ajax/user_tricks_load.php",
-            //     data: {},
-            //     success: function(msg) {
-            //         $tricks.html('');
-            //         $tricks.html(msg);
-            //     },
-            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //         $tricks.html('Timeout loading from the server....');
-            //     }
-            // });
-        }
 
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
@@ -194,23 +196,51 @@
             }
         });
 
-        $(document).on("click",".trick_info", function(event) {
-            var userid = '15610';
-            // $.ajax({
-            //     type: "POST",
-            //     cache: false,
-            //     url: "ajax/user_trick_info.php",
-            //     data: {userid: userid, trickinfo: "1"},
-            //     success: function(msg) {
-            //     }
-            // });
+        $(document).on("click","#help_review_button",function() {
+            if($(this).data('rate') == '1') {
+                alert('You have gotten rating')
+            }else{
+                var trick_id = $(this).data('trick');
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "user/set_rating",
+                    data: {trick_id: trick_id},
+                    success: function(msg) {
+                        if(msg[0].message =='denied'){
+                            $('#message').addClass('badge badge-danger');
+                            $('#message').html('You have already rated this trick');
+                            $('#message').fadeIn().delay(3000).fadeOut();
+                        }else{
+                            $('#message').addClass('badge badge-success');
+                            $('#message').html('You have rated successful');
+                            $('#message').fadeIn().delay(3000).fadeOut();
+                        }
+                    }
+                });
+
+            }
         });
 
-        $(document).on("click",".trick-review",function() {
-            var trickid = $(this).attr('tick');
-            review_trick(trickid);
-        });
+        // $(document).on("click",".trick_info", function(event) {
+        //     var userid = '15610';
+        //     // $.ajax({
+        //     //     type: "POST",
+        //     //     cache: false,
+        //     //     url: "ajax/user_trick_info.php",
+        //     //     data: {userid: userid, trickinfo: "1"},
+        //     //     success: function(msg) {
+        //     //     }
+        //     // });
+        // });
+
+        // $(document).on("click",".trick-review",function() {
+        //     var trickid = $(this).attr('tick');
+        //     review_trick(trickid);
+        // });
 
 
     </script>
     @endpush
+

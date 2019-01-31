@@ -40,7 +40,7 @@ class WinningRequest extends FormRequest
         return [
 
             'image'                 => $rules['image'],
-            'user_id'               => 'required',
+//            'user_id'               => 'required',
 
         ];
     }

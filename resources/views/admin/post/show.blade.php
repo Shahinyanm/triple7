@@ -1,62 +1,71 @@
 @extends('layouts.admin')
 
 @section('main')
+    <h3>Posts Table</h3>
 
-    <a href="{{route('admin.forums.index')}}" class="btn btn-info btn-sm btn-icon icon-left">
-        <i class="fas fa-arrow-left"></i>
-        Back
-    </a>
 
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 ">
-        <div class="row">
-            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden ">
-                <div class="my-3 py-3 ">
 
-                   <h4>{{$forum->title}}</h4>
+    <a href="{{route('admin.posts.create')}}" class="btn btn-info"> New Post</a>
+    <table class="table table-bordered table-striped datatable" id="table-2">
+        <thead>
+        <tr>
+            <th>
+                <div class="checkbox checkbox-replace">
+                    <input type="checkbox" id="chk-1">
                 </div>
-                {{--<div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>--}}
-            </div>
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <p class="lead"><span class="bold">Forum Description:</span>  {{$forum->text}} </p>
-                    <p class="lead"><span class="bold">Last Update:</span>      {{ \Carbon\Carbon::parse($forum->update_at)->format('d/m/Y h:i:s')}}.</p>
+            </th>
+            {{--<th class=" text-center">Name </th>--}}
+            <th class=" text-center col">User </th>
+            <th class=" text-center col-md-4">Message </th>
+            <th class=" text-center col">Topic </th>
+            <th class=" text-center col">Forum </th>
+            <th class=" text-center col">Date </th>
+            <th>Actions </th>
+        </tr>
+        </thead>
 
-                </div>
-            </div>
-            <div class="row mb-20">
-                <div class="col-md-6 text-right">
-                    <a href="{{route('admin.topics.index')}}" class="btn btn-info"><span class="bold">Topics:</span> {{$forum->topics->count()}}</a>
-                </div>
-                <div class="col-md-6 "></div>
-                    <a href="{{route('admin.posts.index')}}" class="btn btn-info"><span class="bold">Posts:</span> {{$forum->posts_count}}</a>
-                </div>
-            </div>
-
-            <div class="bg-dark box-shadow mx-auto text-center" style="width: 98%; height: 300px; border-radius: 21px 21px 0 0;">
-
-
-                <a href="{{route('admin.forums.edit',$forum->id)}}" class="btn btn-success btn-sm btn-icon icon-left">
-                    <i class="entypo-pencil"></i>
-                    Edit
-                </a>
-                <form  style="display:inline-block" action="{{route('admin.forums.destroy',$forum->id)}}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        Delete
-                    </button>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
+        <tbody>
+        @if(isset($posts))
+            @foreach($posts as $post)
+                <tr>
+                    <td>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="chk-1">
+                        </div>
+                    </td>
 
 
+                    {{--<td class="text-center">{{$product->tags}}</td>--}}
+                    <td class="text-center">{{$post->user->first_name}}  {{$post->user->last_name}}</td>
+                    <td class="text-center">{{$post->text}}</td>
+                    <td class="text-center">{{$post->topic_name}}</td>
+                    <td class="text-center">{{$post->forum_name}}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y h:i:s')}}</td>
 
+                    <td>
+                        {{--<a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-info btn-sm btn-icon icon-left">--}}
+                        {{--<i class="entypo-info"></i>--}}
+                        {{--Show--}}
+                        {{--</a>--}}
 
+                        {{--<a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-default btn-sm btn-icon icon-left">--}}
+                        {{--<i class="entypo-pencil"></i>--}}
+                        {{--Edit--}}
+                        {{--</a>--}}
+                        <form  style="display:inline-block" action="{{route('admin.posts.destroy',$post->id)}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger btn-sm btn-icon icon-left">
+                                <i class="entypo-cancel"></i>
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+        @endforeach
+        @endif
 
+    </table>
 
 
 @endsection

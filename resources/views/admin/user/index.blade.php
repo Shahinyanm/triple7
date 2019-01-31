@@ -5,7 +5,7 @@
 
 
 
-    <a href="{{route('admin.users.create')}}" class="btn btn-info"> New Trick</a>
+    <a href="{{route('admin.users.create')}}" class="btn btn-info"> New User</a>
     <table class="table table-bordered table-striped datatable" id="table-2">
         <thead>
         <tr>
@@ -44,7 +44,10 @@
                     <td class="text-center">{{\Carbon\Carbon::parse($user->created_at)->format('d.m.Y')}}</td>
                     <td>
 
-
+                        <a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-default btn-sm btn-icon icon-left">
+                            <i class="entypo-pencil"></i>
+                            Edit
+                        </a>
                         <form  style="display:inline-block" action="{{route('admin.users.destroy',$user->id)}}" method="post">
                             @method('DELETE')
                             @csrf

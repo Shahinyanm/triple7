@@ -48,6 +48,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::post('send_message', 'User\PostController@send')->name('send_message');
         Route::post('user/update_apply', 'UserController@update_apply');
         Route::post('user/load_more', 'UserController@loadMore');
+        Route::post('user/set_rating', 'UserController@rating');
 
 
     });

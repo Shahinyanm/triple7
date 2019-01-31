@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('main')
-    <h3>Create New  Winnin Image</h3>
+    <h3>Create Post</h3>
 
     <div class="row">
         <div class="col-md-12">
@@ -24,32 +24,35 @@
                 @endif
                 <div class="panel-body">
 
-                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.forums.store')}}" enctype="multipart/form-data">
+                    <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.posts.store')}}" enctype="multipart/form-data">
                         {{--@method('PUT')--}}
                         @csrf
 
-
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Forum  Name</label>
+                            <label class="col-sm-3 control-label">Select Forum</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="topic_id">
+                                    <option selected disabled>Chose Forum</option>
+                                    @if($topics)
+                                        @foreach($topics as $topic)
+                                            <option value ="{{$topic->id}}"> {{$topic->title}}</option>
+                                        @endforeach
+                                    @endif
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Post  <Text></Text></label>
 
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Forum Name" name ='title'>
+                                    <input type="text" class="form-control" placeholder="Topic Name" name ='text'>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Forum  Description</label>
-
-                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <textarea name="text" id="" cols="82" rows="5"></textarea>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Add New Forum</label>
