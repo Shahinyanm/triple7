@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'main_title'                  =>      'CasinoCode by TrioXx - we discover software bugs and tricks in online casinos',
+    'main_title'                  =>      'CasinoCode by triple7 - we discover software bugs and tricks in online casinos',
     'home'                  =>      'Home',
     'video'                 =>      'Video',
     'winnings'              =>      'Winnings',
