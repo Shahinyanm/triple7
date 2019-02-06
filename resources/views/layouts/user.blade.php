@@ -348,15 +348,24 @@
     });
 
 
-    
-    var current = '{{Route::current()->uri}}'
-    var lang = '{{app()->getLocale()}}'
+    var pathArray = window.location.pathname.split( '/' );
+    var lang = '{{app()->getLocale()}}';
+    if(pathArray[1] === 'en' || pathArray[1] !== lang){
+        $('#languages').data('selected-country', 'EU')
+
+    }else{
+        $('#languages').data('selected-country', pathArray[1].toUpperCase())
+    }
+
+    var current = '{{Route::current()->uri}}';
+
     var locale =current.split('/');
+    console.log(lang)
     if(locale[0] !== lang){
 
         locale.unshift(lang);
     }
-    console.log(locale)
+    console.log(lang)
 
 
     $('#languages').flagStrap({
