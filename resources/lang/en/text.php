@@ -62,19 +62,20 @@ return [
                          I launched the "Online Casino" operation with some close friends because we want to reduce greed and unfair odds of the gambling industry. 
                          We want to optimise the gaming experience and the success factor for players.',
     'king_regards'=>'Kind regards,',
+    'footer_text' =>  'Risk disclaimer: We regularly publish tips in our community. Not even we can guess when a provider carries out an update! It is true that many in the community have already made good winnings with it. To be fair, it\'s also true that you can lose money as well. In a worst case scenario, you can lose the money you deposited. Basically, that\'s clear, but everyone should be aware of it.',
 
 
 
     //User home page  text
     'casinocode_news'=>'CasinoCode News',
-    'unveiled_tricks'=> 'Unveiled tricks',
     'active_tricks'=> 'Active tricks',
+    'unveiled_tricks'=> 'Unveiled tricks',
     'tricks_taken_part_in'=> 'Tricks Taken Part In',
+    'latest_winners'=> 'Latest winners',
     'show_all_tricks'=> 'Show all tricks',
     'forum_text_example'=> 'If you have any questions, this is your first contact point. Contact the community. Here you will find many answered questions, and you can also ask questions yourself. These will then be answered either by us as a team or by other users.',
     'whatsapp_support'=> 'Whatsapp support',
     'whatsapp_support_text'=> 'If you have very specific questions, you can also contact our team directly via WhatsApp. We are glad to help you individually and will be of assistance with any queries you may have. Don\'t be afraid or shy! We look forward to your enquiry!',
-    'latest_winners'=> 'Latest winners',
 
 
 
@@ -87,6 +88,7 @@ return [
     'faq_forum'=>'FAQ forum',
     'settings'=>'Settings',
     'logout'=>'Logout',
+    'tricks_text' => 'Currently there are no tricks in your country. We\'re working to provide you with tricks again soon. As soon as we have found a trick, we will inform you by e-mail.',
     'load_more_pictures'=>'Load More Pictures',
     'questions_and_answers_about_the_tricks'=>'Questions and answers about the tricks',
     'questions_and_answers_about_the_system'=>' Questions and answers about the system',
@@ -99,14 +101,15 @@ return [
     'topics'=>'Topics',
     'post'=>'Post',
     'create_a_new_topic'=>'Create a new topic',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
+    'settings_text'=>'Attention: It is important that you do not enter false or incomplete data here. In the event that a trick doesn\'t work, we\'ll have to refuse your refund directly.',
+    'select_title'=>' Select title',
+    're_password'=>'Re-Enter Password',
+    'newsletter'=>'Newsletter',
+    'select'=>'Select',
+    'active'=>'Active',
+    'inactive'=>'Inactive',
+    'save'=>'Save',
+    'delete_account'=>'Delete Account',
+
     ''=>'',
 ];

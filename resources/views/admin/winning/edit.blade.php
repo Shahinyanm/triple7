@@ -32,8 +32,10 @@
                             <label class="col-sm-3 control-label">Select User</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="user_id">
+
                                     @if($users)
                                         @foreach($users as $user)
+
                                             @if($user->id == $winning->user->id)
                                                 <option value ="{{$user->id}}" selected>  {{$user->first_name}}  {{$user->last_name}}</option>
                                             @else
@@ -58,7 +60,7 @@
                                 <label for="field-1" class="col-sm-3 control-label">Image Field</label>
 
                                 <div class="col-sm-5">
-                                    <img src="{{asset('images/winnings')}}/{{$winning->image}}" alt="" style="width:300px; height: 200px;">
+                                    <img src="{{asset('storage')}}/{{$winning->image}}" alt="" style="width:300px; height: 200px;">
                                 </div>
                             </div>
 

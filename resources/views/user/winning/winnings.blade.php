@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Winnings      </h1>
+                @lang('text.winnings')      </h1>
         </section>
 
         <!-- Main content -->
@@ -28,14 +28,14 @@
 
                         <div class="timeline-body">
                             @foreach($winnings as $wining)
-                            <img src="{{asset('images/winnings')}}/{{$wining->image}}" alt="" class="margin thumb bigimg" dataurl="casino_slot_win_98c39996bf1543e974747a2549b3107c.jpg">
+                            <img src="{{asset('storage')}}/{{$wining->image}}" alt="" class="margin thumb bigimg" dataurl="casino_slot_win_98c39996bf1543e974747a2549b3107c.jpg">
                             @endforeach
                         </div>
                     </div>
                 </li>
                     @endisset
             </ul>
-            <div class="text-center"><button type="button" class="loadmore btn btn-info btn-lg" dataid="1" data-date="@if($winnings){{ \Carbon\Carbon::parse($winnings['0']->created_at)->format('d.m.Y')}} @endif">Load previous pictures</button></div>
+            <div class="text-center"><button type="button" class="loadmore btn btn-info btn-lg" dataid="1" data-date="@if($winnings){{ \Carbon\Carbon::parse($winnings['0']->created_at)->format('d.m.Y')}} @endif">@lang('text.load_more_pictures')</button></div>
         </section>        <!-- /.content -->
     </div>
     @endsection

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Winning;
 use App\User;
 use App\Http\Requests\WinningRequest;
+use Storage;
+use Image;
 class WinningController extends Controller
 {
     /**
@@ -42,13 +44,15 @@ class WinningController extends Controller
     public function store(WinningRequest $request)
     {
         if ($request->image) {
-            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images/winnings/'), $imageName);
+            $file = $request->image;
+            $storedFile = Storage::disk('public')->put('image/winnings', $file);
+
         }
+
 
         Winning::create([
             'user_id' => $request->user_id,
-            'image' => $imageName,
+            'image' => str_replace('public/', '', $storedFile),
         ]);
 
         return redirect()->route('admin.winnings.index');
@@ -78,7 +82,8 @@ class WinningController extends Controller
     {
         $winning = Winning::with('user')->find($id);
         $users = User::all();
-        return view('admin.winning.edit',['winning'=>$winning, 'users'=>$users]);
+
+        return view('admin.winning.edit',compact('winning','users'));
     }
 
     /**
@@ -95,10 +100,15 @@ class WinningController extends Controller
 
         if($request->image){
 
-            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images/winnings'), $imageName);
+            if ($request->image) {
+                $file = $request->image;
+                $storedFile = Storage::disk('public')->put('image/winnings', $file);
 
-            $winning->image = $imageName;
+            }
+
+
+
+            $winning->image = str_replace('public/', '', $storedFile);
 
         }
 

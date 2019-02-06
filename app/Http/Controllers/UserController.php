@@ -86,7 +86,7 @@ class UserController extends Controller
         $winnings = Winning::select('id', 'image', 'created_at')->whereDate('created_at','<', Carbon::parse($request->date))->orderBy('created_at','ASC')->get()->groupBy(function ($date) {
             return \Carbon\Carbon::parse($date->created_at)->format('d');
         })->last();
-
+            dd($winnings);
         if(!$winnings->isEmpty())
         {
             $data = [
@@ -96,7 +96,7 @@ class UserController extends Controller
             return $data;
 
         }else{
-            return Response()->json();
+            return Response()->json(['data'=> 'empty']);
         }
     }
 

@@ -46,7 +46,7 @@
                     <td class="text-center">{{$trick->description4}}</td>
                     <td class="text-center"><a href="{{route('admin.images', $trick->id)}}" >
                         @foreach($trick->images as $image)
-                            <img src="{{asset('images/tricks')}}/{{$image->src}}" style="width:50px; height: 50px;">
+                            <img src="{{asset('storage')}}/{{$image->src}}" style="width:50px; height: 50px;">
                             @endforeach
                         </a>
                     </td>

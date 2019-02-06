@@ -78,7 +78,7 @@
                 <a class="nav-link page-scroll" href="#warranty">@lang('text.warranty')</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                <a class="nav-link" href="{{ route('login') }}">@lang('text.login')</a>
             </li>
             <li class="nav-item">
                 <div id="languages" data-selected-country="EU"></div>
@@ -284,21 +284,21 @@
             <div class="col-md-12">
                 <p class="text-center">Copyright © TrioXx - <a class="underline" href="#ModalImprint" data-toggle="modal" data-target="#ModalImprint">Imprint</a> | <a class="underline" href="#ModalDataPrivacy" data-toggle="modal" data-target="#ModalDataPrivacy">Data Privacy</a> | <a class="underline" href="#ModalAffiliate" data-toggle="modal" data-target="#ModalAffiliate">Affiliate</a></p>
                 <p class="text-center">
-                    <a class="underline" href="https://www.casinocode.net/dk/index.php" title="CasinoCode - Dansk">CasinoCode - Dansk</a> |
-                    <a class="underline" href="https://www.casinocode.net/de/index.php" title="CasinoCode - Deutsch">CasinoCode - Deutsch</a> |
-                    <a class="underline" href="https://www.casinocode.net/en/index.php" title="CasinoCode - English">CasinoCode - English</a> |
-                    <a class="underline" href="https://www.casinocode.net/fr/index.php" title="CasinoCode - Francais">CasinoCode - Francais</a> |
-                    <a class="underline" href="https://www.casinocode.net/it/index.php" title="CasinoCode - Italiano">CasinoCode - Italiano</a> |
-                    <a class="underline" href="https://www.casinocode.net/nl/index.php" title="CasinoCode - Nederlands">CasinoCode - Nederlands</a> |
-                    <a class="underline" href="https://www.casinocode.net/no/index.php" title="CasinoCode - Norsk">CasinoCode - Norsk</a> |
-                    <a class="underline" href="https://www.casinocode.net/fi/index.php" title="CasinoCode - Suomi">CasinoCode - Suomi</a> |
-                    <a class="underline" href="https://www.casinocode.net/se/index.php" title="CasinoCode - Svenska">CasinoCode - Svenska</a> |
-                    <a class="underline" href="https://www.casinocode.net/" title="CasinoCode">CasinoCode</a> |
-                    <a class="underline" href="https://www.casinocode.net/" title="Casino Code">Casino Code</a> |
-                    <a class="underline" href="https://www.casinocode.net/" title="Casino Bonus">Casino Bonus</a> |
-                    <a class="underline" href="https://www.casinocode.net/" title="Casino Freespins">Casino Freespins</a>
+                    <a class="underline" href="https://www.triple7.co/dk/" title="CasinoCode - Dansk">CasinoCode - Dansk</a> |
+                    <a class="underline" href="https://www.triple7.co/de/" title="CasinoCode - Deutsch">CasinoCode - Deutsch</a> |
+                    <a class="underline" href="https://www.triple7.co/en/" title="CasinoCode - English">CasinoCode - English</a> |
+                    <a class="underline" href="https://www.triple7.co/fr/" title="CasinoCode - Francais">CasinoCode - Francais</a> |
+                    <a class="underline" href="https://www.triple7.co/it/" title="CasinoCode - Italiano">CasinoCode - Italiano</a> |
+                    <a class="underline" href="https://www.triple7.co/nl/" title="CasinoCode - Nederlands">CasinoCode - Nederlands</a> |
+                    <a class="underline" href="https://www.triple7.co/no/" title="CasinoCode - Norsk">CasinoCode - Norsk</a> |
+                    <a class="underline" href="https://www.triple7.co/fi/" title="CasinoCode - Suomi">CasinoCode - Suomi</a> |
+                    <a class="underline" href="https://www.triple7.co/se/" title="CasinoCode - Svenska">CasinoCode - Svenska</a> |
+                    <a class="underline" href="https://www.triple7.co/" title="CasinoCode">CasinoCode</a> |
+                    <a class="underline" href="https://www.triple7.co/" title="Casino Code">Casino Code</a> |
+                    <a class="underline" href="https://www.triple7.co/" title="Casino Bonus">Casino Bonus</a> |
+                    <a class="underline" href="https://www.triple7.co/" title="Casino Freespins">Casino Freespins</a>
                 </p>
-                <p class="text-center small"><strong>Risk disclaimer:</strong> We regularly publish tips in our community. Not even we can guess when a provider carries out an update! It is true that many in the community have already made good winnings with it. To be fair, it&#39;s also true that you can lose money as well. In a worst case scenario, you can lose the money you deposited. Basically, that&#39;s clear, but everyone should be aware of it.</p>
+                <p class="text-center small">@lang('text.footer_text')</p>
             </div>
         </div> <!-- enf of row -->
     </div> <!-- end of container -->
@@ -356,7 +356,7 @@
             <div class="modal-body">
                 <strong>CasinoCode OOO</strong><br>
                 Akademika Koroleva 12, 127427 Moskva, Russia<br>
-                info@CasinoCode.net<br>
+                info@triple7.co<br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -439,6 +439,7 @@
 
         $('#languages').data('selected-country', pathArray[1].toUpperCase())
     }
+
     $("#RegisterForm").validator().on("submit", function(event) {
         if (event.isDefaultPrevented()) {
             // handle the invalid form...
@@ -576,6 +577,7 @@
         scrollableHeight: "350px",
         onSelect: function(value, element) {
             if(value === "EU"){
+
                 window.open("/en","_self")
             } else {
                 window.open("/"+value.toLowerCase() ,"_self");

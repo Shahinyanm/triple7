@@ -22,7 +22,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" id="help_trick_site">
             <h1>
-                Tricks      </h1>
+                @lang('text.tricks')       </h1>
         </section>
 
         <!-- Main content -->
@@ -47,7 +47,7 @@
                                     <div class="gallery-content">
                                         <div class="gallery-content-center">
                                             @foreach($trick->images as $image)
-                                            <div class="isotope-box" id="help_image_trick" href="{{asset('images/tricks')}}/{{$image->src}}" data-toggle="lightbox" data-gallery="multiimages" data-title="Bonus symbol"><img src="{{asset('images/tricks')}}/{{$image->src}}" alt="gallery" class="all studio"> </div>
+                                            <div class="isotope-box" id="help_image_trick" href="{{asset('storage')}}/{{$image->src}}" data-toggle="lightbox" data-gallery="multiimages" data-title="Bonus symbol"><img src="{{asset('storage')}}/{{$image->src}}" alt="gallery" class="all studio"> </div>
                                             @endforeach
 
                                         </div>

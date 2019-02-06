@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                FAQ - Forum      </h1>
+                @lang('text.faq_forum')     </h1>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -14,7 +14,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="box direct-chat">
                     <div class="box-header with-border bg-gold">
-                        <h3 class="box-title"><i class="fa fa-comment"></i> asdadad</h3>            </div>
+                        <h3 class="box-title"><i class="fa fa-comment"></i>  @lang('text.topics') </h3>            </div>
 
                     <div class="box-body">
                         <!-- Conversations are loaded here -->

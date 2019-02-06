@@ -8,6 +8,8 @@ use App\Http\Requests\TrickRequest;
 use App\Trick;
 use App\TrickRating;
 use App\TrickImage;
+use Image;
+use Storage;
 
 class TrickController extends Controller
 {
@@ -66,13 +68,18 @@ class TrickController extends Controller
             'activated'    => $activated,
         ]);
 
+
+
+
         if ($request->images) {
             foreach($request->images as $image){
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images/tricks'), $imageName);
+
+                $file = $image;
+                $storedFile = Storage::disk('public')->put('image/tricks', $file);
+
 
                 TrickImage::create([
-                    'src' => $imageName,
+                    'src' => str_replace('public/', '', $storedFile),
                     'trick_id'=> $trick->id,
                 ]);
             }
@@ -133,13 +140,15 @@ class TrickController extends Controller
 
         if ($request->images) {
             foreach($request->images as $image){
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images/tricks'), $imageName);
+
+                $file = $image;
+                $storedFile = Storage::disk('public')->put('image/tricks', $file);
 
                 TrickImage::create([
-                    'src' => $imageName,
+                    'src' => str_replace('public/', '', $storedFile),
                     'trick_id'=> $trick->id,
                 ]);
+
             }
         }
 

@@ -5,13 +5,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                FAQ - Forum      </h1>
+                @lang('text.faq_forum')     </h1>
         </section>
         <section class="content">
             <div class="col-xl-12 col-12">
                 <div class="box">
                     <div class="box-header with-border bg-gold">
-                        <h3 class="box-title"><i class="fa fa-plus"></i> Create a new topic</h3>
+                        <h3 class="box-title"><i class="fa fa-plus"></i> @lang('text.create_a_new_topic')</h3>
                     </div>
                     <!-- /.box-header -->
                     <form class="form-group" action="{{route('user.topics.store')}}" method="post">
@@ -55,7 +55,7 @@
                                     <hr class="mt-10 mb-10">
                                     <div class="col-xl-12 col-12 no-padding small">
 
-                                        <span>Post:
+                                        <span>@lang('text.posts'):
 			        						{{$topic->posts->count()}}							</span>
                                     </div>
                                 </div>

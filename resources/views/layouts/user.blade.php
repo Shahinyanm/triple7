@@ -203,7 +203,6 @@
     });
 
 
-
     function help(){
         var userid = '15391';
         swal({
@@ -348,46 +347,54 @@
         });
     });
 
-    // $('#languages').flagStrap({
-    //     countries: {
-    //         "DK": "Dansk",
-    //         "DE": "Deutsch",
-    //         "EU": "English",
-    //         "FR": "Francais",
-    //         "IT": "Italiano",
-    //         "NL": "Nederlands",
-    //         "NO": "Norsk",
-    //         "FI": "Suomi",
-    //         "SE": "Svenska"
-    //     },
-    //     labelMargin: "5px",
-    //     scrollable: false,
-    //     placeholder: false,
-    //     scrollableHeight: "350px",
-    //     onSelect: function(value, element) {
-    //         if(value === "EU"){
-    //             $.ajax({
-    //                 type: "POST",
-    //                 url: "ajax/user_lang_update.php",
-    //                 data: {userid: "15391", userlang: "en"},
-    //                 success: function(msg) {
-    //                     window.open("/en/community/index.php","_self");
-    //                 }
-    //             });
-    //
-    //         } else {
-    //             $.ajax({
-    //                 type: "POST",
-    //                 url: "ajax/user_lang_update.php",
-    //                 data: {userid: "15391", userlang: value.toLowerCase()},
-    //                 success: function(msg) {
-    //                     window.open("/"+value.toLowerCase()+"/community/index.php","_self");
-    //                 }
-    //             });
-    //
-    //         }
-    //     }
-    // });
+
+    
+    var current = '{{Route::current()->uri}}'
+    var lang = '{{app()->getLocale()}}'
+    var locale =current.split('/');
+    if(locale[0] !== lang){
+
+        locale.unshift(lang);
+    }
+    console.log(locale)
+
+
+    $('#languages').flagStrap({
+        countries: {
+            "DK": "Dansk",
+            "DE": "Deutsch",
+            "EU": "English",
+            "FR": "Francais",
+            "IT": "Italiano",
+            "NL": "Nederlands",
+            "NO": "Norsk",
+            "FI": "Suomi",
+            "SE": "Svenska"
+        },
+        labelMargin: "10px",
+        scrollable: false,
+        placeholder: false,
+        scrollableHeight: "350px",
+        onSelect: function(value, element) {
+
+            locale[0] = value.toLowerCase()
+            locale =locale.join('/');
+            console.log(locale)
+            if(value === "EU"){
+                locale=locale.split('/');
+                locale[0] ='en';
+                locale=locale.join('/');
+                console.log(locale)
+                window.open("/"+locale,"_self")
+            } else {
+                window.open("/"+locale ,"_self");
+            }
+
+
+
+        }
+    });
+
 </script>
 
 </body>

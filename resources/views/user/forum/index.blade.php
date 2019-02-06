@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                FAQ - Forum      </h1>
+                @lang('text.faq_forum')      </h1>
         </section>
 
         <!-- Main content -->
@@ -26,9 +26,9 @@
                                     <hr class="mt-10 mb-10">
                                     <div class="col-xl-12 col-12 no-padding small">
 			        					<span class="mr-10">
-			        						Topics:
+			        						@lang('text.topics'):
 			        						{{$forum->topics_count}}						</span>
-                                        <span>Post:
+                                        <span>@lang('text.posts')::
 			        						{{$forum->posts_count}}							</span>
                                     </div>
                                 </div>

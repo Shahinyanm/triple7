@@ -5,7 +5,7 @@
 </noscript>
 <header class="main-header">
     <!-- Logo -->
-    <a href="index.php" class="logo">
+    <a href="{{route('home')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <b class="logo-mini">
             <span class="light-logo"><img src="{{asset('images/aries-light.png')}}" alt="logo"></span>
@@ -38,20 +38,19 @@
         <!-- Sidebar toggle button-->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <button type="button" data-toggle="dropdown"  class="btn btn-default btn-md dropdown-toggle" aria-expanded="false" style="background-color:transparent; color:white">
-                    <span class="flagstrap-selected-oQGEW27e"><i class="flagstrap-icon flagstrap-eu" style="margin-right: 5px;"></i>English</span>
-                    <span class="caret" style="margin-left: 5px;"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode=>$properties)
-                        <li><a rel="alternative" data-val="{{$localeCode}}" hrefLang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode,null, [], true)}}"><i class="flagstrap-icon flagstrap-{{$localeCode}}" style="margin-right: 5px;"></i>{{$properties['native']}}</a></li>
-                    @endforeach
+                <li>
+                    <div id="languages" data-selected-country="EU"></div>
+                </li>
+                {{--<button type="button" data-toggle="dropdown"  class="btn btn-default btn-md dropdown-toggle" aria-expanded="false" style="background-color:transparent; color:white">--}}
+                    {{--<span class="flagstrap-selected-oQGEW27e"><i class="flagstrap-icon flagstrap-eu" style="margin-right: 5px;"></i>English</span>--}}
+                    {{--<span class="caret" style="margin-left: 5px;"></span>--}}
+                {{--</button>--}}
+                {{--<ul class="dropdown-menu">--}}
+                    {{--@foreach(LaravelLocalization::getSupportedLocales() as $localeCode=>$properties)--}}
+                        {{--<li><a rel="alternative" data-val="{{$localeCode}}" hrefLang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode,null, [], true)}}"><i class="flagstrap-icon flagstrap-{{$localeCode}}" style="margin-right: 5px;"></i>{{$properties['native']}}</a></li>--}}
+                    {{--@endforeach--}}
                 </ul>
 
-
-
-                <li><i class="helper fa fa-question-circle fa-2x"></i></li>
-            </ul>
         </div>
 
     </nav>
@@ -66,7 +65,7 @@
         <ul class="sidebar-menu" data-widget="tree" id="help_navigation">
             <li class="{{ (Request::route()->getName() == 'home') ? 'active' : '' }}" id="help_dashboard">
                 <a href="{{route('home')}}">
-                    <i class="fa fa-dashboard"></i> <span>Overview</span>
+                    <i class="fa fa-dashboard"></i> <span>@lang('text.overview')</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>
@@ -75,7 +74,7 @@
 
             <li class="{{ (Request::route()->getName() == 'user.tricks') ? 'active' : '' }}" id="help_tricks">
                 <a href="{{route('user.tricks')}}">
-                    <i class="fa fa-gamepad"></i> <span>Tricks</span>
+                    <i class="fa fa-gamepad"></i> <span>@lang('text.tricks')</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>
@@ -84,7 +83,7 @@
 
             <li  class="{{ (Request::route()->getName() == 'user.winnings') ? 'active' : '' }}" id="help_wins">
                 <a href="{{route('user.winnings')}}">
-                    <i class="fa fa-trophy"></i> <span>Winnings</span>
+                    <i class="fa fa-trophy"></i> <span>@lang('text.winnings')</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>
@@ -92,7 +91,7 @@
             </li>
             <li class="{{ (Request::route()->getName() == 'user.forums.index' || Request::route()->getName() == 'user.forums.show' || Request::route()->getName()== 'user.topics.show') ? 'active' : '' }} " id="help_forum">
                 <a href="{{route('user.forums.index')}}">
-                    <i class="fa fa-comments"></i> <span>FAQ - Forum</span>
+                    <i class="fa fa-comments"></i> <span>@lang('text.faq_forum')</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>
@@ -101,7 +100,7 @@
 
             <li  class="{{ (Request::route()->getName() == 'user.settings') ? 'active' : '' }}" id="help_settings">
                 <a href="{{route('user.settings')}}">
-                    <i class="fa fa-cog"></i> <span>Settings</span>
+                    <i class="fa fa-cog"></i> <span>@lang('text.settings')</span>
                     <span class="pull-right-container">
 	  <i class="fa fa-angle-right pull-right"></i>
 	</span>

@@ -34,7 +34,7 @@
                         </div>
                     </td>
 
-                    <td class="text-center"><img src="{{asset('images/winnings/')}}/{{$winning->image}}" style="width: 100px; height: 70px;"></td>
+                    <td class="text-center"><img src="{{asset('storage')}}/{{$winning->image}}" style="width: 100px; height: 70px;"></td>
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
 
                     <td class="text-center"> @if($winning->user) {{$winning->user->first_name}}  {{$winning->user->last_name}} @endif</td>
