@@ -1,5 +1,5 @@
-<section class="content">
-    <div class="row tricks">
+
+
         @isset($tricks)
             @foreach($tricks as $trick)
                 <div class="col-xl-6 col-12">
@@ -56,5 +56,5 @@
                 </div>
             @endforeach
         @endif
-    </div>
-</section>
+
+

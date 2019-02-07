@@ -132,7 +132,8 @@
 
             var trickInterval = setInterval(create_matrix, speed);
         };
-        load_tricks()
+
+        load_tricks();
         function load_tricks(){
             var $tricks = $(".tricks");
             $.ajax({
