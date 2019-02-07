@@ -31,4 +31,12 @@ class User extends Authenticatable
     public function winnings(){
         return $this->hasMany('App\Winning');
     }
+
+    public function activate (){
+        return $this->hasMany('App\TrickActivate');
+    }
+
+    public function report (){
+        return $this->hasMany('App\Report');
+    }
 }

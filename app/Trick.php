@@ -24,7 +24,13 @@ class Trick extends Model
         if (!preg_match("~^(?:f|ht)tps?://~i", $value)) {
             $this->attributes['link'] = "http://" . $value;
         }
+    }
 
+    public function activate (){
+        return $this->hasMany('App\TrickActivate');
+    }
 
+    public function report (){
+        return $this->hasMany('App\Report');
     }
 }

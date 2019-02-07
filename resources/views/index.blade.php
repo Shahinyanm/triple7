@@ -282,7 +282,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="text-center">Copyright © TrioXx - <a class="underline" href="#ModalImprint" data-toggle="modal" data-target="#ModalImprint">Imprint</a> | <a class="underline" href="#ModalDataPrivacy" data-toggle="modal" data-target="#ModalDataPrivacy">Data Privacy</a> | <a class="underline" href="#ModalAffiliate" data-toggle="modal" data-target="#ModalAffiliate">Affiliate</a></p>
+                <p class="text-center">Copyright © Triple7 - <a class="underline" href="#ModalImprint" data-toggle="modal" data-target="#ModalImprint">Imprint</a> | <a class="underline" href="#ModalDataPrivacy" data-toggle="modal" data-target="#ModalDataPrivacy">Data Privacy</a> | <a class="underline" href="#ModalAffiliate" data-toggle="modal" data-target="#ModalAffiliate">Affiliate</a></p>
                 <p class="text-center">
                     <a class="underline" href="https://www.triple7.co/dk/" title="CasinoCode - Dansk">CasinoCode - Dansk</a> |
                     <a class="underline" href="https://www.triple7.co/de/" title="CasinoCode - Deutsch">CasinoCode - Deutsch</a> |
@@ -348,7 +348,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalImprintLongTitle">Imprint</h5>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -12,6 +12,7 @@ use App\User;
 use App\Trick;
 use App\Winning;
 use App\TrickRating;
+use App\TrickActivate;
 use DB;
 
 class UserController extends Controller
@@ -42,6 +43,7 @@ class UserController extends Controller
 
     public function tricks()
     {
+
         $tricks = Trick::with('rating', 'images')->get()->map(function ($trick) {
             if ($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
@@ -52,7 +54,7 @@ class UserController extends Controller
             return $trick;
         });
 
-        return view('user.tricks', compact('tricks'));
+        return view('user.trick.index', compact('tricks'));
     }
 
     public function update_apply(Request $request)

@@ -3,22 +3,22 @@
 @section('content')
     <div class="content-wrapper" style="min-height: 800px;">
 
-    <section class="content-header">
-        <h1>
-            Und was ist, wenn ein Trick mal nicht funktioniert?
-        </h1>
-    </section>
-    <section class="content aktionen" id="aktionen" style="background: url('{{asset('images/las_vegas.jpg')}}') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
-        <div class="row">
-            <div class="col-xl-10 col-12">
-                <h3>Kein Problem - mit der Rückerstattung bist du auf der sicheren Seite!</h3>
-                <p class="text-justify">Sollte ein Trick mal nicht klappen, kannst du einmalig pro Trick eine Rückerstattung von 25€ beantragen. Damit du diese Rückerstattung pro Trick  beantragen kannst, solltest du dich genau an die Trickbeschreibung halten und diese allgemeinen Hinweise beachten. Du musst beim Casino einen neuen Account anlegen. Bei bestehenden Konten funktionieren die Tricks meistens nicht, da neue Konten mit einer besseren Gewinnquote von den Casinos ausgestattet werden. Nutze nur das Casino, welches bei dem Trick hinterlegt ist und mit dem wir es getestet haben. Du darfst keinen Bonus nutzen, außer es steht audrücklich beim Trick dabei. Du musst mindestens 25€ auf dein Casino-Konto einzahlen. Diesen Betrag musst du in einem Durchlauf einsetzen, ohne dich zwischendurch auszuloggen. Wechsele die Einsätze pro Runde nicht ständig hin- und her. Verwende nur das Gerät und den Browser für die Registrierung und den Trick beim Casino, welches du auch für den CasinoCode nutzt. Alles andere kann deine Rückerstattung gefährden. Die Freigabe erfolgt nur, wenn wir diese eindeutig nachprüfen und zuordnen können. Screenshots von Casinos oder Einzahlungen können wir auf Grund von Missbrauch leider nicht mehr akzeptieren.</p>
+        <section class="content-header">
+            <h1>
+                Und was ist, wenn ein Trick mal nicht funktioniert?
+            </h1>
+        </section>
+        <section class="content aktionen" id="aktionen" style="background: url('{{asset('images/las_vegas.jpg')}}') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
+            <div class="row">
+                <div class="col-xl-10 col-12">
+                    <h3>Kein Problem - mit der Rückerstattung bist du auf der sicheren Seite!</h3>
+                    <p class="text-justify">Sollte ein Trick mal nicht klappen, kannst du einmalig pro Trick eine Rückerstattung von 25€ beantragen. Damit du diese Rückerstattung pro Trick  beantragen kannst, solltest du dich genau an die Trickbeschreibung halten und diese allgemeinen Hinweise beachten. Du musst beim Casino einen neuen Account anlegen. Bei bestehenden Konten funktionieren die Tricks meistens nicht, da neue Konten mit einer besseren Gewinnquote von den Casinos ausgestattet werden. Nutze nur das Casino, welches bei dem Trick hinterlegt ist und mit dem wir es getestet haben. Du darfst keinen Bonus nutzen, außer es steht audrücklich beim Trick dabei. Du musst mindestens 25€ auf dein Casino-Konto einzahlen. Diesen Betrag musst du in einem Durchlauf einsetzen, ohne dich zwischendurch auszuloggen. Wechsele die Einsätze pro Runde nicht ständig hin- und her. Verwende nur das Gerät und den Browser für die Registrierung und den Trick beim Casino, welches du auch für den CasinoCode nutzt. Alles andere kann deine Rückerstattung gefährden. Die Freigabe erfolgt nur, wenn wir diese eindeutig nachprüfen und zuordnen können. Screenshots von Casinos oder Einzahlungen können wir auf Grund von Missbrauch leider nicht mehr akzeptieren.</p>
+                </div>
+                <div class="col-xl-2 col-xs-12 col-12 text-center">
+                    <img src="{{asset('images/psc_white.png')}}" style="max-height: 262px;margin-top: 5px;" alt="">
+                </div>
             </div>
-            <div class="col-xl-2 col-xs-12 col-12 text-center">
-                <img src="{{asset('images/psc_white.png')}}" style="max-height: 262px;margin-top: 5px;" alt="">
-            </div>
-        </div>
-    </section>
+        </section>
         <!-- Content Header (Page header) -->
         <section class="content-header" id="help_trick_site">
             <h1>
@@ -30,51 +30,51 @@
             <div class="row tricks">
                 @isset($tricks)
                     @foreach($tricks as $trick)
-                <div class="col-xl-6 col-12">
-                    <div class="box">
-                        <div class="ribbon ribbon-bookmark ribbon-right bg-info" id="help_open_trick">@if($trick->activated == 1) Active Trick @else <span class="badge badge-danger"> Deactive Trick</span> @endif</div>
-                        <div class="box-header with-border" id="help_title_trick">
-                            <h3 class="box-title ">Trick {{$trick->id}}</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body ">
-                            <p><strong>Description:</strong></p>
-                            <ol class="trick_desc" id="help_desc_trick"><li>{{$trick->description1}}</li><li>{{$trick->description2}}</li><li>{{$trick->description3}}</li><li>{{$trick->description4}}</li></ol>
-                            <hr>
-                            <p><strong>Images of the trick:</strong></p>
-                            <div class="col-12 no-padding">
-                                <div class="gallery">
-                                    <div class="gallery-content">
-                                        <div class="gallery-content-center">
-                                            @foreach($trick->images as $image)
-                                            <div class="isotope-box" id="help_image_trick" href="{{asset('storage')}}/{{$image->src}}" data-toggle="lightbox" data-gallery="multiimages" data-title="Bonus symbol"><img src="{{asset('storage')}}/{{$image->src}}" alt="gallery" class="all studio"> </div>
-                                            @endforeach
+                        <div class="col-xl-6 col-12">
+                            <div class="box">
+                                <div class="ribbon ribbon-bookmark ribbon-right bg-info" id="help_open_trick">@if($trick->activated == 1) Active Trick @else <span class="badge badge-danger"> Deactive Trick</span> @endif</div>
+                                <div class="box-header with-border" id="help_title_trick">
+                                    <h3 class="box-title ">Trick {{$trick->id}}</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body ">
+                                    <p><strong>Description:</strong></p>
+                                    <ol class="trick_desc" id="help_desc_trick"><li>{{$trick->description1}}</li><li>{{$trick->description2}}</li><li>{{$trick->description3}}</li><li>{{$trick->description4}}</li></ol>
+                                    <hr>
+                                    <p><strong>Images of the trick:</strong></p>
+                                    <div class="col-12 no-padding">
+                                        <div class="gallery">
+                                            <div class="gallery-content">
+                                                <div class="gallery-content-center">
+                                                    @foreach($trick->images as $image)
+                                                        <div class="isotope-box" id="help_image_trick" href="{{asset('storage')}}/{{$image->src}}" data-toggle="lightbox" data-gallery="multiimages" data-title="Bonus symbol"><img src="{{asset('storage')}}/{{$image->src}}" alt="gallery" class="all studio"> </div>
+                                                    @endforeach
 
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <hr>
+                                    <p><strong>Success barometer:</strong></p>
+                                    Has been with {{$trick->procent}}% of the members succeeded .
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-gold" id="help_progress" role="progressbar" aria-valuenow="{{$trick->procent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$trick->procent}}%">
+                                            <span class="avgsuccess">{{$trick->procent}}% Success</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p><strong>Average winnings amount:</strong></p>
+                                    <p class="avgwin" id="help_avgwin">{{$trick->amount}}€</p>
+                                    <hr>
+                                    <p><strong>Use trick now:</strong></p><button type="button" class="casino-link1 btn btn-info btn-lg " id="help_link_button" uid="15959" tick="53" url="{{$trick->link}}" data-id="{{$trick->id}}"><i class="fa fa-angle-double-right"></i> Trick <span id="apply_count">{{$trick->apply}}</span> apply</button><button type="button" class="trick-review btn btn-info btn-lg pull-right " id="help_review_button" uid="15959" tick="{{$trick->id}}" data-trick="{{$trick->id}}"   ><i class="fa fa-thumbs-up"></i> Rate trick</button></div>
+                                <div><span id="message"></span> </div>
+                                <!-- /.box-body -->
                             </div>
-                            <hr>
-                            <p><strong>Success barometer:</strong></p>
-                            Has been with {{$trick->procent}}% of the members succeeded .
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-gold" id="help_progress" role="progressbar" aria-valuenow="{{$trick->procent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$trick->procent}}%">
-                                    <span class="avgsuccess">{{$trick->procent}}% Success</span>
-                                </div>
-                            </div>
-                            <hr>
-                            <p><strong>Average winnings amount:</strong></p>
-                            <p class="avgwin" id="help_avgwin">{{$trick->amount}}€</p>
-                            <hr>
-                            <p><strong>Use trick now:</strong></p><button type="button" class="casino-link1 btn btn-info btn-lg " id="help_link_button" uid="15959" tick="53" url="{{$trick->link}}" data-id="{{$trick->id}}"><i class="fa fa-angle-double-right"></i> Trick <span id="apply_count">{{$trick->apply}}</span> apply</button><button type="button" class="trick-review btn btn-info btn-lg pull-right " id="help_review_button" uid="15959" tick="53" data-trick="{{$trick->id}}"   ><i class="fa fa-thumbs-up"></i> Rate trick</button></div>
-                            <div><span id="message"></span> </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                            <!-- /.box -->
+                        </div>
                     @endforeach
                 @endif
-            	</div>
+            </div>
         </section>
         <!-- /.content -->
     </div>
@@ -132,6 +132,24 @@
 
             var trickInterval = setInterval(create_matrix, speed);
         };
+        load_tricks()
+        function load_tricks(){
+            var $tricks = $(".tricks");
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: url+"/user/user_tricks_load",
+                data: {},
+                success: function(msg) {
+                    $tricks.html('');
+                    $tricks.html(msg.html);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $tricks.html('Timeout loading from the server....');
+                }
+            });
+        }
+
 
         $(document).on("click",".trick-review",function() {
             var trickid = $(this).attr('tick');
@@ -139,7 +157,8 @@
         });
 
         function review_trick(tick){
-            // var userid = '16471';
+            var userid = '{{Auth::id()}}'
+
             var trickid = tick;
 
             var nextavgwin = $("[tick="+trickid+"]").parent().parent().parent().next().find('.avgwin').text();
@@ -173,8 +192,8 @@
                         $.ajax({
                             type: "POST",
                             cache: false,
-                            url:url+"/ajax/user_report_wins",
-                            data: {userid: userid, trickid: trickid, win: result.value},
+                            url:url+"/user/user_report_wins",
+                            data: {user_id: userid, trick_id: trickid, win: result.value},
                             success: function(msg) {
                                 swal({
                                     html: true,
@@ -225,11 +244,11 @@
                                                             swal.showLoading()
                                                         }
                                                     })
-
+                                                    console.log(e.target.result)
                                                     $.ajax({
                                                         type: "POST",
                                                         cache: false,
-                                                        url: url+"/ajax/user_win_image_post",
+                                                        url: url+"/user/user_win_image_post",
                                                         data: {user_id: userid, trick_id: trickid, file: e.target.result},
                                                         success: function(msg) {
                                                             swal.close();
@@ -245,8 +264,8 @@
                                                                 $.ajax({
                                                                     type: "POST",
                                                                     cache: false,
-                                                                    url: url+"/ajax/user_activate_trick",
-                                                                    data: {userid: userid, trickid: trickid},
+                                                                    url: url+"/user/user_activate_trick",
+                                                                    data: {user_id: userid, trick_id: trickid},
                                                                     success: function(msg) {
                                                                         load_tricks();
                                                                     }
@@ -278,8 +297,8 @@
                                         $.ajax({
                                             type: "POST",
                                             cache: false,
-                                            url: url+"/ajax/user_activate_trick",
-                                            data: {userid: userid, trickid: trickid},
+                                            url: url+"/user/user_activate_trick",
+                                            data: {user_id: userid, trick_id: trickid},
                                             success: function(msg) {
                                                 load_tricks();
                                             }
@@ -338,8 +357,8 @@
                                         $.ajax({
                                             type: "POST",
                                             cache: false,
-                                            url: url+"/ajax/user_activate_trick",
-                                            data: {userid: userid, trickid: trickid},
+                                            url: url+"/user/user_activate_trick",
+                                            data: {user_id: userid, trick_id: trickid},
                                             success: function(msg) {
                                                 load_tricks();
                                             }
@@ -382,8 +401,8 @@
                                                     $.ajax({
                                                         type: "POST",
                                                         cache: false,
-                                                        url: url+"/ajax/user_trick_refund",
-                                                        data: {userid: userid, trickid: trickid},
+                                                        url: url+"/user/user_trick_refund",
+                                                        data: {user_id: userid, trick_id: trickid},
                                                         success: function(msg) {
                                                             swal({
                                                                 html: true,
@@ -397,8 +416,8 @@
                                                                 $.ajax({
                                                                     type: "POST",
                                                                     cache: false,
-                                                                    url: url+"/ajax/user_activate_trick",
-                                                                    data: {userid: userid, trickid: trickid},
+                                                                    url: url+"/user/user_activate_trick",
+                                                                    data: {user_id: userid, trick_id: trickid},
                                                                     success: function(msg) {
                                                                         load_tricks();
                                                                     }
@@ -425,7 +444,7 @@
                                                             type: "POST",
                                                             cache: false,
                                                             url: url+"/ajax/user_activate_trick",
-                                                            data: {userid: userid, trickid: trickid},
+                                                            data: {user_id: userid, trick_id: trickid},
                                                             success: function(msg) {
                                                                 load_tricks();
                                                             }
@@ -452,8 +471,8 @@
                                                 $.ajax({
                                                     type: "POST",
                                                     cache: false,
-                                                    url: url+"/ajax/user_activate_trick",
-                                                    data: {userid: userid, trickid: trickid},
+                                                    url: url+"/user/user_activate_trick",
+                                                    data: {user_id: userid, trick_id: trickid},
                                                     success: function(msg) {
                                                         load_tricks();
                                                     }
@@ -484,8 +503,8 @@
                                 $.ajax({
                                     type: "POST",
                                     cache: false,
-                                    url: url+"/ajax/user_activate_trick",
-                                    data: {userid: userid, trickid: trickid},
+                                    url: url+"/user/user_activate_trick",
+                                    data: {user_id: userid, trick_id: trickid},
                                     success: function(msg) {
                                         load_tricks();
                                     }
@@ -559,7 +578,7 @@
                 url: "user/update_apply",
                 data: {id: id},
                 success: function(msg) {
-                $('#apply_count').html(parseInt($('#apply_count').html())+1)
+                    $('#apply_count').html(parseInt($('#apply_count').html())+1)
                 }
             });
             if (win) {
@@ -615,5 +634,5 @@
 
 
     </script>
-    @endpush
+@endpush
 

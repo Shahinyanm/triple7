@@ -11,6 +11,10 @@ class ForumTableSeeder extends Seeder
      */
     public function run()
     {
+
+
+
+
         $forums = [
             [
                 'title' => 'Questions and answers about the tricks',
@@ -35,6 +39,12 @@ class ForumTableSeeder extends Seeder
             ],
 
         ];
+
+        
+
+
+
+
         foreach ($forums as $forum){
             DB::table('forums')->insert($forum);
         }
