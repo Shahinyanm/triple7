@@ -147,6 +147,7 @@
             myUploadInput = $("input[type=file]").uploadPreviewer();
 
         });
+
 </script>
 
 @endpush

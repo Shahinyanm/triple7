@@ -113,8 +113,6 @@ class UserController extends Controller
             $data =array('message'=>'successful');
         }
 
-
-
         return Response()->json(array($data));
    }
 

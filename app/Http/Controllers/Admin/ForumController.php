@@ -45,6 +45,7 @@ class ForumController extends Controller
      */
     public function store(ForumRequest $request)
     {
+
        Forum::create([
             'title' => $request->title,
             'text' => $request->text,

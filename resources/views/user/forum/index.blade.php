@@ -28,7 +28,7 @@
 			        					<span class="mr-10">
 			        						@lang('text.topics'):
 			        						{{$forum->topics_count}}						</span>
-                                        <span>@lang('text.posts')::
+                                        <span>@lang('text.post')::
 			        						{{$forum->posts_count}}							</span>
                                     </div>
                                 </div>
@@ -45,3 +45,4 @@
         <!-- /.content -->
     </div>
 @endsection
+

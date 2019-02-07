@@ -51,5 +51,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::post('user/set_rating', 'UserController@rating');
 
 
+        Route::post('user/user_win_image_post', 'Ajax\UserController@user_win_image_post');
+        Route::post('user/user_report_wins', 'Ajax\UserController@user_report_wins');
+        Route::post('user/user_activate_trick', 'Ajax\UserController@user_report_wins');
+
+
     });
 });

@@ -19,4 +19,12 @@ class Trick extends Model
     {
         return $this->hasMany('App\TrickImage');
     }
+
+    public function setLinkAttribute($value){
+        if (!preg_match("~^(?:f|ht)tps?://~i", $value)) {
+            $this->attributes['link'] = "http://" . $value;
+        }
+
+
+    }
 }
