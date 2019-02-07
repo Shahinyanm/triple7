@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
+use App\Services\ForumService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ForumRequest;
 use App\Forum;
@@ -11,6 +12,7 @@ use App\Post;
 
 class ForumController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +20,14 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forums = Forum::with('topics')->get()->map(function($forum){
+        $forums = Forum::with('topics')->get()->map(function ($forum) {
+
             $forum->posts_count = Post::whereIn('topic_id', $forum->topics->pluck('id')->toArray())->count();
             $forum->topics_count = $forum->topics->count();
             return $forum;
         });
+
+
 
         return view('admin.forum.index',compact('forums'));
     }
