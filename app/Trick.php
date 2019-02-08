@@ -23,7 +23,10 @@ class Trick extends Model
     public function setLinkAttribute($value){
         if (!preg_match("~^(?:f|ht)tps?://~i", $value)) {
             $this->attributes['link'] = "http://" . $value;
+        }else{
+            $this->attributes['link'] =$value;
         }
+
     }
 
     public function activate (){
