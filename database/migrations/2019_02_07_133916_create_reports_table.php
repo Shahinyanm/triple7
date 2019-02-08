@@ -17,11 +17,13 @@ class CreateReportsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->integer('trick_id')->unsigned()->index()->nullable();
+            $table->integer('winning_id')->unsigned()->index()->nullable();
 
             $table->string('wins');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('trick_id')->references('id')->on('tricks')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('winning_id')->references('id')->on('winnings')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

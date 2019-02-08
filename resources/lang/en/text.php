@@ -29,7 +29,7 @@ return [
     'user_title' => 'Title',
     'mr' => 'Mr',
     'ms' => 'Ms',
-    'first_name' => 'First_name',
+    'first_name' => 'First name',
     'last_name' => 'Last Name',
     'password' => 'Password',
     'email' => 'E-mail',

@@ -196,6 +196,7 @@
                             url:url+"/user/user_report_wins",
                             data: {user_id: userid, trick_id: trickid, win: result.value},
                             success: function(msg) {
+                               var report_id = msg.msg
                                 swal({
                                     html: true,
                                     html: '',
@@ -250,7 +251,7 @@
                                                         type: "POST",
                                                         cache: false,
                                                         url: url+"/user/user_win_image_post",
-                                                        data: {user_id: userid, trick_id: trickid, file: e.target.result},
+                                                        data: {user_id: userid, trick_id: trickid, file: e.target.result,report_id:report_id},
                                                         success: function(msg) {
                                                             swal.close();
                                                             swal({
@@ -397,62 +398,109 @@
                                                 allowOutsideClick: false,
                                                 showCloseButton: 'true',
                                             }).then((result) => {
-                                                if (result.value) {
 
-                                                    $.ajax({
-                                                        type: "POST",
-                                                        cache: false,
-                                                        url: url+"/user/user_trick_refund",
-                                                        data: {user_id: userid, trick_id: trickid},
-                                                        success: function(msg) {
+                                                (async function getImage () {
+                                                    const {value: file} = await swal({
+                                                        html: true,
+                                                        html: '',
+                                                        title: 'Select screenshot',
+                                                        confirmButtonColor: '#55b24b',
+                                                        confirmButtonText: 'Continue',
+                                                        input: 'file',
+                                                        inputAttributes: {
+                                                            'accept': 'image/*',
+                                                            'aria-label': 'Select screenshot'
+                                                        }
+                                                    })
+
+                                                    if (file) {
+                                                        const reader = new FileReader
+                                                        reader.onload = (e) => {
                                                             swal({
                                                                 html: true,
-                                                                type: 'success',
-                                                                title: 'Refund requested!',
-                                                                html: 'We will not be checking your refund manually. You can see the status of your refund in the overview. You will also be informed about the status by email. So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With '+nextavgsuccess+' the members this works and the average winnings are approx. '+nextavgwin+'.',
+                                                                html: '',
+                                                                title: 'Your selected image',
                                                                 confirmButtonColor: '#55b24b',
-                                                                confirmButtonText: 'Complete the trick',
+                                                                confirmButtonText: 'Continue',
+                                                                imageUrl: e.target.result,
+                                                                imageAlt: 'Your selected image',
                                                                 allowOutsideClick: false,
                                                             }).then((result) => {if (result.value) {
-                                                                $.ajax({
-                                                                    type: "POST",
-                                                                    cache: false,
-                                                                    url: url+"/user/user_activate_trick",
-                                                                    data: {user_id: userid, trick_id: trickid},
-                                                                    success: function(msg) {
-                                                                        load_tricks();
+
+                                                                swal({
+                                                                    html: true,
+                                                                    html: '',
+                                                                    title: 'The screenshot is being uploaded...',
+                                                                    allowOutsideClick: false,
+                                                                    onOpen: () => {
+                                                                        swal.showLoading()
                                                                     }
-                                                                });
-                                                            }})
-                                                        }
-                                                    });
+                                                                })
 
-                                                } else if (
-                                                    // Read more about handling dismissals
-                                                    result.dismiss === swal.DismissReason.cancel
-                                                ) {
+                                                                if (result.value) {
 
-                                                    swal({
-                                                        html: true,
-                                                        type: 'success',
-                                                        title: 'Okay...',
-                                                        html: 'so let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With '+nextavgsuccess+' the members this works and the average winnings are approx '+nextavgwin+'.',
-                                                        confirmButtonColor: '#55b24b',
-                                                        confirmButtonText: 'Complete the trick',
-                                                        allowOutsideClick: false,
-                                                    }).then((result) => {if (result.value) {
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            cache: false,
-                                                            url: url+"/ajax/user_activate_trick",
-                                                            data: {user_id: userid, trick_id: trickid},
-                                                            success: function(msg) {
-                                                                load_tricks();
+                                                                    $.ajax({
+                                                                        type: "POST",
+                                                                        cache: false,
+                                                                        url: url+"/user/user_trick_refund",
+                                                                        data: {user_id: userid, trick_id: trickid,file:e.target.result},
+                                                                        success: function(msg) {
+                                                                            swal({
+                                                                                html: true,
+                                                                                type: 'success',
+                                                                                title: 'Refund requested!',
+                                                                                html: 'We will not be checking your refund manually. You can see the status of your refund in the overview. You will also be informed about the status by email. So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With '+nextavgsuccess+' the members this works and the average winnings are approx. '+nextavgwin+'.',
+                                                                                confirmButtonColor: '#55b24b',
+                                                                                confirmButtonText: 'Complete the trick',
+                                                                                allowOutsideClick: false,
+                                                                            }).then((result) => {if (result.value) {
+                                                                                $.ajax({
+                                                                                    type: "POST",
+                                                                                    cache: false,
+                                                                                    url: url+"/user/user_activate_trick",
+                                                                                    data: {user_id: userid, trick_id: trickid},
+                                                                                    success: function(msg) {
+                                                                                        load_tricks();
+                                                                                    }
+                                                                                });
+                                                                            }})
+                                                                        }
+                                                                    });
+
+                                                                } else if (
+                                                                    // Read more about handling dismissals
+                                                                    result.dismiss === swal.DismissReason.cancel
+                                                                ) {
+
+                                                                    swal({
+                                                                        html: true,
+                                                                        type: 'success',
+                                                                        title: 'Okay...',
+                                                                        html: 'so let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With '+nextavgsuccess+' the members this works and the average winnings are approx '+nextavgwin+'.',
+                                                                        confirmButtonColor: '#55b24b',
+                                                                        confirmButtonText: 'Complete the trick',
+                                                                        allowOutsideClick: false,
+                                                                    }).then((result) => {if (result.value) {
+                                                                        $.ajax({
+                                                                            type: "POST",
+                                                                            cache: false,
+                                                                            url: url+"/ajax/user_activate_trick",
+                                                                            data: {user_id: userid, trick_id: trickid},
+                                                                            success: function(msg) {
+                                                                                load_tricks();
+                                                                            }
+                                                                        });
+                                                                    }})
+
+                                                                }
                                                             }
-                                                        });
-                                                    }})
+                                                            })
+                                                        }
+                                                        reader.readAsDataURL(file)
+                                                    }
 
-                                                }
+                                                })()
+
                                             })
 
                                         } else if (

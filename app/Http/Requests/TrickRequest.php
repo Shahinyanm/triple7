@@ -29,9 +29,10 @@ class TrickRequest extends FormRequest
             'description2'           => 'required',
             'description3'           => 'required',
             'description4'           => 'required',
-//            'images'                 => 'required|mimes:jpeg,bmp,png',
-            'amount'                => 'required',
-            'link'               => 'required',
+            'images'                 => 'required',
+            'images.*.file'          => ' mimes:jpeg,jpg,png ',
+            'amount'                 => 'required|max:10',
+            'link'                   => 'required',
 
         ];
     }

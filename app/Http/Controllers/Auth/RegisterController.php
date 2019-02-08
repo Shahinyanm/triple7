@@ -54,9 +54,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+//            'last_name' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password_confirmation'     =>  ['sometimes'],
         ]);
     }
 
@@ -68,17 +70,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $password = str_random(8);
+
 
         $user = User::create([
                 'first_name'        => $data['first_name'],
-                'last_name'         => $data['last_name'],
+//                'last_name'         => $data['last_name'],
                 'title'             => $data['title'],
                 'email'             => $data['email'],
-                'password'          => Hash::make($password),
+                'password'          => $data['password'],
             ]);
 
-          $data['password'] = $password;
+//          $data['password'] = $password;
 
         SendRegisterMail::dispatch($data);
 //        Mail::to($user)->queue(new RegisterMail($user));

@@ -384,40 +384,50 @@
 
                 Language: &nbsp;
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img src="{{asset('images/admin/flags/flag-uk.png')}}" width="16" height="16" />
+                    <img src="{{asset('images/admin/flags/'.app()->getLocale().'.png')}}" width="16" height="16" />
                 </a>
 
+                {{--<ul class="dropdown-menu pull-right">--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<img src="{{asset('images/admin/flags/flag-de.png')}}" width="16" height="16" />--}}
+                            {{--<span>Deutsch</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="active">--}}
+                        {{--<a href="#">--}}
+                            {{--<img src="{{asset('images/admin/flags/en.png')}}" width="16" height="16" />--}}
+                            {{--<span>English</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<img src="{{asset('images/admin/flags/flag-fr.png')}}" width="16" height="16" />--}}
+                            {{--<span>François</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<img src="{{asset('images/admin/flags/flag-al.png')}}" width="16" height="16" />--}}
+                            {{--<span>Shqip</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<img src="{{asset('images/admin/flags/flag-es.png')}}" width="16" height="16" />--}}
+                            {{--<span>Español</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
                 <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="#">
-                            <img src="{{asset('images/admin/flags/flag-de.png')}}" width="16" height="16" />
-                            <span>Deutsch</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#">
-                            <img src="{{asset('images/admin/flags/flag-uk.png')}}" width="16" height="16" />
-                            <span>English</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{asset('images/admin/flags/flag-fr.png')}}" width="16" height="16" />
-                            <span>François</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{asset('images/admin/flags/flag-al.png')}}" width="16" height="16" />
-                            <span>Shqip</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{asset('images/admin/flags/flag-es.png')}}" width="16" height="16" />
-                            <span>Español</span>
-                        </a>
-                    </li>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <img src="{{asset('images/admin/flags/'.$localeCode.'.png')}}" width="16" height="16" />  {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
 
             </li>

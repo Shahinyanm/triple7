@@ -60,7 +60,7 @@
                                 <label for="field-1" class="col-sm-3 control-label">Image Field</label>
 
                                 <div class="col-sm-5">
-                                    <img src="{{asset('storage')}}/{{$winning->image}}" alt="" style="width:300px; height: 200px;">
+                                    <img src="{{asset('storage/image/winnings')}}/{{$winning->image}}" alt="" style="width:300px; height: 200px;">
                                 </div>
                             </div>
 

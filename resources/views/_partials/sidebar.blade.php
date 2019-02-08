@@ -48,6 +48,16 @@
                <li>
                    <a href="{{route('admin.tricks.index')}}"> Tricks</a>
                 </li>
+                <li>
+                    <a href="{{route('admin.refunds')}}"> Refunds</a>
+                </li>
+
+                <li>
+                    <a href="{{route('admin.reports')}}"> Wins Reports</a>
+                </li>
+                    {{--<li>--}}
+                        {{--<a href="{{route('admin.reports.index')}}"> Tricks</a>--}}
+                    {{--</li>--}}
 
             </ul>
         </li>

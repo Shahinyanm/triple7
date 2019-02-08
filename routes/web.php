@@ -15,19 +15,32 @@ Route::get('admin', [
     'as' => 'admin'
 ])->middleware('admin');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
-    Route::resource('winnings', 'Admin\WinningController');
-    Route::resource('forums', 'Admin\ForumController');
-    Route::resource('topics', 'Admin\TopicController');
-    Route::resource('posts', 'Admin\PostController');
-    Route::resource('tricks', 'Admin\TrickController');
-    Route::resource('users', 'Admin\UserController');
-    Route::get('images/{id}', 'Admin\TrickImageController@show')->name('images');
-    Route::Delete('destroy/{id}', 'Admin\TrickImageController@destroy')->name('destroy');
-});
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+        Route::resource('winnings', 'Admin\WinningController');
+        Route::resource('forums', 'Admin\ForumController');
+        Route::resource('topics', 'Admin\TopicController');
+        Route::resource('posts', 'Admin\PostController');
+        Route::resource('tricks', 'Admin\TrickController');
+        Route::resource('users', 'Admin\UserController');
+        Route::get('images/{id}', 'Admin\TrickImageController@show')->name('images');
+        Route::Delete('destroy/{id}', 'Admin\TrickImageController@destroy')->name('destroy');
+
+
+        Route::get('refunds', 'Admin\RefundController@index')->name('refunds');
+        Route::Put('refunds/approve/{id}', 'Admin\RefundController@approve')->name('refunds.approve');
+        Route::Put('refunds/disapprove/{id}', 'Admin\RefundController@disapprove')->name('refunds.disapprove');
+        Route::delete('refunds/destroy/{id}', 'Admin\RefundController@destroy')->name('refunds.destroy');
+
+
+        Route::get('reports', 'Admin\ReportController@index')->name('reports');
+        Route::delete('reports/destroy/{id}', 'Admin\ReportController@destroy')->name('reports.destroy');
+
+    });
+
     Auth::routes();
 
     Route::get('/', 'IndexController@index')->name('index');

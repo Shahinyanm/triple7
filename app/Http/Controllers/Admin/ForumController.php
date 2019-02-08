@@ -50,7 +50,7 @@ class ForumController extends Controller
      */
     public function store(ForumRequest $request)
     {
-
+//            dd($request->all());
        Forum::create([
             'title' => $request->title,
             'text' => $request->text,
@@ -82,6 +82,9 @@ class ForumController extends Controller
     public function edit($id)
     {
         $forum = Forum::with('topics')->find($id);
+
+        $forum->newTitle = json_decode($forum->getOriginal('title'));
+        $forum->newText = json_decode($forum->getOriginal('text'));
 
         return view('admin.forum.edit', compact('forum'));
 

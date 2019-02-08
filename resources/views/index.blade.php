@@ -120,13 +120,21 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="last_name" placeholder="@lang('text.last_name')" required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
                             <input type="email" class="form-control-input" id="email" placeholder="@lang('text.email')" required>
                             <div class="help-block with-errors"></div>
                         </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="password" placeholder="@lang('text.password')" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="password_confirmation" placeholder="@lang('text.re_password')" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" class="form-control-input" id="last_name" placeholder="@lang('text.last_name')" required>--}}
+                            {{--<div class="help-block with-errors"></div>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <button type="submit" class="form-control-submit-button">@lang('text.join')</button>
@@ -456,9 +464,11 @@
 
         var data  = {
             first_name: $("#first_name").val(),
-            last_name: $("#last_name").val(),
+            // last_name: $("#last_name").val(),
             email: $("#email").val(),
             title: $("#title").val(),
+            password: $("#password").val(),
+            password_confirmation: $("#password_confirmation").val(),
         };
 
         // console.log(data);
@@ -489,10 +499,19 @@
                 async: true,
                 data: data,
                 success: function(response) {
+
                     formSuccess(response.token);
+                },
+                error: function (error) {
+                    if(error.responseText){
+                        submitMSG(false,'Error Password')
+                    }
+
+
                 }
             })
         } else {
+
             countryError();
         }
 

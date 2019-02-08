@@ -19,7 +19,7 @@
                 </div>
                 @if($errors->all())
                     @foreach($errors->all() as $error)
-                        <span class="danger">{{$errors}}</span>
+                        <span class="badge badge-danger">{{$errors}}</span>
                     @endforeach
                 @endif
                 <div class="panel-body">
@@ -27,16 +27,32 @@
                     <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.forums.update', $forum->id)}}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Forum Name</label>
 
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <select class="form-control" name="language" id="languages">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <option value="{{$localeCode}}" @if($localeCode==='en') selected @endif>{{ $properties['native'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                         @if($forum)
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Forum  Name</label>
 
                                 <div class="col-sm-5">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control" placeholder="Forum Name" name ='title' value="{{$forum->title}}">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <input type="text" class="form-control lang " placeholder="Forum Name"
+                                                   name='title[{{$localeCode}}]' id="title{{$localeCode}}" style="display:none" value="{{$forum->newTitle->$localeCode}}">
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +63,10 @@
                                 <div class="col-sm-5">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <textarea name="text" id="" cols="82" rows="5">{{$forum->text}}</textarea>
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <textarea name="text[{{$localeCode}}]" id="text{{$localeCode}}" cols="82" rows="5"
+                                                      class="lang" style="display:none">{{$forum->newText->$localeCode}}</textarea>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -74,3 +93,36 @@
 
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(function () {
+            checkLanguage();
+
+            $('#languages').on('change', function () {
+                var id = $(this).val();
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'title' + id || item.id == 'text' + id) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+
+                })
+
+            })
+            function checkLanguage() {
+                var id = $('#languages').val()
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'title' + id || item.id == 'text' + id) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+                })
+            }
+        });
+
+
+    </script>
+@endpush

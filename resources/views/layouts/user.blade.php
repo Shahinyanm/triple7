@@ -357,16 +357,19 @@
         $('#languages').data('selected-country', pathArray[1].toUpperCase())
     }
 
-    var current = '{{Route::current()->uri}}';
+    var current = '{{Request::getRequestUri()}}';
+    var locale =current.replace('/','').split('/');
 
-    var locale =current.split('/');
-    console.log(lang)
+
+    var locale = locale.filter(function (el) {
+        return el != null;
+    });
+
     if(locale[0] !== lang){
 
         locale.unshift(lang);
-    }
-    console.log(lang)
 
+    }
 
     $('#languages').flagStrap({
         countries: {
@@ -388,14 +391,14 @@
 
             locale[0] = value.toLowerCase()
             locale =locale.join('/');
-            console.log(locale)
+
             if(value === "EU"){
                 locale=locale.split('/');
                 locale[0] ='en';
                 locale=locale.join('/');
-                console.log(locale)
                 window.open("/"+locale,"_self")
             } else {
+                // console.log(locale)
                 window.open("/"+locale ,"_self");
             }
 

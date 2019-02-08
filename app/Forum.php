@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Forum extends Model
 {
     protected $fillable = ['title','text'];
+    public $withJson = true;
+
     protected $casts = [
         'title' => 'array',
         'text' => 'array',
@@ -14,8 +16,14 @@ class Forum extends Model
 
     public function getTitleAttribute($value)
     {
-        $lang = app()->getLocale();
-        return json_decode($value)->$lang;
+        $response = $value;
+
+        if($this->withJson) {
+            $lang = app()->getLocale();
+            $response = json_decode($value)->$lang;
+        }
+
+        return $response;
     }
 
     public function getTextAttribute($value)

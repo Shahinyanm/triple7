@@ -19,7 +19,7 @@
                 </div>
                 @if($errors->all())
                     @foreach($errors->all() as $error)
-                        <span class="danger">{{$errors}}</span>
+                        <span class="badge badge-danger">{{ $error}}</span>
                     @endforeach
                 @endif
                 <div class="panel-body">
