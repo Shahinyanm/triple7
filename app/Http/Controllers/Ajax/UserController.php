@@ -101,7 +101,15 @@ class UserController extends Controller
 
     public function user_tricks_load()
     {
-        $tricks = Trick::with('activate')->get()->map(function($trick){
+
+
+        $tricks = Trick::with('rating', 'images','activate')->get()->map(function($trick){
+            if ($trick->rating->count()) {
+                $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
+            } else {
+                $trick->procent = 0;
+            }
+
             if($trick->activate()->where('user_id', Auth::id())->first()){
 
             $trick->user_activated = true;

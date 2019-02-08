@@ -4,10 +4,11 @@
             @foreach($tricks as $trick)
                 <div class="col-xl-6 col-12">
                     <div class="box">
-                        @if($trick->user_activated)
-                            <div class="ribbon ribbon-bookmark ribbon-right bg-info" id="help_open_trick">@if($trick->activated == 1) Active Trick @else <span class="badge badge-danger"> Deactive Trick</span> @endif</div>
+
+                        @if($trick->user_activated == 1)<div class="ribbon ribbon-bookmark ribbon-right bg-success" id="help_open_trick">Complited </div>
+                            @else
+                            <div class="ribbon ribbon-bookmark ribbon-right bg-info" id="help_open_trick">  Active Trick</div>
                         @endif
-                        <div class="ribbon ribbon-bookmark ribbon-right bg-info" id="help_open_trick">@if($trick->activated == 1) Active Trick @else <span class="badge badge-danger"> Deactive Trick</span> @endif</div>
                         <div class="box-header with-border" id="help_title_trick">
                             <h3 class="box-title ">Trick {{$trick->id}}</h3>
                         </div>
