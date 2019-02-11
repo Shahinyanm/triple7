@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TrickRequest;
 use App\Http\Requests\TrickUpdateRequest;
+use App\Traits\GeoCode;
 use App\Trick;
 use App\TrickRating;
 use App\TrickImage;
 use Image;
 use Storage;
+use GeoIP;
 
 class TrickController extends Controller
 {
+    use GeoCode;
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +25,8 @@ class TrickController extends Controller
 //    yes *100/yndhanur
     public function index()
     {
+
+
         $tricks = Trick::with('rating','images')->get()->map(function($trick){
             if($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();

@@ -23,6 +23,7 @@ class ForumController extends Controller
             $forum->topics_count = $forum->topics->count();
             return $forum;
         });
+
         return view('user.forum.index',compact('forums'));
     }
 
@@ -54,8 +55,10 @@ class ForumController extends Controller
     public function show($id)
     {
         $forum = Forum::with(['topics' => function($query){
+                $query->where('code',app()->getLocale());
             return $query->with('user');
-        }])->findOrFail($id);
+        }])->find($id);
+
 
 
         return view('user.forum.forum-topics',compact('forum'));

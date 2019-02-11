@@ -38,7 +38,7 @@
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
                     <td class="text-center">{{$post->user->first_name}}  {{$post->user->last_name}}</td>
                     <td class="text-center">{{$post->text}}</td>
-                    <td class="text-center"><a href="{{route('admin.topics.index')}}"> {{$post->topic_name}} </a></td>
+                    <td class="text-center"><a href="{{route('admin.topics.index')}}"> {{$post->topic->title}} </a></td>
                     <td class="text-center">{{$post->forum_name}}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y h:i:s')}}</td>
 

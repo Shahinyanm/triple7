@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
-
+use App\Traits\GeoCode;
+use Session;
 
 class LoginController extends Controller
 {
@@ -21,8 +23,10 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    use GeoCode;
     use AuthenticatesUsers;
+
+
 
     /**
      * Where to redirect users after login.
@@ -44,13 +48,20 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-//        $locale = app()->getLocale();/
 
         if ($user->isAdmin == 1){
             $this->redirectTo = route('admin');
         }else{
+            if ($this->localeCode() !== 'en') {
+                App::setLocale($this->localeCode());
+                Session::put('locale', $this->localeCode());
+                \LaravelLocalization::setLocale($this->localeCode());
+//
+                return redirect(App::getLocale().'/home');
+            }
 
             $this->redirectTo = route('home');
+
         }
 
     }

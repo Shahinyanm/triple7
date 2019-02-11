@@ -46,13 +46,18 @@
                             <div class="forum-post">
                                 <div tabindex="-1" class="foruminput">
                                     <div tabindex="-1" class="text-holder">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <input type="hidden" value="@if($topic) {{$topic->id}} @endif" name="topic_id">
+                                            <input type="text" name='text[{{$localeCode}}]' id="text{{$localeCode}}"
+                                                   class="text-input copyable-text selectable-text lang"
+                                                   style="border:none">
+                                        @endforeach
                                         {{--<div class="text-place" style="visibility: visible;"></div>--}}
-                                        <input type="hidden" value="{{$topic->id}}" name="topic_id">
-                                        <input type="text"  id="title" name="text" class="text-input copyable-text selectable-text" style="border:none">
-                                        <div class="text-input copyable-text selectable-text" contenteditable="true" data-tab="1" dir="ltr" spellcheck="true"></div>
+                                            <div class="text-input copyable-text selectable-text" contenteditable="true" data-tab="1" dir="ltr" spellcheck="true"></div>
                                     </div>
                                 </div>
-                                <button type="button" class="text-buton send-post" onClick="if(document.getElementById('title').value != ''){submit();}else {alert('Don\'t send empty message');}" style="background:transparent; border:none"> <span><i class="fa fa-send fa-2x"></i></span></button>
+                                <button type="submit" class="text-buton send-post"><span><i
+                                                class="fa fa-send fa-2x"></i></span></button>
                             </div>
                         </div>
                     </form>
@@ -68,3 +73,42 @@
 
        </script>
 @endsection
+
+
+@push('js')
+    <script>
+
+
+        checkLanguage();
+
+        $('#flagstrap-au2V0ip2').on('change', function () {
+            var id = '{{app()->getLocale()}}';
+            $('.lang').each(function (i, item) {
+                if (item.id == 'text' + id) {
+                    $(item).show()
+                } else {
+                    $(item).hide()
+                }
+
+            })
+
+        })
+
+
+        function checkLanguage() {
+            var id = '{{app()->getLocale()}}'
+
+
+            $('.lang').each(function (i, item) {
+
+                if (item.id == 'text' + id) {
+
+                    $(item).show()
+
+                } else {
+                    $(item).hide()
+                }
+            })
+        }
+    </script>
+@endpush

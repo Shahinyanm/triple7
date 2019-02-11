@@ -8,14 +8,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Topic;
-use App\Post;
+use App\Traits\GeoCode;
+
 
 
 class TopicController extends Controller
 {
+
+    use GeoCode;
+
     public function index()
     {
-
+        //
     }
 
 
@@ -24,7 +28,9 @@ class TopicController extends Controller
 
         $topic = Topic::with(['user','posts' => function($query){
             return $query->with('user');
-        }])->findOrFail($id);
+        }])->where('code',app()->getLocale())->find($id);
+
+
         return view('user.forum.topic.topic-posts',compact('topic'));
     }
 
@@ -34,6 +40,7 @@ class TopicController extends Controller
             'title' => $request->title,
             'forum_id' => $request->forum_id,
             'user_id'   => Auth::id(),
+            'code'      => $this->localeCode(),
         ]);
 
         return redirect()->route('user.forums.show', $request->forum_id);

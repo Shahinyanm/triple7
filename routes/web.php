@@ -10,15 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin', [
-    'uses' => 'Admin\AdminController@index',
-    'as' => 'admin'
-])->middleware('admin');
+
 
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
-
+    Route::get('admin', [
+        'uses' => 'Admin\AdminController@index',
+        'as' => 'admin'
+    ])->middleware('admin');
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
         Route::resource('winnings', 'Admin\WinningController');
         Route::resource('forums', 'Admin\ForumController');

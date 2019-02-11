@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\GeoCode;
 
 class Trick extends Model
 {
+    use GeoCode;
     protected $fillable = [
         'description1','description2','description3','description4','amount','link','activated'
         ];
@@ -59,7 +61,7 @@ class Trick extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = app()->getLocale();
+            $lang = $this->localeCode();
             $response = json_decode($value)->$lang;
         }
 
@@ -71,7 +73,7 @@ class Trick extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = app()->getLocale();
+            $lang = $this->localeCode();
             $response = json_decode($value)->$lang;
         }
 

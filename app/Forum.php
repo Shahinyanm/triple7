@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Language;
+use App\Traits\GeoCode;
 
 class Forum extends Model
 {
+    use GeoCode;
+
     protected $fillable = ['title','text'];
     public $withJson = true;
 
@@ -19,7 +23,7 @@ class Forum extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = app()->getLocale();
+            $lang = $this->localeCode();
             $response = json_decode($value)->$lang;
         }
 
@@ -28,7 +32,7 @@ class Forum extends Model
 
     public function getTextAttribute($value)
     {
-        $lang = app()->getLocale();
+        $lang = $this->localeCode();
         return json_decode($value)->$lang;
     }
 

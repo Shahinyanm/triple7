@@ -7,15 +7,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Traits\GeoCode;
 
 class PostController extends Controller
 {
+    use GeoCode;
+
+
     public function send(PostRequest $request)
     {
         Post::create([
             'text'      => $request->text,
             'user_id'   => Auth::id(),
             'topic_id'  => $request->topic_id,
+            'code'      => $this->localeCode(),
         ]);
 
         return back();

@@ -63,7 +63,7 @@
                                     <hr class="mt-10 mb-10">
                                     <div class="col-xl-12 col-12 no-padding small">
 
-                                        <span>@lang('text.posts'):
+                                        <span>@lang('text.post'):
 			        						{{$topic->posts->count()}}							</span>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
 
         function checkLanguage() {
             var id = '{{app()->getLocale()}}'
-            
+
 
             $('.lang').each(function (i, item) {
 

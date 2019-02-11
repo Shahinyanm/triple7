@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
@@ -14,9 +15,13 @@ use App\Winning;
 use App\TrickRating;
 use App\TrickActivate;
 use DB;
+use Mcamara\LaravelLocalization\LaravelLocalization;
+use App\Traits\GeoCode;
+use Session;
 
 class UserController extends Controller
 {
+    use GeoCode;
     /**
      * Create a new controller instance.
      *
@@ -25,6 +30,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+//        $this->middleware('geo');
 
     }
 
@@ -35,10 +41,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        $tricks = Trick::all();
+
+        $tricks = Trick::with('activate')->get();
+
+        $tricksPartIn = $tricks->map(function($trick){
+           $count =  $trick->activate()->where('user_id', Auth::id())->where('activate','1')->count();
+           return $count;
+        });
+        $unveiled =  Trick::where('activated','!=','1');
+
+
         $activeTricks = Trick::where('activated',1);
 
-        return view('user.index', compact('tricks','activeTricks'));
+
+
+        return view('user.index', compact('tricks','activeTricks','tricksPartIn','unveiled'));
     }
 
     public function tricks()

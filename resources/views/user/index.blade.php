@@ -25,9 +25,9 @@
 
                             <div class="info-box-content">
 				  <span class="info-box-number">
-                      @isset($tricks)
-				        {{$tricks->count()}}
-                        @endisset
+                      @isset($unveiled)
+                          {{$unveiled->count()}}
+                      @endisset
                   </span>
                                 <span class="info-box-text">@lang('text.unveiled_tricks')</span>
                             </div>
@@ -67,8 +67,12 @@
                             <span class="info-box-icon bg-info"><i class="fa fa-gamepad"></i></span>
 
                             <div class="info-box-content">
-				  <span class="info-box-number">
-				  0				  </span>
+                              <span class="info-box-number">
+                      @isset($tricksPartIn)
+
+                                      {{$tricksPartIn[0]}}
+                                  @endisset
+                  </span>
                                 <span class="info-box-text">@lang('text.tricks_taken_part_in')</span>
                             </div>
                             <!-- /.info-box-content -->
@@ -82,7 +86,8 @@
 
             <div class="row">
                 <div class="col-xl-4 col-12">
-                    <div class="box box-inverse box-carousel slide" data-ride="carousel" style="background-color: #212121">
+                    <div class="box box-inverse box-carousel slide" data-ride="carousel"
+                         style="background-color: #212121">
                         <div class="box-header no-border">
                             <span class="fa fa-trophy font-size-30"></span>
                             <div class="box-tools pull-right">
@@ -131,7 +136,8 @@
                         <blockquote class="blockquote blockquote-inverse no-border m-0 py-15">
                             <p class="text-justify">@lang('text.whatsapp_support_text')</p>
                             <div class="text-center">
-                                <a href="https://wa.me/447501980397" target="_blank"><span><i class="fa fa-phone-square"></i> +44 7501 98 03 97</span></a>
+                                <a href="https://wa.me/447501980397" target="_blank"><span><i
+                                                class="fa fa-phone-square"></i> +44 7501 98 03 97</span></a>
                             </div>
                         </blockquote>
                     </div>
@@ -144,7 +150,7 @@
         <!-- /.content -->
     </div>
 
-    @endsection
+@endsection
 
 
 @push('js')
@@ -163,9 +169,9 @@
                     element: ".sidebar-toggle",
                     title: 'Navigation',
                     content: 'Using this symbol you can access the menu on each page.',
-                    onNext: function(){
+                    onNext: function () {
 
-                        if ($(window).width() <= 767){
+                        if ($(window).width() <= 767) {
                             $('[data-toggle="push-menu"]').pushMenu('toggle');
                         }
                     },
@@ -204,9 +210,9 @@
                     element: "#help_logout",
                     title: 'Logout',
                     content: 'You can logout via the menu item Logout.',
-                    onNext: function(){
+                    onNext: function () {
 
-                        if ($(window).width() <= 767){
+                        if ($(window).width() <= 767) {
                             $('[data-toggle="push-menu"]').pushMenu('toggle');
                         }
                     },
@@ -215,9 +221,9 @@
                     element: ".helper",
                     title: 'Support',
                     content: 'Using this symbol you are able to re-start the tour.',
-                    onPrev: function(){
+                    onPrev: function () {
 
-                        if ($(window).width() <= 767){
+                        if ($(window).width() <= 767) {
                             $('[data-toggle="push-menu"]').pushMenu('toggle');
                         }
                     },
@@ -240,7 +246,9 @@
                 {
                     element: "#help_tricks",
                     title: 'Tricks',
-                    content: function(){document.location.href = 'tricks.php?tour=1';},
+                    content: function () {
+                        document.location.href = 'tricks.php?tour=1';
+                    },
                 },
             ],
             container: "body",
@@ -260,8 +268,7 @@
         });
 
 
-
-        function help(){
+        function help() {
             var userid = '15610';
             swal({
                 type: 'question',
@@ -289,21 +296,21 @@
                         cache: false,
                         url: "ajax/user_tour_end.php",
                         data: {userid: userid},
-                        success: function(msg) {
+                        success: function (msg) {
                         }
                     });
                 }
             });
         }
 
-        $(document).on("click",".helper",function() {
+        $(document).on("click", ".helper", function () {
             // Start the tour
             tour.start();
             tour.goTo(0);
             tour.restart();
         });
 
-        $(document).on("click",".deleterefund", function(event) {
+        $(document).on("click", ".deleterefund", function (event) {
             var userid = '15610';
             var refundid = $(this).attr("refundid");
 
@@ -312,14 +319,14 @@
                 cache: false,
                 url: "ajax/user_delete_refund.php",
                 data: {userid: userid, refundid: refundid},
-                success: function(msg) {
-                    $(".deleterefund[refundid='"+refundid+"']").closest('tr').hide();
-                    $(".deleterefund[refundid='"+refundid+"']").closest('tr').next().hide();
+                success: function (msg) {
+                    $(".deleterefund[refundid='" + refundid + "']").closest('tr').hide();
+                    $(".deleterefund[refundid='" + refundid + "']").closest('tr').next().hide();
                 }
             });
         });
 
-        $(document).on("click",".paysafe_get", function(event) {
+        $(document).on("click", ".paysafe_get", function (event) {
             var userid = '15610';
             var campaign = 'Christmas';
 
@@ -328,12 +335,12 @@
                 cache: false,
                 dataType: "json",
                 url: "ajax/user_welcome_offer.php",
-                data: {userid: userid, campaign:campaign},
-                success: function(msg) {
-                    if(msg.status == 'success'){
+                data: {userid: userid, campaign: campaign},
+                success: function (msg) {
+                    if (msg.status == 'success') {
                         $(".paysafecard-content").empty().html(msg.message)
                     } else {
-                        if(msg.message == 'no-paysafecard'){
+                        if (msg.message == 'no-paysafecard') {
                             swal({
                                 type: 'error',
                                 html: true,
@@ -345,7 +352,7 @@
                                 confirmButtonText: 'Ok',
                                 allowOutsideClick: false,
                             })
-                        } else if(msg.message == 'cookie'){
+                        } else if (msg.message == 'cookie') {
                             swal({
                                 type: 'error',
                                 html: true,
@@ -357,7 +364,7 @@
                                 confirmButtonText: 'Ok',
                                 allowOutsideClick: false,
                             })
-                        } else if(msg.message == 'ip-blocked'){
+                        } else if (msg.message == 'ip-blocked') {
                             swal({
                                 type: 'error',
                                 html: true,
@@ -369,7 +376,7 @@
                                 confirmButtonText: 'Ok',
                                 allowOutsideClick: false,
                             })
-                        }  else if(msg.message == 'failure'){
+                        } else if (msg.message == 'failure') {
                             swal({
                                 type: 'error',
                                 html: true,
@@ -387,36 +394,36 @@
             });
         });
 
-        $(document).on("click",".welcome", function(event) {
-            var userid 		= '15610';
-            var campaign 	= 'Christmas';
-            var url			= $(this).attr("dataurl");
-            var casinoid	= $(this).attr("dataid");
+        $(document).on("click", ".welcome", function (event) {
+            var userid = '15610';
+            var campaign = 'Christmas';
+            var url = $(this).attr("dataurl");
+            var casinoid = $(this).attr("dataid");
             window.open(url, '_blank');
 
             $.ajax({
                 type: "POST",
                 cache: false,
                 url: "ajax/user_welcome_track.php",
-                data: {userid: userid, campaign:campaign, url:url, casinoid:casinoid},
-                success: function(msg) {
+                data: {userid: userid, campaign: campaign, url: url, casinoid: casinoid},
+                success: function (msg) {
 
                 }
             });
         });
 
-        $(document).on("click",".send_suggestion", function(event) {
-            var userid 		= '15610';
-            var suggestion 	= $("#text_suggestion").val();
-            var firstname 	= 'Asdadsa';
-            var lastname 	= 'Fdfg';
-            var email	 	= 'fgfg@asd.ru';
+        $(document).on("click", ".send_suggestion", function (event) {
+            var userid = '15610';
+            var suggestion = $("#text_suggestion").val();
+            var firstname = 'Asdadsa';
+            var lastname = 'Fdfg';
+            var email = 'fgfg@asd.ru';
             $.ajax({
                 type: "POST",
                 cache: false,
                 url: "ajax/user_send_suggestion.php",
-                data: {userid: userid, suggestion:suggestion, firstname:firstname, lastname:lastname, email:email},
-                success: function(msg) {
+                data: {userid: userid, suggestion: suggestion, firstname: firstname, lastname: lastname, email: email},
+                success: function (msg) {
                     $(".response_suggestion").empty();
                     $(".response_suggestion").html('<div class="alert alert-success mb-10" role="alert">Dein Vorschlag wurde eingesendet und du nimmst an der Verlosung teil. Vielen Dank!</div>');
                 }

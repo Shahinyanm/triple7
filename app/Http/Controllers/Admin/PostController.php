@@ -26,7 +26,6 @@ class PostController extends Controller
             return $post;
         });
 
-
         return view('admin.post.index', compact('posts'));
     }
 

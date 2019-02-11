@@ -3,15 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\GeoCode;
 
 class Topic extends Model
 {
+    use GeoCode;
     public $withJson = true;
-    protected $fillable = ['title','forum_id','user_id'];
+    protected $fillable = ['title','forum_id','user_id','code'];
 
     protected $casts = [
         'title' => 'array',
     ];
+
+
     public function forum()
     {
         return $this->belongsTo('App\Forum');
@@ -32,7 +36,7 @@ class Topic extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = app()->getLocale();
+                $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
 
