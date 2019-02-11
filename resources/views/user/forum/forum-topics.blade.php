@@ -16,19 +16,25 @@
                     <!-- /.box-header -->
                     <form class="form-group" action="{{route('user.topics.store')}}" method="post">
                         @csrf
-                    <div class="box-body ">
-                        <div class="forum-post">
-                            <div tabindex="-1" class="foruminput">
-                                <div tabindex="-1" class="text-holder">
-                                    {{--<div class="text-place" style="visibility: visible;">Post a new topic</div>--}}
-                                    <input type="hidden" value="{{$forum->id}}" name="forum_id">
-                                    <input type="text" name="title" class="text-input copyable-text selectable-text" style="border:none">
-                                    {{--<div class="text-input copyable-text selectable-text" contenteditable="true" data-tab="1" dir="ltr" spellcheck="true" name="'title"></div>--}}
+
+                        <div class="box-body ">
+                            <div class="forum-post">
+                                <div tabindex="-1" class="foruminput">
+                                    <div tabindex="-1" class="text-holder">
+                                        {{--<div class="text-place" style="visibility: visible;">Post a new topic</div>--}}
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <input type="hidden" value="{{$forum->id}}" name="forum_id">
+                                            <input type="text" name='title[{{$localeCode}}]' id="title{{$localeCode}}"
+                                                   class="text-input copyable-text selectable-text lang"
+                                                   style="border:none">
+                                        @endforeach
+
+                                    </div>
                                 </div>
+                                <button type="submit" class="text-buton send-post"><span><i
+                                                class="fa fa-send fa-2x"></i></span></button>
                             </div>
-                            <button type="submit" class="text-buton send-post"><span><i class="fa fa-send fa-2x"></i></span></button>
                         </div>
-                    </div>
                     </form>
                     <!-- /.box-body -->
                 </div>
@@ -39,7 +45,7 @@
         <section class="content">
             @isset($forum)
 
-            @foreach($forum->topics as $topic)
+                @foreach($forum->topics as $topic)
                     <row>
                         <div class="col-xl-12 col-12">
                             <div class="box">
@@ -51,7 +57,9 @@
                                 <!-- /.box-header -->
                                 <div class="box-body ">
                                     <div class="col-xl-12 col-12 no-padding">{{$topic->text}}</div>
-                                    <div class="col-xl-12 col-12 no-padding">Created on {{ \Carbon\Carbon::parse($topic->created_at)->format('d/m/Y')}} by  {{$topic->user->first_name}} {{$topic->user->last_name}}</div>
+                                    <div class="col-xl-12 col-12 no-padding">Created
+                                        on {{ \Carbon\Carbon::parse($topic->created_at)->format('d/m/Y')}}
+                                        by {{$topic->user->first_name}} {{$topic->user->last_name}}</div>
                                     <hr class="mt-10 mb-10">
                                     <div class="col-xl-12 col-12 no-padding small">
 
@@ -67,8 +75,45 @@
             @endisset
 
 
-
         </section>
         <!-- /.content -->
     </div>
 @endsection
+
+@push('js')
+    <script>
+
+
+        checkLanguage();
+
+        $('#flagstrap-au2V0ip2').on('change', function () {
+            var id = '{{app()->getLocale()}}';
+            $('.lang').each(function (i, item) {
+                if (item.id == 'title' + id) {
+                    $(item).show()
+                } else {
+                    $(item).hide()
+                }
+
+            })
+
+        })
+
+
+        function checkLanguage() {
+            var id = '{{app()->getLocale()}}'
+            
+
+            $('.lang').each(function (i, item) {
+
+                if (item.id == 'title' + id) {
+
+                    $(item).show()
+
+                } else {
+                    $(item).hide()
+                }
+            })
+        }
+    </script>
+@endpush

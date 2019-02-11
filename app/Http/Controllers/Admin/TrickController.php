@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TrickRequest;
+use App\Http\Requests\TrickUpdateRequest;
 use App\Trick;
 use App\TrickRating;
 use App\TrickImage;
@@ -30,6 +31,7 @@ class TrickController extends Controller
 
             return $trick;
         });
+
         return view('admin.trick.index', compact('tricks'));
     }
 
@@ -119,8 +121,11 @@ class TrickController extends Controller
      */
     public function edit($id)
     {
-        $trick = Trick::findOrfail($id);
-
+        $trick = Trick::with('images')->findOrfail($id);
+        $trick->newDescription1 = json_decode($trick->getOriginal('description1'));
+        $trick->newDescription2 = json_decode($trick->getOriginal('description2'));
+        $trick->newDescription3 = json_decode($trick->getOriginal('description3'));
+        $trick->newDescription4 = json_decode($trick->getOriginal('description4'));
         return view('admin.trick.edit', compact('trick'));
     }
 
@@ -131,7 +136,7 @@ class TrickController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TrickRequest $request, $id)
+    public function update(TrickUpdateRequest $request, $id)
     {
         if($request->activated){
             $activated = 1;

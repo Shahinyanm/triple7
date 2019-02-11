@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TrickRequest extends FormRequest
+class TrickUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,11 @@ class TrickRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'description1'           => 'required',
             'description2'           => 'required',
             'description3'           => 'required',
             'description4'           => 'required',
-            'images.*.file'          => ' mimes:jpeg,jpg,png ',
             'amount'                 => 'required|max:10',
             'link'                   => 'required',
 

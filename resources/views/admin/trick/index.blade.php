@@ -38,7 +38,6 @@
                         </div>
                     </td>
 
-
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
                     <td class="text-center">{{$trick->description1}}</td>
                     <td class="text-center">{{$trick->description2}}</td>

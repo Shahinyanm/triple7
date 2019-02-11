@@ -27,7 +27,20 @@
                     <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.tricks.store')}}" enctype="multipart/form-data">
                         {{--@method('PUT')--}}
                         @csrf
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Status</label>
 
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <select class="form-control" name="language" id="languages">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <option value="{{$localeCode}}"
+                                                    @if($localeCode==='en') selected @endif>{{ $properties['native'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Status</label>
 
@@ -44,7 +57,9 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Description 1" name ='description1'>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <input type="text" class="form-control lang" placeholder="Description 1" name='description1[{{$localeCode}}]' id="description1{{$localeCode}}" style="display:none">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -55,7 +70,9 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Description 2" name ='description2'>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <input type="text" class="form-control lang" placeholder="Description 2" name='description2[{{$localeCode}}]' id="description2{{$localeCode}}" style="display:none">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -65,7 +82,9 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Description 3" name ='description3'>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <input type="text" class="form-control lang" placeholder="Description 3" name='description3[{{$localeCode}}]' id="description3{{$localeCode}}" style="display:none">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -75,8 +94,9 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Description 4" name ='description4'>
-                                </div>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <input type="text" class="form-control lang" placeholder="Description 4" name='description4[{{$localeCode}}]' id="description4{{$localeCode}}" style="display:none">
+                                    @endforeach                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -140,7 +160,37 @@
 @endpush
 
 @push('scripts')
+        <script>
+            $(function () {
+                checkLanguage();
 
+                $('#languages').on('change', function () {
+                    var id = $(this).val();
+                    $('.lang').each(function (i, item) {
+                        if (item.id == 'description1' + id || item.id == 'description2' + id || item.id == 'description3' + id || item.id == 'description4' + id) {
+                            $(item).show()
+                        } else {
+                            $(item).hide()
+                        }
+
+                    })
+
+                })
+                function checkLanguage() {
+                    var id = $('#languages').val()
+                    console.log(id)
+                    $('.lang').each(function (i, item) {
+                        if (item.id == 'description1' + id || item.id == 'description2' + id || item.id == 'description3' + id || item.id == 'description4' + id) {
+                            $(item).show()
+                        } else {
+                            $(item).hide()
+                        }
+                    })
+                }
+            });
+
+
+        </script>
 <script src="{{asset('js/admin/jquery.uploadPreviewer.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {

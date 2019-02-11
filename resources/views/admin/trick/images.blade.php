@@ -32,7 +32,7 @@
 
 
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
-                    <td class="text-center col-md-10 "><img src="{{asset('storage')}}/{{$image->src}}" style="width:700px; height: 400px;"></td>
+                    <td class="text-center col-md-10 "><img src="{{asset('storage')}}/{{$image->src}}" style="width:400px; "></td>
 
 
                     <td>

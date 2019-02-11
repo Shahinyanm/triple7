@@ -8,30 +8,7 @@
                 @lang('text.casinocode_news')
             </h1>
         </section>
-        <section class="content aktionen" id="aktionen" style="background: url('{{asset('images/winter.jpg')}}') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
-            <div class="row">
-                <canvas class="snow-canvas" speed="1" interaction="false" size="2" count="80" opacity="0.00001" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" wind-power="0" image="false" width="1680" height="364"></canvas>
-                <canvas class="snow-canvas" speed="2" interaction="true" size="6" count="30" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" opacity="0.00001" wind-power="2" image="false" width="1680" height="364"></canvas>
-                <canvas class="snow-canvas" speed="3" interaction="true" size="25" count="20" wind-power="-4" image="{{asset('assets/vendor_components/snow-plugin/snow.png')}}" width="1680" height="364"></canvas>
-                <div class="col-xl-5 col-12">
-                    <h3>Wir möchten den <span class="gold font-weight-bold">CasinoCode</span> verbessern - Hilf uns doch dabei!</h3>
-                    <p class="text-justify">Der CasinoCode hat eingeschlagen wie eine Bombe. Trotz einiger Schwierigkeiten zum Beginn, blicken wir voller stolz auf eine Community mit mehr als 15.000 Mitgliedern. Gemeinsam könnt ihr euch täglich an Tricks erfreuen und in Casinos gewinnen. Teste unsere aktuellen Casino Tricks. Wie gewohnt kannst du jeden Trick einmalig kostenlos im Wert von 25€ nutzen, denn diesen Betrag erstatten wir dir zurück. Um den CasinoCode noch besser zu machen brauchen wir dich. Hast du Ideen für Veränderungen am Design, Aufbau der Seite, dem gesamten Ablauf oder andere Vorschläge – dann her damit! Es lohnt sich.</p>
-                </div>
-                <div class="col-xl-4 col-xs-12 col-12 text-center">
-                    <h3><span class="gold font-weight-bold">1.</span> Vorschlag einsenden</h3>
-                    <textarea class="form-control" id="text_suggestion" style="max-height: 250px; min-height: 150px;"></textarea>
-                    <br>
-                    <div class="response_suggestion"></div>
-                    <button type="button" class="btn btn-info btn-lg send_suggestion"><i class="fa fa-angle-double-right"></i> Vorschlag einsenden</button>
 
-                </div>
-                <div class="col-xl-3 col-xs-12 col-12 text-center">
-                    <h3><span class="gold font-weight-bold">2.</span> Paysafecard gewinnen</h3>
-                    <p class="text-justify">Unter allen Teilnehmern verlosen wir insgesamt 15 Paysafecards. Eine im Wert von 100€, 4 Stück im Wert von 50€ und 10 Stück im Wert von 25€. Also schnell mitmachen, Vorschlag einsenden und gewinnen. Diese Aktion endet am 05.02.2019. Nur sinnvolle Vorschläge landen in unserem Lostopf 😉. Die Gewinner werden per E-Mail am 06.02.2019 benachrichtigt.</p>
-
-                </div>
-            </div>
-        </section>
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>

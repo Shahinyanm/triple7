@@ -10,6 +10,15 @@ class Trick extends Model
         'description1','description2','description3','description4','amount','link','activated'
         ];
 
+    protected $casts = [
+        'description1' => 'array',
+        'description2' => 'array',
+        'description3' => 'array',
+        'description4' => 'array',
+    ];
+
+    public $withJson = true;
+
     public function rating()
     {
         return $this->hasMany('App\TrickRating');
@@ -29,6 +38,7 @@ class Trick extends Model
 
     }
 
+
     public function activate (){
         return $this->hasMany('App\TrickActivate');
     }
@@ -40,4 +50,57 @@ class Trick extends Model
     public function refund (){
         return $this->hasMany('App\Refund');
     }
+
+
+
+
+    public function getDescription1Attribute($value)
+    {
+        $response = $value;
+
+        if($this->withJson) {
+            $lang = app()->getLocale();
+            $response = json_decode($value)->$lang;
+        }
+
+        return $response;
+    }
+
+    public function getDescription2Attribute($value)
+    {
+        $response = $value;
+
+        if($this->withJson) {
+            $lang = app()->getLocale();
+            $response = json_decode($value)->$lang;
+        }
+
+        return $response;
+    }
+
+    public function getDescription3Attribute($value)
+    {
+        $response = $value;
+
+        if($this->withJson) {
+            $lang = app()->getLocale();
+            $response = json_decode($value)->$lang;
+        }
+
+        return $response;
+    }
+
+    public function getDescription4Attribute($value)
+    {
+        $response = $value;
+
+        if($this->withJson) {
+            $lang = app()->getLocale();
+            $response = json_decode($value)->$lang;
+        }
+
+        return $response;
+    }
+
+
 }
