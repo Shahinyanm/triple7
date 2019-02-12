@@ -110,12 +110,12 @@
 
                         <div class="carousel-inner">
                             @if($lastWinner)
-                                @foreach($lastWinner as $report)
+
                                     <div  class="text-center">
-                                        <p>{{$report->user->first_name}}  reported on {{\Carbon\Carbon::parse($report->created_at)->format('y m d')}} a<br></p><h3 class="gold">Profit of {{$report->wins}} € with the trick {{$report->trick_id}}</h3>
+                                        <p>{{$lastWinner->user->first_name}}  reported on {{\Carbon\Carbon::parse($lastWinner->created_at)->format('y m d')}} a<br></p><h3 class="gold">Profit of {{$lastWinner->wins}} € with the trick {{$lastWinner->trick_id}}</h3>
                                         Congratulations on the win!<p></p>
                                     </div>
-                                @endforeach
+
                             @endif
 
                         </div>

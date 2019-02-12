@@ -50,13 +50,9 @@ class UserController extends Controller
             $count = $trick->activate()->where('user_id', Auth::id())->where('activate', '1')->count();
             return $count;
         });
-        $lastWinner = Report::with('users','tricks','winnings')->where('created_at', '>=', \Carbon\Carbon::today()->toDateString())->get()->map(function($report){
-            $report->user = User::findOrfail($report->user_id);
-            $report->trick = Trick::findOrfail($report->trick_id);
-            $report->winning = Winning::findOrFail($report->winning_id);
-            return $report;
+        $lastWinner = Report::with('user','trick','winning')->latest()->first();;
 
-        });
+
 
 
         $unveiled = Trick::where('activated', '!=', '1');
