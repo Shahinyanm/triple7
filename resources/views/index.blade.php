@@ -537,7 +537,6 @@
             $(".registerform").html('<div class="registercheck"><div class="text-center"><i class="fa fa-thumbs-up fa-4x gold tada animated"></i></div><div class="text-center" style="margin-top:10px;"><h2>Your registration was successful !</h2><br>We have sent your access data to your email address. With this, you can log in to our community. You are now be automatically logged in <i class="fa fa-spinner fa-spin animated"></i></div></div>');
 
             setTimeout(function(){
-                alert(url+'/'+locale+'/home');
                 window.location.href = url+'/'+locale+'/home';
             }, 1000);
         }, 1000);
