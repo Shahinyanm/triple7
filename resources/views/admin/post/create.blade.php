@@ -29,6 +29,21 @@
                         @csrf
 
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Forum Name</label>
+
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <select class="form-control" name="language" id="languages">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <option value="{{$localeCode}}"
+                                                    @if($localeCode==='en') selected @endif>{{ $properties['native'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Select Forum</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="topic_id">
@@ -48,8 +63,10 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Topic Name" name ='text'>
-                                </div>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <textarea name="text[{{$localeCode}}]" id="text{{$localeCode}}" cols="82" rows="5"
+                                                  class="lang" style="display:none"></textarea>
+                                    @endforeach                                </div>
                             </div>
                         </div>
 
@@ -77,3 +94,36 @@
 
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(function () {
+            checkLanguage();
+
+            $('#languages').on('change', function () {
+                var id = $(this).val();
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'text' + id ) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+
+                })
+
+            })
+            function checkLanguage() {
+                var id = $('#languages').val()
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'text' + id ) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+                })
+            }
+        });
+
+
+    </script>
+@endpush

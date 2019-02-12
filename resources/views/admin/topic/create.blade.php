@@ -27,7 +27,20 @@
                     <form method="post" role="form" class="form-horizontal form-groups-bordered" action="{{route('admin.topics.store')}}" enctype="multipart/form-data">
                         {{--@method('PUT')--}}
                         @csrf
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Forum Name</label>
 
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <select class="form-control" name="language" id="languages">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <option value="{{$localeCode}}"
+                                                    @if($localeCode==='en') selected @endif>{{ $properties['native'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Select Forum</label>
                             <div class="col-sm-5">
@@ -48,7 +61,11 @@
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" placeholder="Topic Name" name ='title'>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <input type="text" class="form-control lang " placeholder="Topic Name"
+                                               name='title[{{$localeCode}}]' id="title{{$localeCode}}" style="display:none">
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
@@ -77,3 +94,36 @@
 
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(function () {
+            checkLanguage();
+
+            $('#languages').on('change', function () {
+                var id = $(this).val();
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'title' + id ) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+
+                })
+
+            })
+            function checkLanguage() {
+                var id = $('#languages').val()
+                $('.lang').each(function (i, item) {
+                    if (item.id == 'title' + id ) {
+                        $(item).show()
+                    } else {
+                        $(item).hide()
+                    }
+                })
+            }
+        });
+
+
+    </script>
+@endpush

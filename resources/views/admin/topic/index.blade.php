@@ -35,7 +35,7 @@
 
 
                     {{--<td class="text-center">{{$product->tags}}</td>--}}
-                    <td class="text-center"><a href="{{route('admin.posts.show', $topic->id)}}">{{$topic->title}} </a></td>
+                    <td class="text-center"><a href="{{route('admin.posts.show', $topic->id)}}"> {{$topic->title}} </a></td>
                     <td class="text-center"><a href="{{route('admin.forums.index')}}">{{$topic->forum->title}}</a></td>
                     <td class="text-center">{{$topic->posts->count()}}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($topic->updated_at)->format('d/m/Y h:i:s')}}</td>
