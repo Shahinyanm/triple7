@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -10,13 +11,14 @@ use App\Traits\GeoCode;
 use App\Trick;
 use App\TrickRating;
 use App\TrickImage;
-use Image;
+use App\Language;
 use Storage;
 use GeoIP;
 
 class TrickController extends Controller
 {
     use GeoCode;
+
     /**
      * Display a listing of the resource.
      *
@@ -27,10 +29,10 @@ class TrickController extends Controller
     {
 
 
-        $tricks = Trick::with('rating','images')->get()->map(function($trick){
-            if($trick->rating->count()) {
+        $tricks = Trick::with('rating', 'images')->get()->map(function ($trick) {
+            if ($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
-            }else{
+            } else {
                 $trick->procent = 0;
             }
 
@@ -53,45 +55,41 @@ class TrickController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(TrickRequest $request)
     {
 
 //        dd($request->all());
-        if($request->activated){
+        if ($request->activated) {
             $activated = 1;
-        }else {
+        } else {
             $activated = 0;
         }
+
+        $lang = $request->description1;
+
+        $lang = collect($lang)->reject(function($lang){
+            return $lang === null;
+        });
+
+        $language = Language::whereIn('code',$lang->keys())->get();
+
         $trick = new Trick;
         $trick->description1 = $request->description1;
         $trick->description2 = $request->description2;
         $trick->description3 = $request->description3;
         $trick->description4 = $request->description4;
-        $trick->amount       =  floatval($request->amount);
-        $trick->activated    =  $activated;
-        $trick->link         = $request->link;
-
+        $trick->amount = floatval($request->amount);
+        $trick->activated = $activated;
+        $trick->link = $request->link;
         $trick->save();
-
-
-//        $trick = Trick::create([
-//            'description1' => $request->description1,
-//            'description2' => $request->description2,
-//            'description3' => $request->description3,
-//            'description4' => $request->description4,
-//            'amount'       => floatval($request->amount),
-//            'link'         => $request->link,
-//            'activated'    => $activated,
-//        ]);
-
-
+        $trick->languages()->sync($language);
 
 
         if ($request->images) {
-            foreach($request->images as $image){
+            foreach ($request->images as $image) {
 
                 $file = $image;
                 $storedFile = Storage::disk('public')->put('image/tricks', $file);
@@ -99,7 +97,7 @@ class TrickController extends Controller
 
                 TrickImage::create([
                     'src' => str_replace('public/', '', $storedFile),
-                    'trick_id'=> $trick->id,
+                    'trick_id' => $trick->id,
                 ]);
             }
         }
@@ -110,7 +108,7 @@ class TrickController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -121,11 +119,14 @@ class TrickController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+
+
+
         $trick = Trick::with('images')->findOrfail($id);
         $trick->newDescription1 = json_decode($trick->getOriginal('description1'));
         $trick->newDescription2 = json_decode($trick->getOriginal('description2'));
@@ -137,38 +138,61 @@ class TrickController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(TrickUpdateRequest $request, $id)
     {
-        if($request->activated){
+        if ($request->activated) {
             $activated = 1;
-        }else {
+        } else {
             $activated = 0;
         }
+
+        $lang = $request->description1;
+        $lang = collect($lang)->reject(function($lang){
+            return $lang === null;
+        });
+
+        $language = Language::whereIn('code',$lang->keys())->get();
+
+
 
         $trick = Trick::findOrfail($id);
         $trick->description1 = $request->description1;
         $trick->description2 = $request->description2;
         $trick->description3 = $request->description3;
         $trick->description4 = $request->description4;
-        $trick->amount       = $request->amount;
-        $trick->link         = $request->link;
-        $trick->activated    = $activated;
+        $trick->amount = $request->amount;
+        $trick->link = $request->link;
+        $trick->activated = $activated;
+
+//        $trick->save();
+
+
 
         $trick->save();
+        $trick->languages()->sync($language);
+//        $trick->languages()->whereIn('code', $lang->keys())->where('trick_id',$trick->id)->delete();
+//        $trick->languages()->saveMany($language);
+//        $dd = collect($lang)->reject(function($lang){
+//            return $lang === null;
+//        });
+//        dd($dd);
+
+
+
 
         if ($request->images) {
-            foreach($request->images as $image){
+            foreach ($request->images as $image) {
 
                 $file = $image;
                 $storedFile = Storage::disk('public')->put('image/tricks', $file);
 
                 TrickImage::create([
                     'src' => str_replace('public/', '', $storedFile),
-                    'trick_id'=> $trick->id,
+                    'trick_id' => $trick->id,
                 ]);
 
             }
@@ -180,7 +204,7 @@ class TrickController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

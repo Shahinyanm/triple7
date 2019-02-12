@@ -10,11 +10,13 @@ use App\Winning;
 use App\Trick;
 use App\Report;
 use App\Refund;
-
+use App\Traits\GeoCode;
 use Storage;
 
 class UserController extends Controller
 {
+
+    use GeoCode;
     public function user_report_wins(Request $request)
     {
 
@@ -99,7 +101,10 @@ class UserController extends Controller
     public function user_tricks_load()
     {
 
-        $tricks = Trick::with('rating', 'images', 'activate')->get()->map(function ($trick) {
+        $tricks = Trick::with('rating', 'images', 'activate')->whereHas('languages', function ($query) {
+            $query->where('code',  $this->localeCode());
+
+        })->get()->map(function ($trick) {
             if ($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
             } else {

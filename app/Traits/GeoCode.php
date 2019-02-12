@@ -25,7 +25,7 @@ trait GeoCode
             }
         }
 
-
+        
 
         return $code;
     }

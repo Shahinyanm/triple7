@@ -22,6 +22,7 @@ use Session;
 class UserController extends Controller
 {
     use GeoCode;
+
     /**
      * Create a new controller instance.
      *
@@ -44,36 +45,38 @@ class UserController extends Controller
 
         $tricks = Trick::with('activate')->get();
 
-        $tricksPartIn = $tricks->map(function($trick){
-           $count =  $trick->activate()->where('user_id', Auth::id())->where('activate','1')->count();
-           return $count;
+        $tricksPartIn = $tricks->map(function ($trick) {
+            $count = $trick->activate()->where('user_id', Auth::id())->where('activate', '1')->count();
+            return $count;
         });
-        $unveiled =  Trick::where('activated','!=','1');
+        $unveiled = Trick::where('activated', '!=', '1');
 
 
-        $activeTricks = Trick::where('activated',1);
+        $activeTricks = Trick::where('activated', 1);
 
 
-
-        return view('user.index', compact('tricks','activeTricks','tricksPartIn','unveiled'));
+        return view('user.index', compact('tricks', 'activeTricks', 'tricksPartIn', 'unveiled'));
     }
 
     public function tricks()
     {
 
-        $tricks = Trick::with('rating', 'images')->get()->map(function ($trick) {
+        $tricks = Trick::with('rating', 'images', 'languages')->whereHas('languages', function ($query) {
+            $query->where('code', $this->localeCode());
+        })->get()->map(function ($trick) {
             if ($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
             } else {
                 $trick->procent = 0;
-            }
 
-            return $trick;
+                return $trick;
+            };
         });
 
 
         return view('user.trick.index', compact('tricks'));
     }
+
 
     public function update_apply(Request $request)
     {
@@ -97,43 +100,41 @@ class UserController extends Controller
     }
 
 
-
     public function loadMore(Request $request)
     {
 
 
-
-        $winnings = Winning::select('id', 'image', 'created_at')->whereDate('created_at','<', Carbon::parse($request->date))->orderBy('created_at','ASC')->get()->groupBy(function ($date) {
+        $winnings = Winning::select('id', 'image', 'created_at')->whereDate('created_at', '<', Carbon::parse($request->date))->orderBy('created_at', 'ASC')->get()->groupBy(function ($date) {
             return \Carbon\Carbon::parse($date->created_at)->format('d');
         })->last();
-        if(!$winnings->isEmpty())
-        {
+        if (!$winnings->isEmpty()) {
             $data = [
                 'date' => \Carbon\Carbon::parse($winnings['0']->created_at)->format('d.m.Y'),
                 'html' => view('user.winning.list_item')->with('winnings', $winnings)->render()
             ];
             return $data;
 
-        }else{
-            return Response()->json(['data'=> 'empty']);
+        } else {
+            return Response()->json(['data' => 'empty']);
         }
     }
 
-   public function rating(Request $request){
-        $check = TrickRating::where('trick_id',$request->trick_id)->where('user_id', Auth::id())->first();
-        if($check !== null){
-            $data = array('message'=>'denied');
-        }else{
+    public function rating(Request $request)
+    {
+        $check = TrickRating::where('trick_id', $request->trick_id)->where('user_id', Auth::id())->first();
+        if ($check !== null) {
+            $data = array('message' => 'denied');
+        } else {
             $rating = new TrickRating;
             $rating->rating = 1;
             $rating->trick_id = $request->trick_id;
             $rating->user_id = Auth::id();
             $rating->save();
-            $data =array('message'=>'successful');
+            $data = array('message' => 'successful');
         }
 
         return Response()->json(array($data));
-   }
+    }
 
     public function settings()
     {

@@ -9,8 +9,8 @@ class Trick extends Model
 {
     use GeoCode;
     protected $fillable = [
-        'description1','description2','description3','description4','amount','link','activated'
-        ];
+        'description1', 'description2', 'description3', 'description4', 'amount', 'link', 'activated'
+    ];
 
     protected $casts = [
         'description1' => 'array',
@@ -31,36 +31,38 @@ class Trick extends Model
         return $this->hasMany('App\TrickImage');
     }
 
-    public function setLinkAttribute($value){
+    public function setLinkAttribute($value)
+    {
         if (!preg_match("~^(?:f|ht)tps?://~i", $value)) {
             $this->attributes['link'] = "http://" . $value;
-        }else{
-            $this->attributes['link'] =$value;
+        } else {
+            $this->attributes['link'] = $value;
         }
 
     }
 
 
-    public function activate (){
+    public function activate()
+    {
         return $this->hasMany('App\TrickActivate');
     }
 
-    public function report (){
+    public function report()
+    {
         return $this->hasMany('App\Report');
     }
 
-    public function refund (){
+    public function refund()
+    {
         return $this->hasMany('App\Refund');
     }
-
-
 
 
     public function getDescription1Attribute($value)
     {
         $response = $value;
 
-        if($this->withJson) {
+        if ($this->withJson) {
             $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
@@ -71,7 +73,7 @@ class Trick extends Model
     {
         $response = $value;
 
-        if($this->withJson) {
+        if ($this->withJson) {
             $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
@@ -83,7 +85,7 @@ class Trick extends Model
     {
         $response = $value;
 
-        if($this->withJson) {
+        if ($this->withJson) {
             $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
@@ -95,7 +97,7 @@ class Trick extends Model
     {
         $response = $value;
 
-        if($this->withJson) {
+        if ($this->withJson) {
             $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
@@ -103,5 +105,10 @@ class Trick extends Model
         return $response;
     }
 
+
+    public function languages()
+    {
+        return $this->belongsToMany('App\Language','tricks_languages');
+    }
 
 }

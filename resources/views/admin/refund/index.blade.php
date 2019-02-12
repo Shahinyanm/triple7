@@ -42,7 +42,7 @@
                     <td class="text-center">{{$refund->amount}}</td>
                     <td class="text-center"><img src="{{asset('storage/image/refunds/'.$refund->image)}}" width="100"></td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($refund->created_at)->format('d M Y h:i:s')}}</td>
-                    <td class="text-center">@if($refund->approve) <span class="badge badge-success">Approve</span> @else <span class="badge badge-danger">Disapprove</span> @endif</td>
+                    <td class="text-center">@if($refund->approve) <span class="badge badge-success">Approve</span> @elseif($refund->approve 0) <span class="badge badge-danger">Disapprove</span>@else   <span class="badge badge-danger">Chose action</span> @endif</td>
 
                     <td>
 

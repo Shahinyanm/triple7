@@ -45,7 +45,7 @@
                             <label class="col-sm-3 control-label">Select Forum</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="forum_id">
-                                    <option selected disabled>Chose Forum</option>
+                                    <option selected disabled>Choose Forum</option>
                                     @if($forums)
                                         @foreach($forums as $forum)
                                             <option value ="{{$forum->id}}"> {{$forum->title}}</option>
