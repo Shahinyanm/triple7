@@ -59,7 +59,6 @@ class ForumController extends Controller
             return $query->with('user');
         }])->find($id);
 
-        dd($forum);
 
 
         return view('user.forum.forum-topics',compact('forum'));
