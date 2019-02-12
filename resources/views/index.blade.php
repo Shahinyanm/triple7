@@ -499,8 +499,8 @@
                 async: true,
                 data: data,
                 success: function(response) {
-
-                    formSuccess(response.token);
+                    console.log(response);
+                    formSuccess(response.token,response.locale);
                 },
                 error: function (error) {
                     if(error.responseText){
@@ -528,7 +528,7 @@
         }, 3000);
     }
 
-    function formSuccess(token) {
+    function formSuccess(token,locale) {
         $("#RegisterForm").hide();
         $(".registerform").html('<div class="registercheck"><div class="text-center"><i class="fa fa-spinner fa-spin animated fa-4x gold"></i></div><div class="text-center" style="margin-top:10px;"><h2>Your registration<br>is being verified...</h2></div></div>');
 
@@ -537,7 +537,8 @@
             $(".registerform").html('<div class="registercheck"><div class="text-center"><i class="fa fa-thumbs-up fa-4x gold tada animated"></i></div><div class="text-center" style="margin-top:10px;"><h2>Your registration was successful !</h2><br>We have sent your access data to your email address. With this, you can log in to our community. You are now be automatically logged in <i class="fa fa-spinner fa-spin animated"></i></div></div>');
 
             setTimeout(function(){
-                window.location.href = url+'/home';
+                alert(url+'/'+locale+'/home');
+                window.location.href = url+'/'+locale+'/home';
             }, 1000);
         }, 1000);
 

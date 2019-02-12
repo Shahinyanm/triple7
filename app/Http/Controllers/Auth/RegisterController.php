@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Jobs\SendRegisterMail;
+use App\Traits\GeoCode;
 
 class RegisterController extends Controller
 {
@@ -24,7 +25,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    use GeoCode;
     use RegistersUsers;
 
     /**
@@ -92,6 +93,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         \Auth::loginUsingId($user->id);
-        return response()->json(['data'=>'aaa']);
+
+        return response()->json(['locale'=>$this->localeCode()]);
     }
 }
