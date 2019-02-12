@@ -18,6 +18,7 @@ use DB;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use App\Traits\GeoCode;
 use Session;
+use App\Report;
 
 class UserController extends Controller
 {
@@ -49,13 +50,22 @@ class UserController extends Controller
             $count = $trick->activate()->where('user_id', Auth::id())->where('activate', '1')->count();
             return $count;
         });
+        $lastWinner = Report::with('users','tricks','winnings')->where('created_at', '>=', \Carbon\Carbon::today()->toDateString())->get()->map(function($report){
+            $report->user = User::findOrfail($report->user_id);
+            $report->trick = Trick::findOrfail($report->trick_id);
+            $report->winning = Winning::findOrFail($report->winning_id);
+            return $report;
+
+        });
+
+
         $unveiled = Trick::where('activated', '!=', '1');
 
 
         $activeTricks = Trick::where('activated', 1);
 
 
-        return view('user.index', compact('tricks', 'activeTricks', 'tricksPartIn', 'unveiled'));
+        return view('user.index', compact('tricks', 'activeTricks', 'tricksPartIn', 'unveiled','lastWinner'));
     }
 
     public function tricks()

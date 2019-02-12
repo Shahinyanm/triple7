@@ -82,11 +82,10 @@
 
                             <div class="info-box-content">
                               <span class="info-box-number">
-                      @isset($tricksPartIn[0])
-
+                                  @isset($tricksPartIn[0])
                                       {{$tricksPartIn[0]}}
                                   @endisset
-                  </span>
+                              </span>
                                 <span class="info-box-text">@lang('text.tricks_taken_part_in')</span>
                             </div>
                             <!-- /.info-box-content -->
@@ -100,17 +99,24 @@
 
             <div class="row">
                 <div class="col-xl-4 col-12">
-                    <div class="box box-inverse box-carousel slide" data-ride="carousel"
-                         style="background-color: #212121">
+
+                    <div class="box box-inverse box-carousel slide" data-ride="carousel" style="background-color: #212121">
                         <div class="box-header no-border">
                             <span class="fa fa-trophy font-size-30"></span>
                             <div class="box-tools pull-right">
-                                <h5 class="box-title box-title-bold">@lang('text.latest_winners')</h5>
+                                <h5 class="box-title box-title-bold">@lang('text.latest_winners')s</h5>
                             </div>
                         </div>
 
                         <div class="carousel-inner">
-
+                            @if($lastWinner)
+                                @foreach($lastWinner as $report)
+                                    <div  class="text-center">
+                                        <p>{{$report->user->first_name}}  reported on {{\Carbon\Carbon::parse($report->created_at)->format('y m d')}} a<br></p><h3 class="gold">Profit of {{$report->wins}} € with the trick {{$report->trick_id}}</h3>
+                                        Congratulations on the win!<p></p>
+                                    </div>
+                                @endforeach
+                            @endif
 
                         </div>
 
@@ -118,6 +124,7 @@
                             <a href="{{route('user.tricks')}}"><span><i class="fa fa-gamepad"></i> @lang('text.show_all_tricks')</span></a>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="col-xl-4 col-12">
@@ -188,8 +195,7 @@
                         var span = $('#success');
                         span.show();
                         span.fadeOut(15000);
-                    }else if(msg.disapproved > 0)
-                    {
+                    } else if (msg.disapproved > 0) {
                         var span = $('#disapproved');
                         span.show();
                         span.fadeOut(15000);
