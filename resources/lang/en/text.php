@@ -111,56 +111,7 @@ return [
     'save'=>'Save',
     'delete_account'=>'Delete Account',
 
-    'swal_title1'=>'Did the trick work for you? ',
-    'swal_html2'=>'How much did you win? ',
-    'swal_title3'=>'Did you take a screenshot and would you want to share it with the community? ',
-    'swal_title4'=>'Select screenshot',
-    'swal_area_label'=>'Select screenshot',
-    'swal_title5'=>' Your selected image',
-    'swal_continue'=>'Continue ',
-    'swal_image_alt'=>'Your selected image',
-    'swal_title6'=>'The screenshot is being uploaded...',
-    'swal_title7'=>'Thanks you for supporting our community!',
-    'swal_text7'=>' So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll rake in the cash here as well. With \'+nextavgsuccess+\' the members this trick works, and the average winnings are approx. \'+nextavgwin+\'.\',',
-    'swal_conf_text'=>'Complete the trick',
 
-
-
-
-
-    'swal_title8'=>'No problem!',
-    'swal_text8'=>'Maybe next time you&#39;ll share a screenshot of your winnings. So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll rake in the cash here as well. With \'+nextavgsuccess+\' the members this trick works, and the average winnings are approx. \'+nextavgwin+\'.\'',
-    'swal_text_conf8'=>'Complete the trick',
-
-    'swal_title10'=>'Did you create a new account in the casino?',
-    'swal_yes'=>'Yes',
-    'swal_no'=>'No',
-    'swal_title11'=>'\'Did you use a bonus?',
-
-
-
-    'swal_title12'=>'Oops...',
-    'swal_text12'=>'Then I&#39;m afraid you did something wrong. Please pay attention to the hints in future and follow the instructions exactly, because this is the only way the tricks can work. You should never use a bonus in the casino, as your chances of winning will deteriorate significantly.',
-    'swal_conf_text12'=>'Complete the trick',
-
-
-    'swal_title13'=>'Have you deposited at least € 25 into your casino account and wagered this amount in one go without logging out in between?',
-    'swal_title14'=>'Would you like to request a refund of € 25?',
-    'swal_text14'=>'We will manually examine the information you have provided and confirm. Please be aware that this may take a few days.',
-    'swal_select14'=>'Select screenshot',
-    'swal_title15'=>'Refund requested!',
-    'swal_text15'=>'We will not be checking your refund manually. You can see the status of your refund in the overview. You will also be informed about the status by email. So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With \'+nextavgsuccess+\' the members this works and the average winnings are approx. \'+nextavgwin+\'',
-
-
-
-    'swal_title16'=>'Okay...',
-    'swal_text16'=>'so let&#39;s move on to the next trick. I&#39;m sure you&#39;ll have better luck there. With \'+nextavgsuccess+\' the members this works and the average winnings are approx \'+nextavgwin+\'.\'',
-
-
-    'swal_title17'=>'Oops...',
-    'swal_text17'=>'Then I&#39;m afraid you did something wrong. Please pay attention to the hints in future and follow the instructions exactly, because this is the only way the tricks can work. You should always deposit at least € 25 and wager the full amount in one run. Because that&#39;s the only way it can work.',
-    'swal_title18'=>'Oops...',
-    'swal_title18'=>'Then I&#39;m afraid you did something wrong. Please pay attention to the hints in future and follow the instructions exactly, because this is the only way the tricks can work.',
 
 
 

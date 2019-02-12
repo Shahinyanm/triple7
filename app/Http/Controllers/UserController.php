@@ -63,16 +63,15 @@ class UserController extends Controller
 
         $tricks = Trick::with('rating', 'images', 'languages')->whereHas('languages', function ($query) {
             $query->where('code', $this->localeCode());
+
         })->get()->map(function ($trick) {
             if ($trick->rating->count()) {
                 $trick->procent = $trick->rating()->RatingYes()->count() * 100 / $trick->rating->count();
             } else {
                 $trick->procent = 0;
-
-                return $trick;
             };
+            return $trick;
         });
-
 
         return view('user.trick.index', compact('tricks'));
     }
