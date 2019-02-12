@@ -451,7 +451,7 @@
                                             swal({
                                                 html: true,
                                                 title: '@lang("swal.swal_title12")',
-                                                html: '@lang("swal.swal_html4")',
+                                                html: '@lang("swal.html4")',
                                                 showCancelButton: true,
                                                 confirmButtonColor: '#55b24b',
                                                 cancelButtonColor: '#b2504b',
