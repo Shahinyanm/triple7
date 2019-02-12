@@ -21,6 +21,7 @@ class CreateRefundsTable extends Migration
             $table->boolean('approve')->default(false);
             $table->string('image')->nullable()->default(null);
             $table->string('amount')->nullable();
+            $table->string('seen')->nullable();
 //            $table->string('text');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

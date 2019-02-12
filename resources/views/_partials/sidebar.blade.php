@@ -32,7 +32,7 @@
     <ul id="main-menu" class="main-menu">
         <!-- add class "multiple-expanded" to allow multiple submenus to open -->
         <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-        <li class="active opened active has-sub">
+        <li class="{{ (Request::route()->getName() == 'admin') ? 'active' : '' }}  ">
             <a href="{{route('admin')}}">
                 <i class="entypo-gauge"></i>
                 Dashboard
@@ -44,15 +44,16 @@
                 <i class="entypo-layout"></i>
                 <span class="title">Tricks</span>
             </a>
-            <ul>
-               <li>
+            <ul class="{{  (Request::route()->getName() == 'admin.tricks.index')? 'visible':'' }}">
+
+               <li class="{{ (Request::route()->getName() == 'admin.tricks.index') ? 'active' : '' }}  ">
                    <a href="{{route('admin.tricks.index')}}"> Tricks</a>
                 </li>
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.refunds') ? 'active' : '' }}  ">
                     <a href="{{route('admin.refunds')}}"> Refunds</a>
-                </li>
+                </li >
 
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.reports') ? 'active' : '' }}  ">
                     <a href="{{route('admin.reports')}}"> Wins Reports</a>
                 </li>
                     {{--<li>--}}
@@ -66,9 +67,9 @@
                 <i class="entypo-layout"></i>
                 <span class="title">Winnings</span>
             </a>
-            <ul>
+            <ul {{  (Request::route()->getName() == 'admin.winnings.index')? 'visible':'' }}>
 
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.winnings.index') ? 'active' : '' }} opened ">
                     <a href="{{route('admin.winnings.index')}}"> Winnings</a>
 
 
@@ -81,15 +82,15 @@
                 <i class="entypo-layout"></i>
                 <span class="title">Forums</span>
             </a>
-            <ul>
+            <ul {{  (Request::route()->getName() == 'admin.forums.index')? 'visible':'' }}>
 
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.forums.index')? 'active' : '' }}" >
                     <a href="{{route('admin.forums.index')}}"> Forum</a>
                 </li>
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.topics.index')? 'active' : '' }}"  >
                     <a href="{{route('admin.topics.index')}}"> Topics</a>
                 </li>
-                <li>
+                <li class="{{ (Request::route()->getName() == 'admin.posts.index')? 'active' : '' }}" >
                     <a href="{{route('admin.posts.index')}}"> Posts</a>
                 </li>
 
@@ -102,7 +103,7 @@
                 <span class="title">Users</span>
             </a>
             <ul>
-                <li>
+                <li  class="{{ (Request::route()->getName() == 'admin.users.index')? 'active' : '' }}">
                     <a href="{{route('admin.users.index')}}">
                         <span class="title">Users</span>
                     </a>

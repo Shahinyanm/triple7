@@ -2,6 +2,7 @@
 
         @isset($tricks)
             @foreach($tricks as $trick)
+
                 <div class="col-xl-6 col-12">
                     <div class="box">
 
@@ -15,7 +16,12 @@
                         <!-- /.box-header -->
                         <div class="box-body ">
                             <p><strong>Description:</strong></p>
-                            <ol class="trick_desc" id="help_desc_trick"><li>{{$trick->description1}}</li><li>{{$trick->description2}}</li><li>{{$trick->description3}}</li><li>{{$trick->description4}}</li></ol>
+                            <ol class="trick_desc" id="help_desc_trick">
+                                <li>{{$trick->description1}}</li>
+                                <li>{{$trick->description2}}</li>
+                                <li>{{$trick->description3}}</li>
+                                <li>{{$trick->description4}}</li>
+                            </ol>
                             <hr>
                             <p><strong>Images of the trick:</strong></p>
                             <div class="col-12 no-padding">

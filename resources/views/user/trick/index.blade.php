@@ -36,10 +36,15 @@
                                 <div class="box-header with-border" id="help_title_trick">
                                     <h3 class="box-title ">Trick {{$trick->id}}</h3>
                                 </div>
+
                                 <!-- /.box-header -->
                                 <div class="box-body ">
                                     <p><strong>Description:</strong></p>
-                                    <ol class="trick_desc" id="help_desc_trick"><li>{{$trick->description1}}</li><li>{{$trick->description2}}</li><li>{{$trick->description3}}</li><li>{{$trick->description4}}</li></ol>
+                                    <ol class="trick_desc" id="help_desc_trick">
+                                        <li>{{$trick->description1}}</li>
+                                        <li>{{$trick->description2}}</li>
+                                        <li>{{$trick->description3}}</li>
+                                        <li>{{$trick->description4}}</li></ol>
                                     <hr>
                                     <p><strong>Images of the trick:</strong></p>
                                     <div class="col-12 no-padding">
@@ -96,8 +101,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        const url = '{{URL::to('/')}}';
-
+        const url = '{{URL::to('/'). '/'. app()->getLocale()}}';
 
         function load_matrix(casinourl) {
 

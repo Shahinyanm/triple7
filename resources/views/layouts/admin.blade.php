@@ -89,6 +89,16 @@
 
 <!-- Demo Settings -->
 <script src="{{asset('js/admin/neon-demo.js')}}"></script>
+<script>
+    $(function () {
+        checkActivte()
+        function checkActivte(){
+            $('.active').each(function(i,item){
+                $(item).parent().addClass('visible')
+            })
+        }
+    })
+</script>
 @stack('scripts')
 </body>
 </html>

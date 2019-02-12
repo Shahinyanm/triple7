@@ -61,10 +61,9 @@ class Trick extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = $this->localeCode();
+            $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
-
         return $response;
     }
 
@@ -73,7 +72,7 @@ class Trick extends Model
         $response = $value;
 
         if($this->withJson) {
-            $lang = $this->localeCode();
+            $lang = app()->getLocale();
             $response = json_decode($value)->$lang;
         }
 

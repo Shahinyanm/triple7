@@ -12,9 +12,9 @@ class RefundController extends Controller
 {
     public function index()
     {
-        $refunds = Refund::with('users','tricks')->get()->map(function($refund){
-                $refund->user = User::findOrfail($refund->user_id);
-                $refund->trick = Trick::findOrfail($refund->trick_id);
+        $refunds = Refund::with('users', 'tricks')->get()->map(function ($refund) {
+            $refund->user = User::findOrfail($refund->user_id);
+            $refund->trick = Trick::findOrfail($refund->trick_id);
             return $refund;
         });
 
@@ -26,10 +26,12 @@ class RefundController extends Controller
     {
         $refund = Refund::findOrfail($id);
 
-            $refund->approve = true;
+        $refund->approve = true;
+        $refund->seen = 0;
 
 
         $refund->save();
+
         return redirect()->route('admin.refunds');
     }
 
@@ -38,8 +40,8 @@ class RefundController extends Controller
     {
         $refund = Refund::findOrfail($id);
 
-            $refund->approve = false;
-
+        $refund->approve = false;
+        $refund->seen = 0;
 
         $refund->save();
         return redirect()->route('admin.refunds');

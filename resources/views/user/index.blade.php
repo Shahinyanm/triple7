@@ -8,12 +8,26 @@
                 @lang('text.casinocode_news')
             </h1>
         </section>
+        <div class="approve_info">
+            <div class="alert alert-primary" role="alert" style="display:none" id="success">
+                Your refund is approved
 
+            </div>
+            <div class="alert alert-danger" role="alert" style="display:none" id="disapproved">
+                Your refund is disapproved
+
+            </div>
+
+        </div>
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 @lang('text.overview')      </h1>
         </section>
+        <!-- Info message -->
+
+        <!-- Success message -->
+        <!-- Error message -->
 
         <!-- Main content -->
         <section class="content">
@@ -155,6 +169,46 @@
 
 @push('js')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        checkRefundApprove();
+
+        function checkRefundApprove() {
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "user/check_refunds",
+                data: {},
+                success: function (msg) {
+                    console.log(msg)
+                    if (msg.approved > 0) {
+                        var span = $('#success');
+                        span.show();
+                        span.fadeOut(15000);
+                    }else if(msg.disapproved > 0)
+                    {
+                        var span = $('#disapproved');
+                        span.show();
+                        span.fadeOut(15000);
+                    }
+                }
+            }).done(function (msg) {
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "user/refunds_seen",
+                    data: {},
+                    success: function (msg) {
+
+                    }
+                })
+            });
+        }
+
         $(".snow-canvas").snow();
 
         function go_to_tricks() {

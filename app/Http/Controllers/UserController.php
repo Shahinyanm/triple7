@@ -71,6 +71,7 @@ class UserController extends Controller
             return $trick;
         });
 
+
         return view('user.trick.index', compact('tricks'));
     }
 

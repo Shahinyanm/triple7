@@ -70,6 +70,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::post('user_tricks_load', 'Ajax\UserController@user_tricks_load');
         Route::post('user_trick_refund', 'Ajax\UserController@user_trick_refund');
 
+        Route::post('check_refunds', 'Ajax\UserController@check_refunds');
+        Route::post('refunds_seen', 'Ajax\UserController@refunds_seen');
+
 
     });
 });
