@@ -36,6 +36,8 @@ class TopicController extends Controller
 
     public function store(TopicRequest $request)
     {
+
+
         Topic::create([
             'title' => $request->title,
             'forum_id' => $request->forum_id,

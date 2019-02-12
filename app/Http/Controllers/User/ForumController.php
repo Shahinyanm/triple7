@@ -8,9 +8,12 @@ use App\Http\Requests\ForumRequest;
 use App\Forum;
 use App\Post;
 use App\User;
+use App\Traits\GeoCode;
 
 class ForumController extends Controller
 {
+
+    use GeoCode;
     /**
      * Display a listing of the resource.
      *
@@ -56,10 +59,9 @@ class ForumController extends Controller
     {
         $forum = Forum::with(['topics' => function($query){
                 $query->where('code',app()->getLocale())->orWhere('code','null');
+
             return $query->with('user');
         }])->find($id);
-
-
 
         return view('user.forum.forum-topics',compact('forum'));
 
