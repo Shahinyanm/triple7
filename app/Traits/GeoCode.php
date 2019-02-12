@@ -10,7 +10,7 @@ trait GeoCode
 {
     public function localeCode()
     {
-        $location = GeoIP::getLocation('194.45.52.72');
+        $location = GeoIP::getLocation();
 
         if (strpos(Route::currentRouteName(), 'admin') !== false) {
             $code = app()->getLocale();

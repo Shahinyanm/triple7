@@ -120,9 +120,9 @@ return [
     'swal_continue'=>'Continue ',
     'swal_image_alt'=>'Your selected image',
     'swal_title6'=>'The screenshot is being uploaded...',
-    'swal_title4'=>'Select screenshot',
-    'swal_title4'=>'Select screenshot',
-    'swal_title4'=>'Select screenshot',
+    'swal_title7'=>'Thanks you for supporting our community!',
+    'swal_text7'=>' So let&#39;s move on to the next trick. I&#39;m sure you&#39;ll rake in the cash here as well. With \'+nextavgsuccess+\' the members this trick works, and the average winnings are approx. \'+nextavgwin+\'.\',',
+    'swal_conf_text'=>'Complete the trick',
     'swal_title4'=>'Select screenshot',
     'swal_title4'=>'Select screenshot',
 
