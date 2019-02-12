@@ -82,7 +82,7 @@
 
                             <div class="info-box-content">
                               <span class="info-box-number">
-                      @isset($tricksPartIn)
+                      @isset($tricksPartIn[0])
 
                                       {{$tricksPartIn[0]}}
                                   @endisset

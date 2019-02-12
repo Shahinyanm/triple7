@@ -111,5 +111,19 @@ return [
     'save'=>'Save',
     'delete_account'=>'Delete Account',
 
-    ''=>'',
+    'swal_title1'=>'Did the trick work for you? ',
+    'swal_html2'=>'How much did you win? ',
+    'swal_title3'=>'Did you take a screenshot and would you want to share it with the community? ',
+    'swal_title4'=>'Select screenshot',
+    'swal_area_label'=>'Select screenshot',
+    'swal_title5'=>' Your selected image',
+    'swal_continue'=>'Continue ',
+    'swal_image_alt'=>'Your selected image',
+    'swal_title6'=>'The screenshot is being uploaded...',
+    'swal_title4'=>'Select screenshot',
+    'swal_title4'=>'Select screenshot',
+    'swal_title4'=>'Select screenshot',
+    'swal_title4'=>'Select screenshot',
+    'swal_title4'=>'Select screenshot',
+
 ];
