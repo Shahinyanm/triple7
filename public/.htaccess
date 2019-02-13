@@ -16,5 +16,6 @@
     RewriteRule ^ index.php [L]
 
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+    RewriteRule ^(.*)$ https://www.triple7.co/$1 [R,L]
 </IfModule>
+
