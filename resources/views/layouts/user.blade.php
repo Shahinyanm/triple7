@@ -8,32 +8,32 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('/images/favicon.png')}}">
+    <link rel="icon" href="{{secure_asset('/images/favicon.png')}}">
 
     <title>CasinoCode by triple7 - Community</title>
 
     <!-- Bootstrap 4.0-->
-    <link rel="stylesheet" href="{{asset('css/user/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/user/bootstrap.min.css')}}">
 
     <!-- Bootstrap 4.0-->
-    <link rel="stylesheet" href="{{asset('css/user/bootstrap-extend.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/user/bootstrap-extend.css')}}">
 
     <!-- flags CSS -->
-    <link href="{{asset('css/user/flags.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/user/flags.css')}}" rel="stylesheet">
 
     <!-- Bootstrap Tour -->
-    <link rel="stylesheet" href="{{asset('css/user/bootstrap-tour.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/user/bootstrap-tour.css')}}">
 
     @stack('styles')
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('css/user/master_style.css?v=1')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/user/master_style.css?v=1')}}">
 
     <!--alerts CSS -->
-    <link href="{{asset('css/user/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{secure_asset('css/user/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- MinimalLite Admin skins -->
-    <link rel="stylesheet" href="{{asset('css/user/skin-gold.css?v=1')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/user/skin-gold.css?v=1')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,34 +60,34 @@
 
 
 <!-- jQuery 3 -->
-<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{secure_asset('js/jquery.min.js')}}"></script>
 
 <!-- popper -->
-<script src="{{asset('js/user/popper.min.js')}}"></script>
+<script src="{{secure_asset('js/user/popper.min.js')}}"></script>
 
 <!-- Bootstrap 4.0-->
-<script src="{{asset('js/user/bootstrap.min.js')}}"></script>
+<script src="{{secure_asset('js/user/bootstrap.min.js')}}"></script>
 
 <!-- flags.js - Flags plugin -->
-<script src="{{asset('js/user/jquery.flagstrap.min.js')}}"></script>
+<script src="{{secure_asset('js/user/jquery.flagstrap.min.js')}}"></script>
 
 <!-- SlimScroll -->
-<script src="{{asset('js/user/jquery.slimscroll.min.js')}}"></script>
+<script src="{{secure_asset('js/user/jquery.slimscroll.min.js')}}"></script>
 
 <!-- FastClick -->
-<script src="{{asset('js/user/fastclick.js')}}"></script>
+<script src="{{secure_asset('js/user/fastclick.js')}}"></script>
 
 <!-- MinimalLite Admin App -->
 @stack('scripts')
 <!-- Sweet-Alert  -->
-<script src="{{asset('js/user/sweetalert2.min.js')}}"></script>
+<script src="{{secure_asset('js/user/sweetalert2.min.js')}}"></script>
 
 <!-- Bootstrap Tour -->
-<script src="{{asset('js/user/bootstrap-tour.js')}}"></script>
-<script src="{{asset('js/user/template.js')}}"></script>
+<script src="{{secure_asset('js/user/bootstrap-tour.js')}}"></script>
+<script src="{{secure_asset('js/user/template.js')}}"></script>
 
 <!-- Snow Plugin -->
-<script src="{{asset('js/user/snow-plugin.js')}}"></script>
+<script src="{{secure_asset('js/user/snow-plugin.js')}}"></script>
 
 @stack('js')
 
