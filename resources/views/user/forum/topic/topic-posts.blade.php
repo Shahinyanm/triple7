@@ -40,6 +40,8 @@
                         <!--/.direct-chat-messages-->
                     </div>
                     <!-- /.box-body -->
+                    @isset($topic->geocode)
+                    @if($topic->geocode == $topic->code)
                     <form action="{{route('user.send_message')}}" method="post">
                         @csrf
                         <div class="box-footer">
@@ -61,6 +63,8 @@
                             </div>
                         </div>
                     </form>
+                    @endif
+                    @endisset
                     <!-- /.box-footer-->
                 </div>
                 <!-- /. box -->

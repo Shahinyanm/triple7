@@ -28,9 +28,11 @@ class TopicController extends Controller
 
         $topic = Topic::with(['user','posts' => function($query){
             return $query->with('user');
-        }])->where('code',app()->getLocale())->find($id);
+        }])->where('code', app()->getLocale())->find($id);
 
-
+        if($topic){
+            $topic->geocode = $this->localeCode();
+        }
         return view('user.forum.topic.topic-posts',compact('topic'));
     }
 
