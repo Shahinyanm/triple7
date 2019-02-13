@@ -44,21 +44,31 @@ class UserController extends Controller
     public function index()
     {
 
-        $tricks = Trick::with('activate')->get();
+        $tricks = Trick::with('activate')->whereHas('languages', function ($query) {
+                $query->where('code', app()->getLocale());
+            })->get();
 
         $tricksPartIn = $tricks->map(function ($trick) {
-            $count = $trick->activate()->where('user_id', Auth::id())->where('activate', '1')->count();
-            return $count;
+            $trick = $trick->activate()->where('user_id', Auth::id())->where('activate', '1')->count();
+            return $trick;
         });
+
+        $tricksPartIn = array_sum($tricksPartIn->toArray());
+
         $lastWinner = Report::with('user','trick','winning')->latest()->first();;
 
 
 
 
-        $unveiled = Trick::where('activated', '!=', '1');
+        $unveiled = Trick::where('activated', '!=', '1')->whereHas('languages', function ($query) {
+            $query->where('code', app()->getLocale());
+        })->get();
 
 
-        $activeTricks = Trick::where('activated', 1);
+        $activeTricks = Trick::where('activated', 1)->whereHas('languages', function ($query) {
+            $query->where('code', app()->getLocale());
+        })->get();
+
 
 
         return view('user.index', compact('tricks', 'activeTricks', 'tricksPartIn', 'unveiled','lastWinner'));

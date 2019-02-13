@@ -47,6 +47,7 @@ class ForumController extends Controller
      */
     public function store(ForumRequest $request)
     {
+
     }
 
     /**

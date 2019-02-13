@@ -82,8 +82,8 @@
 
                             <div class="info-box-content">
                               <span class="info-box-number">
-                                  @isset($tricksPartIn[0])
-                                      {{$tricksPartIn[0]}}
+                                  @isset($tricksPartIn)
+                                      {{$tricksPartIn}}
                                   @endisset
                               </span>
                                 <span class="info-box-text">@lang('text.tricks_taken_part_in')</span>
