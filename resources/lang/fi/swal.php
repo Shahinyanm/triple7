@@ -13,53 +13,53 @@ return [
     |
     */
 
-    'swal_title1' => 'Hat der Trick bei dir geklappt?',
-    'confirmButtonText' => 'Ja',
-    'cancelButtonText' => 'Nein',
-    'swal_title2' => 'Prima! Herzlichen Glückwünsch!',
-    'html' => 'Wie viel hast du gewonnen?',
-    'continue' => 'Weiter',
-    'swal_title3' => 'Hast du einen Screenshot von deinem höchsten Gewinn gemacht? Möchtest du diesen jetzt mit der Community teilen?',
-
-    'title3_1' => 'Screenshot auswählen',
-    'swal_title4' => 'Dein ausgewähltes Bild',
-
-    'swal_title5' => 'Dein Screenshot wird übertragen...',
-    'swal_title6' => 'Vielen Dank für deine Unterstützung der Community!',
-    'html1' => 'Also machen wir mit dem nächscten Trick weiter. Sicher wirst du auch hier richtig absahnen. Bei ',
-     'html1_2' => ' der Mitglieder klappt dieser Trick und der durchschnittliche Gewinn liegt bei ca.',
-
-    'swal_title7' => 'Kein Problem!',
-    'html2' => 'Vielleicht teilst du beim nächsten Mal einen Screenshot von deinem Gewinn. Also machen wir mit dem nächscten Trick weiter. Sicher wirst du auch hier richtig absahnen. Bei ',
-      'html2_2'=>'  der Mitglieder klappt dieser Trick und der durchschnittliche Gewinn liegt bei ca. ',
-
-    'swal_title8' => 'Hast du einen neuen Account beim Casino angelegt?',
-
-    'swal_title9' => 'Hast du einen Bonus genutzt?',
+    'swal_title1' => 'Toimiko kikka sinun kohdallasi?',
+    'swal_title2' => 'Upeaa! Parhaat onnittelut!',
+    'html' => 'Kuinka paljon olet voittanut?',
+    'swal_title3' => 'Otitko kuvakaappauksen suurimmasta voitostasi? Haluatko jakaa sen nyt käyttäjäyhteisössä?',
+    'confirmButtonText' => 'Kyllä',
+    'cancelButtonText' => 'Ei',
+    'title3_1' => 'Valitse kuvakaappaus',
+    'continue' => 'Seuraava',
+    'swal_title4' => 'Valitsemasi kuva',
 
 
-    'swal_title10' => 'Oops...',
-    'html3' => 'Dann hast du leider etwas falsch gemacht. Bitte beachte zukünftig die Hinweise und befolge genau die Anleitung, denn nur so können die Tricks funktionieren. Du solltest niemals einen Bonus im Casino nutzen, da sich so deine Gewinnchancen deutlich verschlechtern.',
-    'complete_the_trick' => 'Trick abschließen',
+    'swal_title5' => 'Kuvakaappaus tehdään...',
+    'swal_title6' => 'Kiitos tuestasi yhteisölle!',
+    'html1' => 'Joten siirrymme seuraavaan kikkaan. Käärit varmasti voittoja myös tällä kikalla. Käyttäjillä',
+    'html1_2' => 'tämä kikka toimii, ja keskimääräinen voitto on n.',
 
-    'swal_title11' => 'Hast du mindestens 25€ in dein Casino-Konto eingezahlt und diesen Betrag in einem Durchlauf eingesetzt, ohne dich zwischendurch ausgeloggt zu haben?',
+    'swal_title7' => 'Ei ongelmaa!',
+    'html2' => 'Ehkä jaat seuraavalla kerralla kuvakaappauksen voitostasi. Joten siirrymme seuraavaan kikkaan. Käärit varmasti voittoja myös tällä kikalla. Käyttäjillä',
+    'html2_2'=>'  tämä kikka toimii, ja keskimääräinen voitto on n.',
 
-    'swal_title12' => 'Möchtest du eine Erstattung von 25€ beantragen?',
-    'html4' => 'Wir werden anschließend deine Angaben manuell prüfen und deine Erstattung freigeben. Bitte beachte, dass dies ggf. einige Tage dauern kann.',
+    'swal_title8' => 'Oletko luonut uuden tilin kasinolle?',
 
-    'swal_title13' => 'Erstattung beantragt!',
-    'html5' => 'Wir werden jetzt deine Erstattung manuell prüfen. Den Status deiner Erstattung siehst du in der Übersicht. Du wirst auch per Email über den Status informiert. Also machen wir mit dem nächscten Trick weiter. Sicher wirst du da mehr Glück haben. Bei ' ,
-     'html5_2'=> 'der Mitglieder klappt dieser und der durchschnittliche Gewinn liegt bei ca.',
+    'swal_title9' => 'Oletko hyödyntänyt bonuksen?',
+
+
+    'swal_title10' => 'Oho...',
+    'html3' => 'Sitten olet valitettavasti tehnyt jotain väärin. Huomaathan jatkossa ohjeet noudattaen niitä tarkasti, sillä vain silloin kikat voivat toimia. Sinun ei pitäisi koskaan käyttää bonusta kasinolla, koska se heikentää huomattavasti voittomahdollisuuksiasi.',
+    'complete_the_trick' => 'Suorita temppu',
+
+    'swal_title11' => 'Talletitko vähintään 25 € kasinotilillesi ja käytit tämän summan yhdellä kertaa ilman kirjautumista ulos?',
+
+    'swal_title12' => 'Haluatko hyvityksen 25 €?',
+    'html4' => 'Tarkistamme tämän jälkeen manuaalisesti tietosi ja hyväksymme hyvityksesi. Otathan huomioon, että tämä saattaa kestää muutaman päivän.',
+
+    'swal_title13' => 'Hyvitys pyydetty!',
+    'html5' => 'Tarkistamme nyt hyvityksesi manuaalisesti. Hyvityksen tila näkyy yleiskatsauksessa. Sinulle ilmoitetaan hyvityksen tilasta myös sähköpostilla. Joten siirrymme seuraavaan kikkaan. Sinulla on varmasti enemmän onnea sen kanssa. Käyttäjillä',
+    'html5_2'=> 'tämä toimii, ja keskimääräinen voitto on n.',
 
     'swal_title14' => 'Ok...',
-    'html6' => 'dann machen wir mit dem nächscten Trick weiter. Sicher wirst du da mehr Glück haben. Bei  ',
-    'html6_2' => ' der Mitglieder klappt dieser und der durchschnittliche Gewinn liegt bei ca.',
+    'html6' => 'joten siirrymme seuraavaan kikkaan. Sinulla on varmasti enemmän onnea sen kanssa. Käyttäjillä',
+    'html6_2' => 'tämä toimii, ja keskimääräinen voitto on n.',
 
-    'swal_title15' => 'Oops...',
-    'html7' => 'Dann hast du leider etwas falsch gemacht. Bitte beachte zukünftig die Hinweise und befolge genau die Anleitung, denn nur so können die Tricks funktionieren. Du solltest immer mindestens 25€ einzahlen und diese auch in vollem Umfang in einem Durchlauf setzen. Denn nur so kann es funktionieren.',
+    'swal_title15' => 'Oho...',
+    'html7' => 'Sitten olet valitettavasti tehnyt jotain väärin. Huomaathan jatkossa ohjeet noudattaen niitä tarkasti, sillä vain silloin kikat voivat toimia. Sinun tulisi aina tallettaa vähintään 25 € ja käyttää se kokonaan kerralla. Koska kikka voi onnistua vain tällä tavoin.',
 
-    'swal_title15' => 'Oops...',
-    'html8' => 'Dann hast du leider etwas falsch gemacht. Bitte beachte zukünftig die Hinweise und befolge genau die Anleitung, denn nur so können die Tricks funktionieren.',
+    'swal_title15' => 'Oho...',
+    'html8' => 'Sitten olet valitettavasti tehnyt jotain väärin. Huomaathan jatkossa ohjeet noudattaen niitä tarkasti, sillä vain silloin kikat voivat toimia.',
 
 
 ];

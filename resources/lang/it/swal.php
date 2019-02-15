@@ -56,10 +56,10 @@ return [
     'html6_2' => ' gli utenti questo funziona e la vincita media è di ca. ',
 
     'swal_title15' => 'Oops...',
-    'html7' => 'Allora temo che tu abbia fatto qualcosa di sbagliato. Ti preghiamo di prestare attenzione ai suggerimenti in futuro e seguire esattamente le istruzioni, perché questo è l&#39;unico modo in cui i trucchi possono funzionare. Dovresti sempre depositare almeno 25€ e scommettere l&#39;intero importo in un solo passaggio. Perché è l&#39;unico modo in cui può funzionare.\', \'confirmButtonText\' => \'Completa il trucco',
+    'html7' => 'Allora temo che tu abbia fatto qualcosa di sbagliato. Ti preghiamo di prestare attenzione ai suggerimenti in futuro e seguire esattamente le istruzioni, perché questo è l&#39;unico modo in cui i trucchi possono funzionare. Dovresti sempre depositare almeno 25€ e scommettere l&#39;intero importo in un solo passaggio. Perché è l&#39;unico modo in cui può funzionare.',
 
     'swal_title15' => 'Oups...',
-    'html8' => 'Allora temo che tu abbia fatto qualcosa di sbagliato. Ti preghiamo di prestare attenzione ai suggerimenti in futuro e seguire esattamente le istruzioni, perché questo è l&#39;unico modo in cui i trucchi possono funzionare.\', \'confirmButtonText\' => \'Completa il trucco',
+    'html8' => 'Allora temo che tu abbia fatto qualcosa di sbagliato. Ti preghiamo di prestare attenzione ai suggerimenti in futuro e seguire esattamente le istruzioni, perché questo è l&#39;unico modo in cui i trucchi possono funzionare',
 
 
 ];
