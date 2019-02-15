@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2c0b1e6-8298-4ae6-b65d-7f51e36e62f5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/lang/nl/swal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/no/swal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/se/swal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-casinocode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-casinocode.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fi/swal.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fi/swal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/it/swal.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/swal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/ForumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/ForumController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,11 +51,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/lang/it/swal.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
               <caret line="61" column="237" selection-start-line="61" selection-start-column="237" selection-end-line="61" selection-end-column="237" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/User/ForumController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="61" column="77" lean-forward="true" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -137,6 +134,7 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/user.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/it/swal.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/User/ForumController.php" />
       </list>
     </option>
   </component>
@@ -257,33 +255,28 @@
             <path>
               <item name="laravel-casinocode" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-casinocode" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="laravel-casinocode" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-casinocode" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="laravel-casinocode" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-casinocode" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="it" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="laravel-casinocode" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-casinocode" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="laravel-casinocode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-casinocode" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -335,12 +328,12 @@
       <updated>1548062636587</updated>
       <workItem from="1548062637847" duration="3847000" />
       <workItem from="1550132708847" duration="4820000" />
-      <workItem from="1550211499369" duration="689000" />
+      <workItem from="1550211499369" duration="1250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9356000" />
+    <option name="totallyTimeSpent" value="9917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -537,6 +530,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="61" column="237" selection-start-line="61" selection-start-column="237" selection-end-line="61" selection-end-column="237" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/User/ForumController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="61" column="77" lean-forward="true" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="77" />
         </state>
       </provider>
     </entry>

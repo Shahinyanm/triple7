@@ -59,7 +59,7 @@ class ForumController extends Controller
     public function show($id)
     {
         $forum = Forum::with(['topics' => function($query){
-                $query->where('code',app()->getLocale())->orWhere('code','null');
+                $query->where('code',app()->getLocale())->orWhere('code',null);
 
             return $query->with('user');
         }])->find($id);
